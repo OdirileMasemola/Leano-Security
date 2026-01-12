@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Leano Security Services - Get in touch for security consultations, quotes, and emergency assistance. We're here to protect what matters most to you.">
+    <meta name="keywords" content="contact security company, emergency security, security consultation, security quote, Leano Security contact">
+    <title>Contact Us - Leano Security Services | Get Your Security Consultation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">
+                <img src="images/Logo.png" alt="Leano Security Logo" class="logo-img">
+                <span class="logo-text">LEANO <span class="logo-sub">SECURITY</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="values.html">Values</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="capabilities.html">Capabilities</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="mobile-menu" id="mobileMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="contact-hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-particles" id="heroParticles"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="breadcrumb">
+                        <a href="index.html">Home</a>
+                        <span><i class="fas fa-chevron-right"></i></span>
+                        <span>Contact</span>
+                    </div>
+                    <h1 class="hero-title">Get in Touch</h1>
+                    <p class="hero-subtitle">Protecting Your Peace of Mind Starts with a Conversation</p>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <i class="fas fa-headset"></i>
+                            <span>24/7 Support</span>
+                        </div>
+                        <div class="hero-stat">
+                            <i class="fas fa-clock"></i>
+                            <span>Rapid Response</span>
+                        </div>
+                        <div class="hero-stat">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Free Consultation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Sections -->
+        <section class="section-padding contact-sections">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Connect With Us</span>
+                    <h2 class="section-title">Your Security Is Our Priority</h2>
+                    <p class="section-subtitle">Choose your preferred method to get in touch with our security experts</p>
+                </div>
+
+                <div class="contact-grid">
+                    <!-- Contact Form -->
+                    <div class="contact-form-section">
+                        <div class="form-header">
+                            <div class="form-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3>Send Us a Message</h3>
+                            <p>Fill out the form below and our security experts will get back to you within 24 hours</p>
+                        </div>
+
+                        <form id="contactForm" class="contact-form" novalidate>
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                                <div class="error-message" id="nameError"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                                <div class="error-message" id="emailError"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                                <div class="error-message" id="phoneError"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="company">Company/Organization (Optional)</label>
+                                <input type="text" id="company" name="company" placeholder="Enter your company name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="service">Services Interested In *</label>
+                                <div class="select-wrapper">
+                                    <select id="service" name="service" required multiple size="5">
+                                        <option value="armed-response">Armed Response & Patrols</option>
+                                        <option value="vip-protection">VIP & Executive Protection</option>
+                                        <option value="event-security">Event & Crowd Security</option>
+                                        <option value="residential">Residential Security</option>
+                                        <option value="commercial">Commercial Security</option>
+                                        <option value="industrial">Industrial Site Security</option>
+                                        <option value="surveillance">CCTV & Surveillance Systems</option>
+                                        <option value="access-control">Access Control Systems</option>
+                                        <option value="alarm-systems">Alarm Installation & Monitoring</option>
+                                        <option value="risk-assessment">Security Risk Assessment</option>
+                                        <option value="cybersecurity">Cybersecurity Solutions</option>
+                                        <option value="fleet-security">Fleet & Vehicle Security</option>
+                                        <option value="investigation">Private Investigation</option>
+                                        <option value="training">Security Training</option>
+                                        <option value="other">Other Services</option>
+                                    </select>
+                                    <div class="select-hint">Hold Ctrl (Cmd on Mac) to select multiple services</div>
+                                </div>
+                                <div class="error-message" id="serviceError"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="urgency">Urgency Level</label>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="urgency" value="routine" checked>
+                                        <span class="radio-custom"></span>
+                                        <span class="radio-label">Routine Inquiry</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="urgency" value="urgent">
+                                        <span class="radio-custom"></span>
+                                        <span class="radio-label">Urgent (Within 24 hours)</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="urgency" value="emergency">
+                                        <span class="radio-custom"></span>
+                                        <span class="radio-label">Emergency Contact</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Your Message *</label>
+                                <textarea id="message" name="message" rows="6" required placeholder="Tell us about your security needs and requirements"></textarea>
+                                <div class="error-message" id="messageError"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="newsletter" checked>
+                                    <span class="checkmark"></span>
+                                    <span>Subscribe to our security newsletter for tips and updates</span>
+                                </label>
+                            </div>
+
+                            <div class="form-submit">
+                                <button type="submit" class="submit-btn">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Send Message
+                                    <div class="loading-spinner"></div>
+                                </button>
+                                <p class="form-note">We respect your privacy and will never share your information</p>
+                            </div>
+
+                            <div class="form-success" id="successMessage">
+                                <i class="fas fa-check-circle"></i>
+                                <h4>Message Sent Successfully!</h4>
+                                <p>Thank you for contacting Leano Security Services. Our security experts will get back to you within 24 hours.</p>
+                            </div>
+
+                            <div class="form-error" id="errorMessage">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <h4>Message Failed to Send</h4>
+                                <p>There was an error sending your message. Please try again or contact us directly.</p>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info & WhatsApp -->
+                    <div class="contact-info-section">
+                        <!-- WhatsApp CTA -->
+                        <div class="whatsapp-card">
+                            <div class="whatsapp-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="whatsapp-content">
+                                <h4>Chat with Us on WhatsApp</h4>
+                                <p>Get instant responses and quick support from our security team</p>
+                                <a href="https://wa.me/27683794897" target="_blank" class="whatsapp-btn">
+                                    <i class="fab fa-whatsapp"></i>
+                                    Chat Now on WhatsApp
+                                </a>
+                                <p class="whatsapp-note">We typically respond within 5-10 minutes during business hours</p>
+                            </div>
+                        </div>
+
+                        <!-- Contact Methods -->
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h5>Emergency Hotline</h5>
+                                    <p class="method-detail">Available 24/7 for immediate assistance</p>
+                                    <a href="tel:+27683794897" class="method-link">
+                                        <i class="fas fa-phone"></i>
+                                        068 379 4897
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h5>General Inquiries</h5>
+                                    <p class="method-detail">For non-emergency calls and information</p>
+                                    <a href="tel:+27683794897" class="method-link">
+                                        <i class="fas fa-phone"></i>
+                                        068 379 4897
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h5>Email Address</h5>
+                                    <p class="method-detail">General inquiries and quotes</p>
+                                    <a href="mailto:Info@leanosecurity.co.za" class="method-link">
+                                        <i class="fas fa-envelope"></i>
+                                        Info@leanosecurity.co.za
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h5>Business Hours</h5>
+                                    <p class="method-detail">24/7 Operations Center</p>
+                                    <div class="method-hours">
+                                        <div>Emergency Response: 24/7</div>
+                                        <div>Office Hours: Mon-Fri 8AM-5PM</div>
+                                        <div>Weekends: Emergency Only</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Response Stats -->
+                        <div class="response-stats">
+                            <h4>Our Response Times</h4>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <div class="stat-number">&lt; 3 min</div>
+                                    <div class="stat-label">Emergency Response</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">24 hours</div>
+                                    <div class="stat-label">Quote Response</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">98%</div>
+                                    <div class="stat-label">Client Satisfaction</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-number">NKP</div>
+                                    <div class="stat-label">Accredited</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Map Section -->
+                        <div class="map-section">
+                            <h4>Service Areas</h4>
+                            <p>We provide comprehensive security services across South Africa, with primary operations in major metropolitan areas and strategic locations nationwide.</p>
+                            <div class="service-areas">
+                                <div class="area">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Gauteng Province</span>
+                                </div>
+                                <div class="area">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Western Cape</span>
+                                </div>
+                                <div class="area">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>KwaZulu-Natal</span>
+                                </div>
+                                <div class="area">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Free State</span>
+                                </div>
+                                <div class="area">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Mpumalanga</span>
+                                </div>
+                                <div class="area">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Limpopo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section-padding faq-section bg-light">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">Questions</span>
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <p class="section-subtitle">Get answers to common questions about our security services</p>
+                </div>
+
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>How quickly can you respond to an emergency?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our average emergency response time is under 3 minutes in urban areas. We maintain strategically positioned response teams and use advanced GPS tracking to ensure rapid deployment.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>What areas do you service?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We provide comprehensive security services across South Africa, with primary operations in major metropolitan areas. Our services extend to residential, commercial, industrial, and remote locations nationwide.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Are your security officers properly trained and certified?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, all our security personnel are PSIRA registered and undergo rigorous training. We're also NKP accredited, meaning our officers meet the highest national security standards for protecting critical infrastructure.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Can I get a customized security plan for my business?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely. We offer free security consultations and risk assessments. Our experts will develop a customized security plan tailored to your specific needs, industry requirements, and budget constraints.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>What payment methods do you accept?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We accept various payment methods including bank transfers, credit cards, and debit orders. We also offer flexible payment plans for long-term contracts to accommodate different budget requirements.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h4>Do you provide 24/7 monitoring services?</h4>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, our state-of-the-art control room operates 24/7, 365 days a year. We provide continuous monitoring of alarm systems, CCTV cameras, and GPS tracking with immediate response capabilities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section-padding cta-section">
+            <div class="container">
+                <div class="cta-card">
+                    <div class="cta-content">
+                        <h2>Ready to Enhance Your Security?</h2>
+                        <p>Contact us today for a free, no-obligation security assessment and discover how we can protect what matters most to you.</p>
+                        <div class="cta-features">
+                            <div class="cta-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Free Security Assessment</span>
+                            </div>
+                            <div class="cta-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>No Long-Term Contracts Required</span>
+                            </div>
+                            <div class="cta-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>24/7 Emergency Response</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cta-actions">
+                        <a href="tel:+27683794897" class="cta-button primary-btn">
+                            <i class="fas fa-phone-alt"></i> Call Emergency Line
+                        </a>
+                        <a href="#contactForm" class="cta-button outline-btn">
+                            <i class="fas fa-envelope"></i> Send Message
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="images/Logo.png" alt="Leano Security Logo" class="logo-img">
+                    </a>
+                    <p class="footer-tagline">Zero Entry Tolerance - Your Security, Our Mission</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/17tydryq7K/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/leano_security?igsh=MTBxMTNjNmdxbDBvZg==" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="values.html">Our Values</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="Privacy Policy.pdf">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-services">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="services.html#armed-response">Armed Response</a></li>
+                        <li><a href="services.html#fleet-management">Fleet Management</a></li>
+                        <li><a href="services.html#vip-protection">VIP Protection</a></li>
+                        <li><a href="services.html#petroleum-supply">Petroleum Supply</a></li>
+                        <li><a href="services.html#investigation">Investigation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone-alt"></i> Emergency: 068 379 4897</p>
+                        <p><i class="fas fa-envelope"></i> Info@leanosecurity.co.za</p>
+                        <p><i class="fas fa-clock"></i> 24/7 Operations Center</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Leano Security Services. All rights reserved.</p>
+                <p>PSIRA Reg No: 4421383 | NKP Accredited Security Provider</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Emergency Quick Contact -->
+    <div class="emergency-float">
+        <a href="tel:+27683794897" class="emergency-btn">
+            <i class="fas fa-phone-alt"></i>
+            <span>Emergency</span>
+        </a>
+    </div>
+
+    <!-- WhatsApp Float -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/27683794897" target="_blank" class="whatsapp-btn-float">
+            <i class="fab fa-whatsapp"></i>
+            <span>Chat with Us</span>
+        </a>
+    </div>
+
+    <script src="js/index.js" defer></script>
+    <script src="js/contact.js" defer></script>
+</body>
+</html>
