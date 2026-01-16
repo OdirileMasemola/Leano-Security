@@ -82,12 +82,13 @@ function initStatsCounters() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const counter = entry.target;
-                const target = counter.textContent.includes('+') 
-                    ? parseInt(counter.textContent.replace('+', '')) 
-                    : counter.textContent;
+                const originalText = counter.textContent.trim();
+                const hasPlusSign = originalText.includes('+');
+                const target = parseInt(originalText.replace('+', '').trim());
                 
-                if (typeof target === 'number') {
-                    animateCounter(counter, target);
+                // Only animate if we have a valid number
+                if (!isNaN(target)) {
+                    animateCounter(counter, target, hasPlusSign);
                 }
                 observer.unobserve(counter);
             }
@@ -97,7 +98,7 @@ function initStatsCounters() {
     counters.forEach(counter => observer.observe(counter));
 }
 
-function animateCounter(counter, target) {
+function animateCounter(counter, target, hasPlusSign) {
     let count = 0;
     const increment = target / 50; // Animate over 50 steps
     const interval = 30; // 30ms per step
@@ -108,9 +109,13 @@ function animateCounter(counter, target) {
             count = target;
             clearInterval(timer);
         }
-        counter.textContent = target.toString().includes('+') 
-            ? Math.floor(count) + '+' 
-            : Math.floor(count).toString();
+        
+        // Format the number with space and + if needed
+        if (hasPlusSign) {
+            counter.textContent = Math.floor(count) + ' +';
+        } else {
+            counter.textContent = Math.floor(count).toString();
+        }
     }, interval);
 }
 
