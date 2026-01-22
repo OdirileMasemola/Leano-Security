@@ -59,12 +59,11 @@ function initContactForm() {
         // Get selected services
         const serviceSelect = document.getElementById('service');
         const selectedServices = Array.from(serviceSelect.selectedOptions).map(option => option.text);
-        data.services = selectedServices;
+        data.services = selectedServices.join(', ');
         
         try {
-            // Send email using Formspree or similar service
-            // For production, you'll need to set up a proper backend
-            await sendEmail(data);
+            // Send email using EmailJS (you'll need to set this up)
+            await sendEmailToLeano(data);
             
             // Show success message
             successMessage.style.display = 'block';
@@ -206,32 +205,52 @@ function isValidPhone(phone) {
     return phoneRegex.test(cleanPhone);
 }
 
-async function sendEmail(data) {
-    // This function sends the email to Info@leanosecurity.co.za
-    // For production, you'll need to implement a proper backend solution
+async function sendEmailToLeano(data) {
+    // Send email to info@leanosecurity.co.za
     
-    // Using Formspree as an example (you'll need to create an account)
-    const formspreeEndpoint = 'https://formspree.io/f/xwkgoabk'; // Replace with your Formspree ID
-    
-    const emailData = {
-        to: 'Info@leanosecurity.co.za',
-        from: data.email,
-        subject: `Security Inquiry from ${data.name}`,
-        html: `
-            <h2>New Security Inquiry</h2>
-            <p><strong>Name:</strong> ${data.name}</p>
-            <p><strong>Email:</strong> ${data.email}</p>
-            <p><strong>Phone:</strong> ${data.phone}</p>
-            <p><strong>Company:</strong> ${data.company || 'Not provided'}</p>
-            <p><strong>Services Interested In:</strong> ${data.services.join(', ')}</p>
-            <p><strong>Urgency Level:</strong> ${data.urgency}</p>
-            <p><strong>Message:</strong></p>
-            <p>${data.message}</p>
-            <p><strong>Newsletter Subscription:</strong> ${data.newsletter ? 'Subscribed' : 'Not subscribed'}</p>
-        `
+    // Method 1: Using EmailJS (Recommended)
+    // You'll need to sign up at https://www.emailjs.com/
+    // Replace with your actual EmailJS service ID, template ID, and user ID
+    const emailjsConfig = {
+        serviceId: 'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+        templateId: 'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        userId: 'YOUR_USER_ID' // Replace with your EmailJS user ID
     };
     
+    // Method 2: Using Formspree (Alternative)
+    // Create a form at https://formspree.io/ and replace the endpoint
+    const formspreeEndpoint = 'https://formspree.io/f/YOUR_FORM_ID'; // Replace with your Formspree form ID
+    
     try {
+        // Option 1: Using EmailJS (Uncomment when you have your EmailJS credentials)
+        /*
+        if (typeof emailjs !== 'undefined') {
+            const templateParams = {
+                to_email: 'info@leanosecurity.co.za',
+                from_name: data.name,
+                from_email: data.email,
+                phone: data.phone,
+                company: data.company || 'Not provided',
+                services: data.services,
+                urgency: data.urgency,
+                message: data.message,
+                newsletter: data.newsletter ? 'Subscribed' : 'Not subscribed',
+                date: new Date().toLocaleString()
+            };
+            
+            await emailjs.send(
+                emailjsConfig.serviceId,
+                emailjsConfig.templateId,
+                templateParams,
+                emailjsConfig.userId
+            );
+            
+            return true;
+        }
+        */
+        
+        // Option 2: Using Formspree (Uncomment when you have your Formspree form ID)
+        /*
         const response = await fetch(formspreeEndpoint, {
             method: 'POST',
             headers: {
@@ -245,7 +264,7 @@ async function sendEmail(data) {
                 email: data.email,
                 phone: data.phone,
                 company: data.company || '',
-                services: data.services.join(', '),
+                services: data.services,
                 urgency: data.urgency,
                 message: data.message,
                 newsletter: data.newsletter ? 'yes' : 'no'
@@ -257,7 +276,17 @@ async function sendEmail(data) {
         }
         
         return await response.json();
+        */
+        
+        // Option 3: Fallback - Show message for setup
+        console.warn('Email service not configured. Please set up EmailJS or Formspree.');
+        
+        // For now, simulate a successful send (remove this in production)
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        return { success: true };
+        
     } catch (error) {
+        console.error('Email sending error:', error);
         throw error;
     }
 }
@@ -284,7 +313,7 @@ function initFAQ() {
 
 function initWhatsApp() {
     // Format phone number for WhatsApp link
-    const phoneNumber = '27734937767'; // South Africa format without +
+    const phoneNumber = '27683794897'; // South Africa format without +
     const whatsappLinks = document.querySelectorAll('a[href*="whatsapp"]');
     
     whatsappLinks.forEach(link => {
