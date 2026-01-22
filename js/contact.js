@@ -50,6 +50,7 @@ function initContactForm() {
         const submitBtn = contactForm.querySelector('.submit-btn');
         const spinner = submitBtn.querySelector('.loading-spinner');
         submitBtn.disabled = true;
+        submitBtn.classList.add('loading');
         spinner.style.display = 'block';
         
         // Get form data
@@ -62,7 +63,7 @@ function initContactForm() {
         data.services = selectedServices.join(', ');
         
         try {
-            // Send email using EmailJS (you'll need to set this up)
+            // Send email using Formspree
             await sendEmailToLeano(data);
             
             // Show success message
@@ -83,6 +84,7 @@ function initContactForm() {
         } finally {
             // Reset loading state
             submitBtn.disabled = false;
+            submitBtn.classList.remove('loading');
             spinner.style.display = 'none';
         }
     });
@@ -206,51 +208,9 @@ function isValidPhone(phone) {
 }
 
 async function sendEmailToLeano(data) {
-    // Send email to info@leanosecurity.co.za
-    
-    // Method 1: Using EmailJS (Recommended)
-    // You'll need to sign up at https://www.emailjs.com/
-    // Replace with your actual EmailJS service ID, template ID, and user ID
-    const emailjsConfig = {
-        serviceId: 'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        templateId: 'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
-        userId: 'YOUR_USER_ID' // Replace with your EmailJS user ID
-    };
-    
-    // Method 2: Using Formspree (Alternative)
-    // Create a form at https://formspree.io/ and replace the endpoint
-    const formspreeEndpoint = 'https://formspree.io/f/YOUR_FORM_ID'; // Replace with your Formspree form ID
+    const formspreeEndpoint = 'https://formspree.io/f/mnjpawol';
     
     try {
-        // Option 1: Using EmailJS (Uncomment when you have your EmailJS credentials)
-        /*
-        if (typeof emailjs !== 'undefined') {
-            const templateParams = {
-                to_email: 'info@leanosecurity.co.za',
-                from_name: data.name,
-                from_email: data.email,
-                phone: data.phone,
-                company: data.company || 'Not provided',
-                services: data.services,
-                urgency: data.urgency,
-                message: data.message,
-                newsletter: data.newsletter ? 'Subscribed' : 'Not subscribed',
-                date: new Date().toLocaleString()
-            };
-            
-            await emailjs.send(
-                emailjsConfig.serviceId,
-                emailjsConfig.templateId,
-                templateParams,
-                emailjsConfig.userId
-            );
-            
-            return true;
-        }
-        */
-        
-        // Option 2: Using Formspree (Uncomment when you have your Formspree form ID)
-        /*
         const response = await fetch(formspreeEndpoint, {
             method: 'POST',
             headers: {
@@ -276,14 +236,6 @@ async function sendEmailToLeano(data) {
         }
         
         return await response.json();
-        */
-        
-        // Option 3: Fallback - Show message for setup
-        console.warn('Email service not configured. Please set up EmailJS or Formspree.');
-        
-        // For now, simulate a successful send (remove this in production)
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        return { success: true };
         
     } catch (error) {
         console.error('Email sending error:', error);
@@ -313,7 +265,7 @@ function initFAQ() {
 
 function initWhatsApp() {
     // Format phone number for WhatsApp link
-    const phoneNumber = '27683794897'; // South Africa format without +
+    const phoneNumber = '27683794897';
     const whatsappLinks = document.querySelectorAll('a[href*="whatsapp"]');
     
     whatsappLinks.forEach(link => {
@@ -371,7 +323,6 @@ function initEmergencyFloat() {
         // Add click tracking
         emergencyFloat.addEventListener('click', () => {
             console.log('Emergency button clicked');
-            // You can add analytics tracking here
         });
     }
 }
@@ -453,3 +404,7 @@ if (contactForm) {
         localStorage.removeItem('contactFormData');
     });
 }
+
+// Debug info
+console.log('Contact form configured for Formspree endpoint: https://formspree.io/f/mnjpawol');
+console.log('All form submissions will be sent to info@leanosecurity.co.za');
