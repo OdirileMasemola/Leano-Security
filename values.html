@@ -3,34 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover Leano Security Services' core values - Inspire, Sustainability, Honesty & Integrity, Accountability, Excellence. Our guiding principles for exceptional security.">
-    <meta name="keywords" content="security company values, corporate values, business ethics, security principles, professional standards">
-    <title>Our Values - Leano Security Services | Guiding Principles</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/values.css">
+    <meta name="description" content="Discover Leano Security Services' core values — Inspire, Sustainability, Honesty & Integrity, Accountability, Excellence. Our guiding principles for exceptional security.">
+    <meta name="keywords" content="security company values, corporate values, business ethics, security principles, professional standards South Africa">
+    <title>Our Values — Leano Security Services | Guiding Principles</title>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/values.css">
+
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 </head>
 <body>
-    <header>
-        <nav class="container">
+
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <header role="banner">
+        <nav class="container" aria-label="Main navigation">
             <a href="index.html" class="logo">
-                <img src="images/Logo.png" alt="Leano Security Logo" class="logo-img">
+                <img src="images/Logo.png" alt="Leano Security Services Logo" class="logo-img" width="50" height="50">
                 <span class="logo-text">LEANO <span class="logo-sub">SECURITY</span></span>
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="values.html" class="active">Values</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="values.html" class="active" aria-current="page">Our Values</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="capabilities.html">Capabilities</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
             </ul>
             <div class="nav-actions">
-                <div class="mobile-menu" id="mobileMenu">
+                <div class="mobile-menu" id="mobileMenu" role="button" aria-label="Toggle mobile menu" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -39,67 +50,76 @@
         </nav>
     </header>
 
-    <main>
-        <!-- Page Hero -->
-        <section class="values-hero">
-            <div class="hero-overlay"></div>
-            <div class="hero-particles" id="heroParticles"></div>
+    <main id="main-content" role="main">
+
+        <!-- ── Page Hero ──────────────────────────────────────── -->
+        <section class="values-hero" aria-labelledby="values-hero-heading">
+            <div class="values-hero-overlay" aria-hidden="true"></div>
             <div class="container">
-                <div class="hero-content">
-                    <div class="breadcrumb">
+                <div class="values-hero-content">
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
                         <a href="index.html">Home</a>
-                        <span><i class="fas fa-chevron-right"></i></span>
-                        <span>Our Values</span>
-                    </div>
-                    <h1 class="hero-title">Our Core Values</h1>
-                    <p class="hero-subtitle">The Principles That Guide Everything We Do</p>
-                    <div class="hero-stats">
-                        <div class="hero-stat">
-                            <i class="fas fa-lightbulb"></i>
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                        <span aria-current="page">Our Values</span>
+                    </nav>
+                    <h1 id="values-hero-heading" class="values-hero-title">Our Core Values</h1>
+                    <p class="values-hero-subtitle">The Principles That Guide Everything We Do</p>
+                    <div class="values-hero-chips">
+                        <div class="values-chip">
+                            <i class="fas fa-lightbulb" aria-hidden="true"></i>
                             <span>Inspire</span>
                         </div>
-                        <div class="hero-stat">
-                            <i class="fas fa-leaf"></i>
+                        <div class="values-chip">
+                            <i class="fas fa-leaf" aria-hidden="true"></i>
                             <span>Sustainability</span>
                         </div>
-                        <div class="hero-stat">
-                            <i class="fas fa-heart"></i>
+                        <div class="values-chip">
+                            <i class="fas fa-heart" aria-hidden="true"></i>
                             <span>Integrity</span>
+                        </div>
+                        <div class="values-chip">
+                            <i class="fas fa-circle-check" aria-hidden="true"></i>
+                            <span>Accountability</span>
+                        </div>
+                        <div class="values-chip">
+                            <i class="fas fa-trophy" aria-hidden="true"></i>
+                            <span>Excellence</span>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="hero-scroll-indicator" aria-hidden="true">
+                <span>Explore Our Values</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </section>
 
-        <!-- Introduction -->
-        <section class="section-padding intro-section">
+        <!-- ── Introduction ───────────────────────────────────── -->
+        <section class="section-padding intro-section" aria-labelledby="intro-heading">
             <div class="container">
                 <div class="section-header">
                     <span class="section-label">Our Foundation</span>
-                    <h2 class="section-title">Built on Strong Principles</h2>
-                    <p class="section-subtitle">Our values are the DNA of our organization, guiding every decision and action</p>
+                    <h2 id="intro-heading" class="section-title">Built on Strong Principles</h2>
+                    <p class="section-subtitle">Our values are the DNA of our organisation, guiding every decision and action</p>
                 </div>
-                
-                <div class="intro-content">
-                    <p class="lead">At Leano Security Services, our values are not just words on a wall—they are the DNA of our organization. They guide every decision we make, every action we take, and every interaction we have with our clients, partners, and team members.</p>
-                    
-                    <p>These five core values define who we are, what we stand for, and how we deliver exceptional security services. They are the foundation of our Zero Entry Tolerance philosophy and our commitment to protecting what matters most to you.</p>
-                    
+                <div class="intro-body">
+                    <p class="intro-lead">At Leano Security Services, our values are not just words on a wall — they are the DNA of our organisation. They guide every decision we make, every action we take, and every interaction we have with our clients, partners, and team members.</p>
+                    <p class="intro-sub">These five core values define who we are, what we stand for, and how we deliver exceptional security services. They are the foundation of our Zero Entry Tolerance philosophy and our commitment to protecting what matters most to you.</p>
                     <div class="value-pillars">
                         <div class="pillar">
-                            <i class="fas fa-shield-alt"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
                             <h4>Protection First</h4>
                         </div>
                         <div class="pillar">
-                            <i class="fas fa-handshake"></i>
-                            <h4>Trust & Integrity</h4>
+                            <i class="fas fa-handshake" aria-hidden="true"></i>
+                            <h4>Trust &amp; Integrity</h4>
                         </div>
                         <div class="pillar">
-                            <i class="fas fa-rocket"></i>
+                            <i class="fas fa-rocket" aria-hidden="true"></i>
                             <h4>Continuous Innovation</h4>
                         </div>
                         <div class="pillar">
-                            <i class="fas fa-users"></i>
+                            <i class="fas fa-users" aria-hidden="true"></i>
                             <h4>People Focused</h4>
                         </div>
                     </div>
@@ -107,535 +127,437 @@
             </div>
         </section>
 
-        <!-- Core Values Grid -->
-        <section class="section-padding values-grid-section bg-light">
+        <!-- ── Core Values Grid ───────────────────────────────── -->
+        <section class="section-padding values-grid-section bg-light" aria-labelledby="core-values-heading">
             <div class="container">
                 <div class="section-header">
                     <span class="section-label">Core Values</span>
-                    <h2 class="section-title">Our Guiding Principles</h2>
+                    <h2 id="core-values-heading" class="section-title">Our Guiding Principles</h2>
                     <p class="section-subtitle">Five values that define our culture and drive our success</p>
                 </div>
-                
                 <div class="values-grid">
-                    <!-- Value 1 -->
-                    <div class="value-card">
+
+                    <article class="value-card" data-color="gold">
                         <div class="value-header">
                             <div class="value-icon">
-                                <i class="fas fa-lightbulb"></i>
+                                <i class="fas fa-lightbulb" aria-hidden="true"></i>
                             </div>
-                            <h3>INSPIRE</h3>
+                            <h3>Inspire</h3>
                         </div>
                         <div class="value-content">
                             <p>We motivate, uplift and drive excellence in everything we do. Our commitment to inspiration extends to our team, our clients, and the communities we serve.</p>
-                            
-                            <div class="value-details">
-                                <h4>How We Live This Value:</h4>
-                                <ul class="value-features">
-                                    <li><i class="fas fa-check"></i> Leading by example in all operations</li>
-                                    <li><i class="fas fa-check"></i> Encouraging innovation and creative solutions</li>
-                                    <li><i class="fas fa-check"></i> Celebrating achievements and milestones</li>
-                                    <li><i class="fas fa-check"></i> Fostering growth and development opportunities</li>
-                                </ul>
-                            </div>
+                            <h4>How We Live This Value</h4>
+                            <ul class="value-features">
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Leading by example in all operations</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Encouraging innovation and creative solutions</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Celebrating achievements and milestones</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Fostering growth and development opportunities</li>
+                            </ul>
                         </div>
-                    </div>
-                    
-                    <!-- Value 2 -->
-                    <div class="value-card">
+                    </article>
+
+                    <article class="value-card" data-color="green">
                         <div class="value-header">
                             <div class="value-icon">
-                                <i class="fas fa-leaf"></i>
+                                <i class="fas fa-leaf" aria-hidden="true"></i>
                             </div>
-                            <h3>SUSTAINABILITY</h3>
+                            <h3>Sustainability</h3>
                         </div>
                         <div class="value-content">
                             <p>Building a safer tomorrow while empowering today. We believe in creating lasting impact through responsible practices and community development.</p>
-                            
-                            <div class="value-details">
-                                <h4>How We Live This Value:</h4>
-                                <ul class="value-features">
-                                    <li><i class="fas fa-check"></i> Investing in local community development</li>
-                                    <li><i class="fas fa-check"></i> Implementing eco-friendly security solutions</li>
-                                    <li><i class="fas fa-check"></i> Creating long-term employment opportunities</li>
-                                    <li><i class="fas fa-check"></i> Supporting local businesses and suppliers</li>
-                                </ul>
-                            </div>
+                            <h4>How We Live This Value</h4>
+                            <ul class="value-features">
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Investing in local community development</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Implementing eco-friendly security solutions</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Creating long-term employment opportunities</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Supporting local businesses and suppliers</li>
+                            </ul>
                         </div>
-                    </div>
-                    
-                    <!-- Value 3 -->
-                    <div class="value-card">
+                    </article>
+
+                    <article class="value-card" data-color="pink">
                         <div class="value-header">
                             <div class="value-icon">
-                                <i class="fas fa-heart"></i>
+                                <i class="fas fa-heart" aria-hidden="true"></i>
                             </div>
-                            <h3>HONESTY & INTEGRITY</h3>
+                            <h3>Honesty &amp; Integrity</h3>
                         </div>
                         <div class="value-content">
-                            <p>Transparency isn't optional—it's who we are. We conduct our business with the highest ethical standards and genuine commitment to our clients.</p>
-                            
-                            <div class="value-details">
-                                <h4>How We Live This Value:</h4>
-                                <ul class="value-features">
-                                    <li><i class="fas fa-check"></i> Clear, honest communication at all times</li>
-                                    <li><i class="fas fa-check"></i> Transparent pricing and reporting</li>
-                                    <li><i class="fas fa-check"></i> Ethical business practices in all dealings</li>
-                                    <li><i class="fas fa-check"></i> Keeping promises and commitments</li>
-                                </ul>
-                            </div>
+                            <p>Transparency isn't optional — it's who we are. We conduct our business with the highest ethical standards and genuine commitment to our clients.</p>
+                            <h4>How We Live This Value</h4>
+                            <ul class="value-features">
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Clear, honest communication at all times</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Transparent pricing and reporting</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Ethical business practices in all dealings</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Keeping promises and commitments</li>
+                            </ul>
                         </div>
-                    </div>
-                    
-                    <!-- Value 4 -->
-                    <div class="value-card">
+                    </article>
+
+                    <article class="value-card" data-color="blue">
                         <div class="value-header">
                             <div class="value-icon">
-                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-circle-check" aria-hidden="true"></i>
                             </div>
-                            <h3>ACCOUNTABILITY</h3>
+                            <h3>Accountability</h3>
                         </div>
                         <div class="value-content">
                             <p>We own our actions and deliver on our promises. Every member of our team takes full responsibility for providing exceptional service.</p>
-                            
-                            <div class="value-details">
-                                <h4>How We Live This Value:</h4>
-                                <ul class="value-features">
-                                    <li><i class="fas fa-check"></i> Taking ownership of challenges and solutions</li>
-                                    <li><i class="fas fa-check"></i> Meeting commitments consistently</li>
-                                    <li><i class="fas fa-check"></i> Learning from mistakes and improving</li>
-                                    <li><i class="fas fa-check"></i> Delivering on-time, every time</li>
-                                </ul>
-                            </div>
+                            <h4>How We Live This Value</h4>
+                            <ul class="value-features">
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Taking ownership of challenges and solutions</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Meeting commitments consistently</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Learning from mistakes and improving</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Delivering on time, every time</li>
+                            </ul>
                         </div>
-                    </div>
-                    
-                    <!-- Value 5 -->
-                    <div class="value-card">
+                    </article>
+
+                    <article class="value-card" data-color="purple">
                         <div class="value-header">
                             <div class="value-icon">
-                                <i class="fas fa-trophy"></i>
+                                <i class="fas fa-trophy" aria-hidden="true"></i>
                             </div>
-                            <h3>EXCELLENCE</h3>
+                            <h3>Excellence</h3>
                         </div>
                         <div class="value-content">
-                            <p>No half measures—only peak performance. We continuously strive to exceed expectations and set new standards in the security industry.</p>
-                            
-                            <div class="value-details">
-                                <h4>How We Live This Value:</h4>
-                                <ul class="value-features">
-                                    <li><i class="fas fa-check"></i> Continuous training and skill development</li>
-                                    <li><i class="fas fa-check"></i> Investing in cutting-edge technology</li>
-                                    <li><i class="fas fa-check"></i> Setting industry-leading standards</li>
-                                    <li><i class="fas fa-check"></i> Always going above and beyond</li>
-                                </ul>
-                            </div>
+                            <p>No half measures — only peak performance. We continuously strive to exceed expectations and set new standards in the security industry.</p>
+                            <h4>How We Live This Value</h4>
+                            <ul class="value-features">
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Continuous training and skill development</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Investing in cutting-edge technology</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Setting industry-leading standards</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Always going above and beyond</li>
+                            </ul>
                         </div>
-                    </div>
-                    
-                    <!-- Value 6: Zero Entry Tolerance -->
-                    <div class="value-card featured">
+                    </article>
+
+                    <article class="value-card featured">
                         <div class="value-badge">Our Promise</div>
                         <div class="value-header">
                             <div class="value-icon">
-                                <i class="fas fa-ban"></i>
+                                <i class="fas fa-ban" aria-hidden="true"></i>
                             </div>
-                            <h3>ZERO ENTRY TOLERANCE</h3>
+                            <h3>Zero Entry Tolerance</h3>
                         </div>
                         <div class="value-content">
-                            <p>Our uncompromising approach to security ensures no unauthorized access. This is not just a policy—it's embedded in the DNA of every team member.</p>
-                            
-                            <div class="value-details">
-                                <h4>Our Commitment:</h4>
-                                <ul class="value-features">
-                                    <li><i class="fas fa-check"></i> Strictest security protocols and procedures</li>
-                                    <li><i class="fas fa-check"></i> Multi-layered protection systems</li>
-                                    <li><i class="fas fa-check"></i> Continuous monitoring and surveillance</li>
-                                    <li><i class="fas fa-check"></i> Immediate response to any breach attempt</li>
-                                </ul>
-                            </div>
+                            <p>Our uncompromising approach to security ensures no unauthorised access. This is not just a policy — it's embedded in the DNA of every team member.</p>
+                            <h4>Our Commitment</h4>
+                            <ul class="value-features">
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Strictest security protocols and procedures</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Multi-layered protection systems</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Continuous monitoring and surveillance</li>
+                                <li><i class="fas fa-check" aria-hidden="true"></i> Immediate response to any breach attempt</li>
+                            </ul>
                         </div>
-                    </div>
+                    </article>
+
                 </div>
             </div>
         </section>
 
-        <!-- Why Choose Us -->
-        <section class="section-padding why-section">
+        <!-- ── Why Choose Us ──────────────────────────────────── -->
+        <section class="section-padding why-section" aria-labelledby="why-heading">
             <div class="container">
                 <div class="section-header">
                     <span class="section-label">The Leano Difference</span>
-                    <h2 class="section-title">Why Choose Leano?</h2>
+                    <h2 id="why-heading" class="section-title">Why Choose Leano?</h2>
                     <p class="section-subtitle">Our values translate into tangible benefits for you</p>
                 </div>
-                
                 <div class="why-grid">
                     <div class="why-card">
-                        <div class="why-icon">
-                            <i class="fas fa-ban"></i>
-                        </div>
-                        <div class="why-content">
-                            <h4>Zero Entry Tolerance</h4>
-                            <p>Our uncompromising approach ensures no unauthorized access. Your safety is non-negotiable, and we maintain the strictest protocols to ensure it.</p>
-                        </div>
+                        <div class="why-icon"><i class="fas fa-ban" aria-hidden="true"></i></div>
+                        <h4>Zero Entry Tolerance</h4>
+                        <p>Our uncompromising approach ensures no unauthorised access. Your safety is non-negotiable, and we maintain the strictest protocols to ensure it.</p>
                     </div>
-                    
                     <div class="why-card">
-                        <div class="why-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <div class="why-content">
-                            <h4>Innovation-Driven</h4>
-                            <p>We leverage cutting-edge technology including AI-powered surveillance, facial recognition, and real-time monitoring to stay ahead of threats.</p>
-                        </div>
+                        <div class="why-icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
+                        <h4>Innovation-Driven</h4>
+                        <p>We leverage cutting-edge technology including AI-powered surveillance, facial recognition, and real-time monitoring to stay ahead of threats.</p>
                     </div>
-                    
                     <div class="why-card">
-                        <div class="why-icon">
-                            <i class="fas fa-users-cog"></i>
-                        </div>
-                        <div class="why-content">
-                            <h4>Empowered Workforce</h4>
-                            <p>We invest heavily in our team through continuous training, wellness programs, and career development opportunities.</p>
-                        </div>
+                        <div class="why-icon"><i class="fas fa-users-gear" aria-hidden="true"></i></div>
+                        <h4>Empowered Workforce</h4>
+                        <p>We invest heavily in our team through continuous training, wellness programs, and career development opportunities.</p>
                     </div>
-                    
                     <div class="why-card">
-                        <div class="why-icon">
-                            <i class="fas fa-user-check"></i>
-                        </div>
-                        <div class="why-content">
-                            <h4>Client-Centric Approach</h4>
-                            <p>We don't believe in cookie-cutter solutions. Every security plan is carefully tailored to your specific needs and circumstances.</p>
-                        </div>
+                        <div class="why-icon"><i class="fas fa-user-check" aria-hidden="true"></i></div>
+                        <h4>Client-Centric Approach</h4>
+                        <p>We don't believe in cookie-cutter solutions. Every security plan is carefully tailored to your specific needs and circumstances.</p>
                     </div>
-                    
                     <div class="why-card">
-                        <div class="why-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="why-content">
-                            <h4>Proactive Risk Management</h4>
-                            <p>We don't wait for threats to materialize—we identify, assess, and neutralize them before they become problems.</p>
-                        </div>
+                        <div class="why-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+                        <h4>Proactive Risk Management</h4>
+                        <p>We don't wait for threats to materialise — we identify, assess, and neutralise them before they become problems.</p>
                     </div>
-                    
                     <div class="why-card">
-                        <div class="why-icon">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <div class="why-content">
-                            <h4>NKP Accredited</h4>
-                            <p>Our National Key Point accreditation demonstrates our commitment to the highest security standards possible.</p>
-                        </div>
+                        <div class="why-icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
+                        <h4>NKP Accredited</h4>
+                        <p>Our National Key Point accreditation demonstrates our commitment to the highest security standards possible.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Values in Action -->
-        <section class="section-padding action-section bg-light">
+        <!-- ── Values in Action ───────────────────────────────── -->
+        <section class="section-padding action-section bg-light" aria-labelledby="action-heading">
             <div class="container">
                 <div class="section-header">
                     <span class="section-label">Real Impact</span>
-                    <h2 class="section-title">Our Values in Action</h2>
+                    <h2 id="action-heading" class="section-title">Our Values in Action</h2>
                     <p class="section-subtitle">See how our core values translate into real-world benefits and outcomes</p>
                 </div>
-                
                 <div class="action-grid">
                     <div class="action-card">
                         <div class="action-header">
-                            <div class="action-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
+                            <div class="action-icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
                             <h4>Zero Incidents</h4>
                         </div>
-                        <div class="action-content">
-                            <p>Our accountability and excellence have resulted in zero security breaches for clients who have implemented our comprehensive security solutions.</p>
-                            <div class="action-stat">
-                                <span class="stat-number">100%</span>
-                                <span class="stat-label">Security Success Rate</span>
-                            </div>
+                        <p>Our accountability and excellence have resulted in zero security breaches for clients who have implemented our comprehensive security solutions.</p>
+                        <div class="action-stat">
+                            <span class="action-stat-number">100%</span>
+                            <span class="action-stat-label">Security Success Rate</span>
                         </div>
                     </div>
-                    
                     <div class="action-card">
                         <div class="action-header">
-                            <div class="action-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
+                            <div class="action-icon"><i class="fas fa-clock" aria-hidden="true"></i></div>
                             <h4>Rapid Response</h4>
                         </div>
-                        <div class="action-content">
-                            <p>Our commitment to excellence ensures response times that exceed industry standards. When seconds count, our teams are there—24/7.</p>
-                            <div class="action-stat">
-                                <span class="stat-number"><3 min</span>
-                                <span class="stat-label">Average Response Time</span>
-                            </div>
+                        <p>Our commitment to excellence ensures response times that exceed industry standards. When seconds count, our teams are there — 24/7.</p>
+                        <div class="action-stat">
+                            <span class="action-stat-number">&lt;3 min</span>
+                            <span class="action-stat-label">Average Response Time</span>
                         </div>
                     </div>
-                    
                     <div class="action-card">
                         <div class="action-header">
-                            <div class="action-icon">
-                                <i class="fas fa-handshake"></i>
-                            </div>
+                            <div class="action-icon"><i class="fas fa-handshake" aria-hidden="true"></i></div>
                             <h4>Client Satisfaction</h4>
                         </div>
-                        <div class="action-content">
-                            <p>Our honesty and integrity have built lasting relationships with clients who trust us with their most valuable assets.</p>
-                            <div class="action-stat">
-                                <span class="stat-number">98%</span>
-                                <span class="stat-label">Client Retention Rate</span>
-                            </div>
+                        <p>Our honesty and integrity have built lasting relationships with clients who trust us with their most valuable assets.</p>
+                        <div class="action-stat">
+                            <span class="action-stat-number">98%</span>
+                            <span class="action-stat-label">Client Retention Rate</span>
                         </div>
                     </div>
-                    
                     <div class="action-card">
                         <div class="action-header">
-                            <div class="action-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
+                            <div class="action-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
                             <h4>Community Impact</h4>
                         </div>
-                        <div class="action-content">
-                            <p>Our focus on sustainability and inspiration has created jobs and training opportunities, contributing to safer communities.</p>
-                            <div class="action-stat">
-                                <span class="stat-number">150+</span>
-                                <span class="stat-label">Jobs Created</span>
-                            </div>
+                        <p>Our focus on sustainability and inspiration has created jobs and training opportunities, contributing to safer communities.</p>
+                        <div class="action-stat">
+                            <span class="action-stat-number">150+</span>
+                            <span class="action-stat-label">Jobs Created</span>
                         </div>
                     </div>
-                    
                     <div class="action-card">
                         <div class="action-header">
-                            <div class="action-icon">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
+                            <div class="action-icon"><i class="fas fa-lightbulb" aria-hidden="true"></i></div>
                             <h4>Innovation Leadership</h4>
                         </div>
-                        <div class="action-content">
-                            <p>Our drive to inspire has positioned us at the forefront of security technology adoption in South Africa.</p>
-                            <div class="action-stat">
-                                <span class="stat-number">AI</span>
-                                <span class="stat-label">Powered Systems</span>
-                            </div>
+                        <p>Our drive to inspire has positioned us at the forefront of security technology adoption in South Africa.</p>
+                        <div class="action-stat">
+                            <span class="action-stat-number">AI</span>
+                            <span class="action-stat-label">Powered Systems</span>
                         </div>
                     </div>
-                    
                     <div class="action-card">
                         <div class="action-header">
-                            <div class="action-icon">
-                                <i class="fas fa-graduation-cap"></i>
-                            </div>
+                            <div class="action-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
                             <h4>Industry Standards</h4>
                         </div>
-                        <div class="action-content">
-                            <p>As NKP-accredited instructors, we don't just follow industry standards—we help set them.</p>
-                            <div class="action-stat">
-                                <span class="stat-number">NKP</span>
-                                <span class="stat-label">Accredited Instructors</span>
-                            </div>
+                        <p>As NKP-accredited instructors, we don't just follow industry standards — we help set them.</p>
+                        <div class="action-stat">
+                            <span class="action-stat-number">NKP</span>
+                            <span class="action-stat-label">Accredited Instructors</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Promise Section -->
-        <section class="section-padding promise-section">
+        <!-- ── Promise ────────────────────────────────────────── -->
+        <section class="section-padding promise-section" aria-labelledby="promise-heading">
             <div class="container">
                 <div class="promise-card">
-                    <div class="promise-icon">
+                    <div class="promise-icon" aria-hidden="true">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <div class="promise-content">
-                        <h2>Our Promise to You</h2>
-                        <p class="promise-text">When you partner with Leano Security Services, you're not just getting a security provider—you're gaining a strategic partner committed to your safety through our unwavering values of inspiration, sustainability, honesty, accountability, and excellence.</p>
-                        <p class="promise-quote">"Your safety isn't a service—it's our mission."</p>
-                        <div class="promise-features">
-                            <div class="promise-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Uncompromising Protection</span>
-                            </div>
-                            <div class="promise-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Ethical Business Practices</span>
-                            </div>
-                            <div class="promise-feature">
-                                <i class="fas fa-check"></i>
-                                <span>Continuous Innovation</span>
-                            </div>
+                    <h2 id="promise-heading">Our Promise to You</h2>
+                    <p class="promise-text">When you partner with Leano Security Services, you're not just getting a security provider — you're gaining a strategic partner committed to your safety through our unwavering values of inspiration, sustainability, honesty, accountability, and excellence.</p>
+                    <blockquote class="promise-quote">"Your safety isn't a service — it's our mission."</blockquote>
+                    <div class="promise-features">
+                        <div class="promise-feature">
+                            <i class="fas fa-check" aria-hidden="true"></i>
+                            <span>Uncompromising Protection</span>
+                        </div>
+                        <div class="promise-feature">
+                            <i class="fas fa-check" aria-hidden="true"></i>
+                            <span>Ethical Business Practices</span>
+                        </div>
+                        <div class="promise-feature">
+                            <i class="fas fa-check" aria-hidden="true"></i>
+                            <span>Continuous Innovation</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Culture Section -->
-        <section class="section-padding culture-section bg-light">
+        <!-- ── Culture ────────────────────────────────────────── -->
+        <section class="section-padding culture-section bg-light" aria-labelledby="culture-heading">
             <div class="container">
                 <div class="section-header">
                     <span class="section-label">Our Culture</span>
-                    <h2 class="section-title">Living Our Values Daily</h2>
+                    <h2 id="culture-heading" class="section-title">Living Our Values Daily</h2>
                     <p class="section-subtitle">How our values shape our workplace and service delivery</p>
                 </div>
-                
                 <div class="culture-grid">
                     <div class="culture-item">
-                        <div class="culture-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div class="culture-content">
-                            <h4>Continuous Learning</h4>
-                            <p>Regular training programs that keep our team at the forefront of security technology and best practices.</p>
-                        </div>
+                        <div class="culture-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
+                        <h4>Continuous Learning</h4>
+                        <p>Regular training programs that keep our team at the forefront of security technology and best practices.</p>
                     </div>
-                    
                     <div class="culture-item">
-                        <div class="culture-icon">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <div class="culture-content">
-                            <h4>Employee Wellness</h4>
-                            <p>Comprehensive wellness initiatives supporting our team's physical, mental, and emotional health.</p>
-                        </div>
+                        <div class="culture-icon"><i class="fas fa-heart-pulse" aria-hidden="true"></i></div>
+                        <h4>Employee Wellness</h4>
+                        <p>Comprehensive wellness initiatives supporting our team's physical, mental, and emotional health.</p>
                     </div>
-                    
                     <div class="culture-item">
-                        <div class="culture-icon">
-                            <i class="fas fa-trophy"></i>
-                        </div>
-                        <div class="culture-content">
-                            <h4>Recognition Programs</h4>
-                            <p>Regular acknowledgment of exceptional performance and dedication to our values.</p>
-                        </div>
+                        <div class="culture-icon"><i class="fas fa-trophy" aria-hidden="true"></i></div>
+                        <h4>Recognition Programs</h4>
+                        <p>Regular acknowledgment of exceptional performance and dedication to our values.</p>
                     </div>
-                    
                     <div class="culture-item">
-                        <div class="culture-icon">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                        <div class="culture-content">
-                            <h4>Open Communication</h4>
-                            <p>Transparent dialogue at all levels, encouraging feedback and innovative ideas.</p>
-                        </div>
+                        <div class="culture-icon"><i class="fas fa-comments" aria-hidden="true"></i></div>
+                        <h4>Open Communication</h4>
+                        <p>Transparent dialogue at all levels, encouraging feedback and innovative ideas from every team member.</p>
                     </div>
-                    
                     <div class="culture-item">
-                        <div class="culture-icon">
-                            <i class="fas fa-hands-helping"></i>
-                        </div>
-                        <div class="culture-content">
-                            <h4>Team Collaboration</h4>
-                            <p>Cross-functional teamwork that leverages diverse skills and perspectives.</p>
-                        </div>
+                        <div class="culture-icon"><i class="fas fa-people-group" aria-hidden="true"></i></div>
+                        <h4>Team Collaboration</h4>
+                        <p>Cross-functional teamwork that leverages diverse skills and perspectives for better outcomes.</p>
                     </div>
-                    
                     <div class="culture-item">
-                        <div class="culture-icon">
-                            <i class="fas fa-balance-scale"></i>
-                        </div>
-                        <div class="culture-content">
-                            <h4>Ethical Leadership</h4>
-                            <p>Managers and leaders who exemplify our values in every decision and action.</p>
-                        </div>
+                        <div class="culture-icon"><i class="fas fa-scale-balanced" aria-hidden="true"></i></div>
+                        <h4>Ethical Leadership</h4>
+                        <p>Managers and leaders who exemplify our values in every decision and action they take.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="section-padding cta-section">
+        <!-- ── CTA ───────────────────────────────────────────── -->
+        <section class="section-padding cta-section" aria-labelledby="cta-heading">
             <div class="container">
                 <div class="cta-card">
                     <div class="cta-content">
-                        <h2>Ready to Experience Values-Driven Security?</h2>
+                        <h2 id="cta-heading">Ready to Experience Values-Driven Security?</h2>
                         <p>Let's discuss how our commitment to excellence, integrity, and innovation can protect what matters most to you.</p>
                         <div class="cta-features">
                             <div class="cta-feature">
-                                <i class="fas fa-shield-alt"></i>
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
                                 <span>Value-Based Security</span>
                             </div>
                             <div class="cta-feature">
-                                <i class="fas fa-user-check"></i>
-                                <span>Personalized Consultation</span>
+                                <i class="fas fa-user-check" aria-hidden="true"></i>
+                                <span>Personalised Consultation</span>
                             </div>
                             <div class="cta-feature">
-                                <i class="fas fa-chart-line"></i>
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
                                 <span>Risk Assessment</span>
                             </div>
                         </div>
                     </div>
-                    <div class="cta-actions">
-                        <a href="contact.html" class="cta-button primary-btn">
+                    <div class="cta-action">
+                        <a href="contact.html" class="cta-button primary-btn large-btn">
                             <i class="fas fa-handshake"></i> Partner With Us
                         </a>
-                        <a href="services.html" class="cta-button outline-btn">
+                        <a href="services.html" class="cta-button secondary-btn large-btn">
                             <i class="fas fa-list"></i> View Services
                         </a>
+                        <p class="cta-note">
+                            <i class="fas fa-lock"></i> PSIRA Registered — Reg. No. 4421383
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
                     <a href="index.html" class="logo">
-                        <img src="images/Logo.png" alt="Leano Security Logo" class="logo-img">
+                        <img src="images/Logo.png" alt="Leano Security Services Logo" class="logo-img" width="50" height="50">
+                        <span class="logo-text">LEANO <span class="logo-sub">SECURITY</span></span>
                     </a>
-                    <p class="footer-tagline">Zero Entry Tolerance - Your Security, Our Mission</p>
+                    <p class="footer-tagline">Zero Entry Tolerance — Your Security, Our Mission. PSIRA registered security provider serving South Africa since 2017.</p>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/share/17tydryq7K/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/leano_security?igsh=MTBxMTNjNmdxbDBvZg==" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/17tydryq7K/" aria-label="Follow us on Facebook" target="_blank" rel="noopener">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/leano_security?igsh=MTBxMTNjNmdxbDBvZg==" aria-label="Follow us on Instagram" target="_blank" rel="noopener">
+                            <i class="fab fa-instagram"></i>
+                        </a>
                     </div>
                 </div>
-                
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
+                    <h4>Company</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="values.html">Our Values</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="Privacy Policy.pdf">Privacy Policy</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-services">
-                    <h4>Our Services</h4>
+                    <h4>Services</h4>
                     <ul>
                         <li><a href="services.html#armed-response">Armed Response</a></li>
-                        <li><a href="services.html#fleet-management">Fleet Management</a></li>
+                        <li><a href="services.html#cctv">CCTV Installation</a></li>
                         <li><a href="services.html#vip-protection">VIP Protection</a></li>
-                        <li><a href="services.html#petroleum-supply">Petroleum Supply</a></li>
-                        <li><a href="services.html#investigation">Investigation</a></li>
+                        <li><a href="services.html#fleet-security">Fleet Security</a></li>
+                        <li><a href="services.html#event-security">Event Security</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-contact">
-                    <h4>Contact Us</h4>
-                    <div class="contact-info">
-                        <p><i class="fas fa-phone-alt"></i> Emergency: 068 379 4897</p>
-                        <p><i class="fas fa-envelope"></i> Info@leanosecurity.co.za</p>
-                        <p><i class="fas fa-clock"></i> 24/7 Operations Center</p>
-                    </div>
+                    <h4>Contact</h4>
+                    <address class="contact-info">
+                        <p>
+                            <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                            <a href="tel:+27683794897">068 379 4897</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <a href="mailto:Info@leanosecurity.co.za">Info@leanosecurity.co.za</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-clock" aria-hidden="true"></i>
+                            Operations: 24/7
+                        </p>
+                        <p>
+                            <i class="fas fa-id-badge" aria-hidden="true"></i>
+                            PSIRA: 4421383
+                        </p>
+                    </address>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2024 Leano Security Services. All rights reserved.</p>
-                <p>PSIRA Reg No: 4421383 | NKP Accredited Security Provider</p>
+                <p>&copy; 2026 Leano Security Services. All rights reserved.</p>
+                <p>PSIRA Registration No: 4421383 &nbsp;|&nbsp; NKP Accredited Security Provider</p>
+                <p>Serving Johannesburg, Pretoria, Cape Town, Durban &amp; nationwide</p>
             </div>
         </div>
     </footer>
 
-    <!-- Emergency Quick Contact -->
     <div class="emergency-float">
-        <a href="tel:+27683794897" class="emergency-btn">
+        <a href="tel:+27683794897" class="emergency-btn" aria-label="Emergency — Call 068 379 4897">
             <i class="fas fa-phone-alt"></i>
             <span>Emergency</span>
         </a>
