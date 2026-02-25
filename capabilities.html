@@ -3,103 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore Leano Security Services' advanced capabilities - 24/7 Control Room, surveillance systems, fleet management, NKP accreditation, and petroleum supply solutions.">
-    <meta name="keywords" content="security capabilities, surveillance systems, fleet management, NKP accreditation, petroleum security, vehicle tracking, control room monitoring">
-    <title>Capabilities - Leano Security Services | Advanced Security Solutions</title>
+    <meta name="description" content="Explore Leano Security Services' advanced capabilities — 24/7 Control Room, AI surveillance, fleet management, NKP accreditation, and petroleum supply solutions.">
+    <meta name="keywords" content="security capabilities, surveillance systems, fleet management, NKP accreditation, petroleum security, vehicle tracking, AI control room monitoring">
+    <title>Capabilities — Leano Security Services | Advanced Security Solutions</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/capabilities.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 </head>
 <body>
-    <header>
-        <nav class="container">
+
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <header role="banner">
+        <nav class="container" aria-label="Main navigation">
             <a href="index.html" class="logo">
-                <img src="images/Logo.png" alt="Leano Security Logo" class="logo-img">
+                <img src="images/Logo.png" alt="Leano Security Services Logo" class="logo-img" width="50" height="50">
                 <span class="logo-text">LEANO <span class="logo-sub">SECURITY</span></span>
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="values.html">Values</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="values.html">Our Values</a></li>
                 <li><a href="services.html">Services</a></li>
-                <li><a href="capabilities.html" class="active">Capabilities</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="capabilities.html" class="active" aria-current="page">Capabilities</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
             </ul>
             <div class="nav-actions">
-                <div class="mobile-menu" id="mobileMenu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <div class="mobile-menu" id="mobileMenu" role="button" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
                 </div>
             </div>
         </nav>
     </header>
 
-    <main>
-        <!-- Page Hero -->
-        <section class="capabilities-hero">
-            <div class="hero-overlay"></div>
-            <div class="hero-particles" id="heroParticles"></div>
+    <main id="main-content" role="main">
+
+        <!-- ── Page Hero ──────────────────────────────────────── -->
+        <section class="cap-hero" aria-labelledby="cap-hero-heading">
+            <div class="cap-hero-overlay" aria-hidden="true"></div>
             <div class="container">
-                <div class="hero-content">
-                    <div class="breadcrumb">
+                <div class="cap-hero-content">
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
                         <a href="index.html">Home</a>
-                        <span><i class="fas fa-chevron-right"></i></span>
-                        <span>Capabilities</span>
-                    </div>
-                    <h1 class="hero-title">Advanced Security Capabilities</h1>
-                    <p class="hero-subtitle">Cutting-Edge Technology Meets Expert Security Solutions</p>
-                    <div class="hero-stats">
-                        <div class="hero-stat">
-                            <i class="fas fa-brain"></i>
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                        <span aria-current="page">Capabilities</span>
+                    </nav>
+                    <h1 id="cap-hero-heading" class="cap-hero-title">Advanced Security<br>Capabilities</h1>
+                    <p class="cap-hero-subtitle">Cutting-Edge Technology Meets Expert Security Solutions</p>
+                    <div class="cap-hero-chips">
+                        <div class="cap-chip">
+                            <i class="fas fa-brain" aria-hidden="true"></i>
                             <span>AI-Powered Systems</span>
                         </div>
-                        <div class="hero-stat">
-                            <i class="fas fa-clock"></i>
+                        <div class="cap-chip">
+                            <i class="fas fa-clock" aria-hidden="true"></i>
                             <span>24/7 Monitoring</span>
                         </div>
-                        <div class="hero-stat">
-                            <i class="fas fa-award"></i>
+                        <div class="cap-chip">
+                            <i class="fas fa-satellite-dish" aria-hidden="true"></i>
+                            <span>Real-Time Tracking</span>
+                        </div>
+                        <div class="cap-chip">
+                            <i class="fas fa-award" aria-hidden="true"></i>
                             <span>NKP Accredited</span>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="hero-scroll-indicator" aria-hidden="true">
+                <span>Explore Capabilities</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </section>
 
-        <!-- Introduction -->
-        <section class="section-padding intro-section">
+        <!-- ── Introduction ───────────────────────────────────── -->
+        <section class="section-padding intro-section" aria-labelledby="intro-heading">
             <div class="container">
                 <div class="section-header">
                     <span class="section-label">Our Expertise</span>
-                    <h2 class="section-title">Comprehensive Security Technology</h2>
+                    <h2 id="intro-heading" class="section-title">Comprehensive Security Technology</h2>
                     <p class="section-subtitle">Innovative solutions powered by cutting-edge technology and proven methodologies</p>
                 </div>
-                
-                <div class="intro-content">
-                    <p class="lead">Leano Security Services leverages cutting-edge technology and proven methodologies to deliver comprehensive security solutions across surveillance, recovery, fleet management, and petroleum supply.</p>
-                    
-                    <p>Our capabilities are built on innovation, expertise, and an unwavering commitment to your safety. Each solution is designed to work seamlessly together, providing multi-layered protection for complete peace of mind.</p>
-                    
+                <div class="intro-body">
+                    <p class="intro-lead">Leano Security Services leverages cutting-edge technology and proven methodologies to deliver comprehensive security solutions across surveillance, recovery, fleet management, and petroleum supply.</p>
+                    <p class="intro-sub">Our capabilities are built on innovation, expertise, and an unwavering commitment to your safety. Each solution is designed to work seamlessly together, providing multi-layered protection for complete peace of mind.</p>
                     <div class="tech-highlights">
                         <div class="tech-highlight">
-                            <i class="fas fa-robot"></i>
+                            <i class="fas fa-robot" aria-hidden="true"></i>
                             <h4>AI-Powered Analytics</h4>
                         </div>
                         <div class="tech-highlight">
-                            <i class="fas fa-satellite"></i>
+                            <i class="fas fa-satellite-dish" aria-hidden="true"></i>
                             <h4>Real-Time Monitoring</h4>
                         </div>
                         <div class="tech-highlight">
-                            <i class="fas fa-shield-alt"></i>
+                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
                             <h4>Integrated Security</h4>
                         </div>
                         <div class="tech-highlight">
-                            <i class="fas fa-mobile-alt"></i>
+                            <i class="fas fa-mobile-screen" aria-hidden="true"></i>
                             <h4>Mobile Access</h4>
                         </div>
                     </div>
@@ -107,525 +115,461 @@
             </div>
         </section>
 
-        <!-- Capabilities Grid -->
-        <section class="section-padding capabilities-grid-section bg-light">
+        <!-- ── Capabilities Grid ──────────────────────────────── -->
+        <section class="section-padding bg-light cap-grid-section" aria-labelledby="cap-grid-heading">
             <div class="container">
                 <div class="section-header">
                     <span class="section-label">Core Capabilities</span>
-                    <h2 class="section-title">Our Security Technology Stack</h2>
+                    <h2 id="cap-grid-heading" class="section-title">Our Security Technology Stack</h2>
                     <p class="section-subtitle">Integrated solutions working together for comprehensive protection</p>
                 </div>
-                
                 <div class="capabilities-grid">
-                    <!-- Capability 1 -->
-                    <div class="capability-card">
-                        <div class="capability-header">
-                            <div class="capability-icon">
-                                <i class="fas fa-desktop"></i>
-                            </div>
+
+                    <article class="capability-card">
+                        <div class="cap-card-top">
+                            <div class="cap-icon"><i class="fas fa-desktop" aria-hidden="true"></i></div>
                             <h3>24-Hour Control Room</h3>
                         </div>
-                        <div class="capability-content">
-                            <p>State-of-the-art control center operating 24/7 with AI-powered camera feeds and advanced alarm systems for comprehensive monitoring.</p>
-                            <ul class="capability-features">
-                                <li><i class="fas fa-check"></i> AI-powered threat detection</li>
-                                <li><i class="fas fa-check"></i> Real-time unauthorized entry detection</li>
-                                <li><i class="fas fa-check"></i> High-definition footage recording</li>
-                                <li><i class="fas fa-check"></i> Instant dispatch to response teams</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <!-- Capability 2 -->
-                    <div class="capability-card">
-                        <div class="capability-header">
-                            <div class="capability-icon">
-                                <i class="fas fa-video"></i>
-                            </div>
+                        <p>State-of-the-art control centre operating 24/7 with AI-powered camera feeds and advanced alarm systems for comprehensive monitoring.</p>
+                        <ul class="cap-features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> AI-powered threat detection</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Real-time unauthorised entry detection</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> High-definition footage recording</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Instant dispatch to response teams</li>
+                        </ul>
+                    </article>
+
+                    <article class="capability-card">
+                        <div class="cap-card-top">
+                            <div class="cap-icon"><i class="fas fa-video" aria-hidden="true"></i></div>
                             <h3>Advanced Surveillance</h3>
                         </div>
-                        <div class="capability-content">
-                            <p>Smart cameras, motion sensors, and comprehensive surveillance infrastructure with cutting-edge detection capabilities.</p>
-                            <ul class="capability-features">
-                                <li><i class="fas fa-check"></i> 4K Ultra HD image quality</li>
-                                <li><i class="fas fa-check"></i> Facial recognition technology</li>
-                                <li><i class="fas fa-check"></i> ANPR vehicle tracking</li>
-                                <li><i class="fas fa-check"></i> Cloud-based storage</li>
-                            </ul>
+                        <p>Smart cameras, motion sensors, and comprehensive surveillance infrastructure with cutting-edge detection capabilities.</p>
+                        <ul class="cap-features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> 4K Ultra HD image quality</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Facial recognition technology</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> ANPR vehicle tracking</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Cloud-based storage</li>
+                        </ul>
+                    </article>
+
+                    <article class="capability-card">
+                        <div class="cap-card-top">
+                            <div class="cap-icon"><i class="fas fa-map-location-dot" aria-hidden="true"></i></div>
+                            <h3>Tracking &amp; Recovery</h3>
                         </div>
-                    </div>
-                    
-                    <!-- Capability 3 -->
-                    <div class="capability-card">
-                        <div class="capability-header">
-                            <div class="capability-icon">
-                                <i class="fas fa-map-marked-alt"></i>
-                            </div>
-                            <h3>Tracking & Recovery</h3>
-                        </div>
-                        <div class="capability-content">
-                            <p>Advanced GPS and telematics technology for live vehicle monitoring, geo-fencing alerts, and dedicated recovery units.</p>
-                            <ul class="capability-features">
-                                <li><i class="fas fa-check"></i> Live vehicle tracking</li>
-                                <li><i class="fas fa-check"></i> Geo-fencing with alerts</li>
-                                <li><i class="fas fa-check"></i> Tamper detection</li>
-                                <li><i class="fas fa-check"></i> 24/7 recovery team</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <!-- Capability 4 -->
-                    <div class="capability-card">
-                        <div class="capability-header">
-                            <div class="capability-icon">
-                                <i class="fas fa-truck"></i>
-                            </div>
+                        <p>Advanced GPS and telematics technology for live vehicle monitoring, geo-fencing alerts, and dedicated recovery units.</p>
+                        <ul class="cap-features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Live vehicle tracking</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Geo-fencing with alerts</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Tamper detection</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> 24/7 recovery team</li>
+                        </ul>
+                    </article>
+
+                    <article class="capability-card">
+                        <div class="cap-card-top">
+                            <div class="cap-icon"><i class="fas fa-truck" aria-hidden="true"></i></div>
                             <h3>Fleet Management</h3>
                         </div>
-                        <div class="capability-content">
-                            <p>Robust fleet monitoring tools that improve efficiency, reduce risks, and ensure the security of assets on the move.</p>
-                            <ul class="capability-features">
-                                <li><i class="fas fa-check"></i> Real-time fleet tracking</li>
-                                <li><i class="fas fa-check"></i> Driver performance analytics</li>
-                                <li><i class="fas fa-check"></i> Fuel management</li>
-                                <li><i class="fas fa-check"></i> Maintenance tracking</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <!-- Capability 5 -->
-                    <div class="capability-card featured">
-                        <div class="capability-badge">Premium</div>
-                        <div class="capability-header">
-                            <div class="capability-icon">
-                                <i class="fas fa-award"></i>
-                            </div>
+                        <p>Robust fleet monitoring tools that improve efficiency, reduce risks, and ensure the security of assets on the move.</p>
+                        <ul class="cap-features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Real-time fleet tracking</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Driver performance analytics</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Fuel management</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Maintenance tracking</li>
+                        </ul>
+                    </article>
+
+                    <article class="capability-card featured">
+                        <div class="cap-badge">Premium</div>
+                        <div class="cap-card-top">
+                            <div class="cap-icon"><i class="fas fa-award" aria-hidden="true"></i></div>
                             <h3>NKP Accreditation</h3>
                         </div>
-                        <div class="capability-content">
-                            <p>National Key Point accreditation for safeguarding vital national infrastructure with the highest security standards.</p>
-                            <ul class="capability-features">
-                                <li><i class="fas fa-check"></i> Certified NKP instructors</li>
-                                <li><i class="fas fa-check"></i> Strategic installation protection</li>
-                                <li><i class="fas fa-check"></i> National security compliance</li>
-                                <li><i class="fas fa-check"></i> High-security operational standards</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <!-- Capability 6 -->
-                    <div class="capability-card">
-                        <div class="capability-header">
-                            <div class="capability-icon">
-                                <i class="fas fa-gas-pump"></i>
-                            </div>
+                        <p>National Key Point accreditation for safeguarding vital national infrastructure with the highest security standards.</p>
+                        <ul class="cap-features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Certified NKP instructors</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Strategic installation protection</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> National security compliance</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> High-security operational standards</li>
+                        </ul>
+                    </article>
+
+                    <article class="capability-card">
+                        <div class="cap-card-top">
+                            <div class="cap-icon"><i class="fas fa-gas-pump" aria-hidden="true"></i></div>
                             <h3>Petroleum Supply</h3>
                         </div>
-                        <div class="capability-content">
-                            <p>Secure fuel distribution with integrated risk management expertise, offering comprehensive solutions for security and operational needs.</p>
-                            <ul class="capability-features">
-                                <li><i class="fas fa-check"></i> Bulk fuel supply</li>
-                                <li><i class="fas fa-check"></i> Industrial operations support</li>
-                                <li><i class="fas fa-check"></i> Secure supply chain</li>
-                                <li><i class="fas fa-check"></i> Quality assurance</li>
-                            </ul>
-                        </div>
-                    </div>
+                        <p>Secure fuel distribution with integrated risk management expertise for both security and operational needs.</p>
+                        <ul class="cap-features">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Bulk fuel supply</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Industrial operations support</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Secure supply chain</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Quality assurance</li>
+                        </ul>
+                    </article>
+
                 </div>
             </div>
         </section>
 
-        <!-- Detailed Capabilities -->
-        <section class="section-padding detailed-capabilities">
+        <!-- ── Detailed Capabilities ──────────────────────────── -->
+        <section class="section-padding detailed-capabilities" aria-labelledby="detail-heading">
             <div class="container">
                 <div class="section-header">
                     <span class="section-label">In-Depth Solutions</span>
-                    <h2 class="section-title">Advanced Security Technology</h2>
-                    <p class="section-subtitle">Detailed exploration of our cutting-edge security capabilities</p>
+                    <h2 id="detail-heading" class="section-title">Advanced Security Technology</h2>
+                    <p class="section-subtitle">A detailed look at the systems and expertise behind our capabilities</p>
                 </div>
-                
+
                 <!-- Control Room -->
-                <div class="capability-detail">
-                    <div class="detail-header">
-                        <div class="detail-icon">
-                            <i class="fas fa-desktop"></i>
-                        </div>
-                        <div class="detail-title">
+                <div class="cap-detail" id="control-room">
+                    <div class="cap-detail-header">
+                        <div class="cap-detail-icon"><i class="fas fa-desktop" aria-hidden="true"></i></div>
+                        <div>
                             <h3>24-Hour Control Room Operations</h3>
-                            <p class="detail-subtitle">AI-Powered Monitoring & Response Center</p>
+                            <p class="cap-detail-subtitle">AI-Powered Monitoring &amp; Response Centre</p>
                         </div>
                     </div>
-                    
-                    <div class="detail-content">
-                        <div class="detail-text">
-                            <p>Our state-of-the-art Control Room operates around the clock, utilizing AI-powered camera feeds and advanced alarm systems to provide comprehensive monitoring and rapid response capabilities.</p>
-                            
-                            <div class="feature-grid">
-                                <div class="feature-item">
-                                    <i class="fas fa-brain"></i>
+                    <div class="cap-detail-body">
+                        <div class="cap-detail-text">
+                            <p>Our state-of-the-art Control Room operates around the clock, utilising AI-powered camera feeds and advanced alarm systems to provide comprehensive monitoring and rapid response capabilities.</p>
+                            <h4>Core Functions</h4>
+                            <div class="detail-feat-grid">
+                                <div class="detail-feat-item">
+                                    <div class="dfi-icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
                                     <div>
-                                        <h4>AI-Powered Analytics</h4>
-                                        <p>Advanced artificial intelligence for threat detection and pattern recognition</p>
+                                        <h5>AI-Powered Analytics</h5>
+                                        <p>Advanced artificial intelligence for threat detection and pattern recognition.</p>
                                     </div>
                                 </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-bolt"></i>
+                                <div class="detail-feat-item">
+                                    <div class="dfi-icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
                                     <div>
-                                        <h4>Rapid Response Coordination</h4>
-                                        <p>Immediate dispatch to armed response teams and law enforcement</p>
+                                        <h5>Rapid Response Coordination</h5>
+                                        <p>Immediate dispatch to armed response teams and law enforcement.</p>
                                     </div>
                                 </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-eye"></i>
+                                <div class="detail-feat-item">
+                                    <div class="dfi-icon"><i class="fas fa-eye" aria-hidden="true"></i></div>
                                     <div>
-                                        <h4>Continuous Vigilance</h4>
-                                        <p>24/7 monitoring with instant alert systems and real-time analysis</p>
+                                        <h5>Continuous Vigilance</h5>
+                                        <p>24/7 monitoring with instant alert systems and real-time analysis.</p>
                                     </div>
                                 </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-file-alt"></i>
+                                <div class="detail-feat-item">
+                                    <div class="dfi-icon"><i class="fas fa-file-lines" aria-hidden="true"></i></div>
                                     <div>
-                                        <h4>Comprehensive Documentation</h4>
-                                        <p>Complete incident records and evidence management</p>
+                                        <h5>Comprehensive Documentation</h5>
+                                        <p>Complete incident records and evidence management.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="detail-benefits">
-                            <h4>Control Room Benefits</h4>
-                            <div class="benefits-grid">
-                                <div class="benefit">
-                                    <i class="fas fa-shield-check"></i>
+                        <div class="cap-detail-aside">
+                            <h4>Key Benefits</h4>
+                            <div class="benefit-list">
+                                <div class="benefit-item">
+                                    <div class="bi-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
                                     <span>Proactive Threat Prevention</span>
                                 </div>
-                                <div class="benefit">
-                                    <i class="fas fa-clock"></i>
+                                <div class="benefit-item">
+                                    <div class="bi-icon"><i class="fas fa-clock" aria-hidden="true"></i></div>
                                     <span>Round-the-Clock Protection</span>
                                 </div>
-                                <div class="benefit">
-                                    <i class="fas fa-sync-alt"></i>
+                                <div class="benefit-item">
+                                    <div class="bi-icon"><i class="fas fa-rotate" aria-hidden="true"></i></div>
                                     <span>Real-Time Coordination</span>
                                 </div>
-                                <div class="benefit">
-                                    <i class="fas fa-chart-line"></i>
+                                <div class="benefit-item">
+                                    <div class="bi-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
                                     <span>Performance Analytics</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- NKP Accreditation -->
-                <div class="capability-detail">
-                    <div class="detail-header">
-                        <div class="detail-icon">
-                            <i class="fas fa-award"></i>
-                        </div>
-                        <div class="detail-title">
+
+                <!-- NKP -->
+                <div class="cap-detail" id="nkp-detail">
+                    <div class="cap-detail-header">
+                        <div class="cap-detail-icon"><i class="fas fa-award" aria-hidden="true"></i></div>
+                        <div>
                             <h3>National Key Point Accreditation</h3>
-                            <p class="detail-subtitle">Highest Level Security Certification</p>
+                            <p class="cap-detail-subtitle">Highest Level Security Certification</p>
                         </div>
                     </div>
-                    
-                    <div class="detail-content reverse">
-                        <div class="detail-benefits">
-                            <h4>NKP Authorization</h4>
-                            <div class="benefits-grid">
-                                <div class="benefit">
-                                    <i class="fas fa-building"></i>
+                    <div class="cap-detail-body reverse">
+                        <div class="cap-detail-aside">
+                            <h4>NKP Authorisation</h4>
+                            <div class="benefit-list">
+                                <div class="benefit-item">
+                                    <div class="bi-icon"><i class="fas fa-building" aria-hidden="true"></i></div>
                                     <span>Critical Infrastructure Protection</span>
                                 </div>
-                                <div class="benefit">
-                                    <i class="fas fa-graduation-cap"></i>
+                                <div class="benefit-item">
+                                    <div class="bi-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
                                     <span>Certified NKP Training</span>
                                 </div>
-                                <div class="benefit">
-                                    <i class="fas fa-certificate"></i>
+                                <div class="benefit-item">
+                                    <div class="bi-icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
                                     <span>National Security Standards</span>
                                 </div>
-                                <div class="benefit">
-                                    <i class="fas fa-users-cog"></i>
+                                <div class="benefit-item">
+                                    <div class="bi-icon"><i class="fas fa-users-gear" aria-hidden="true"></i></div>
                                     <span>Vetted Security Personnel</span>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="detail-text">
+                        <div class="cap-detail-text">
                             <p>Leano Security Services holds National Key Point (NKP) accreditation, empowering us to safeguard vital national infrastructure and strategic installations with the highest security standards.</p>
-                            
-                            <div class="feature-grid">
-                                <div class="feature-item">
-                                    <i class="fas fa-industry"></i>
+                            <h4>What We Protect</h4>
+                            <div class="detail-feat-grid">
+                                <div class="detail-feat-item">
+                                    <div class="dfi-icon"><i class="fas fa-industry" aria-hidden="true"></i></div>
                                     <div>
-                                        <h4>Strategic Installations</h4>
-                                        <p>Power plants, water facilities, government buildings, and communication hubs</p>
+                                        <h5>Strategic Installations</h5>
+                                        <p>Power plants, water facilities, government buildings, and communication hubs.</p>
                                     </div>
                                 </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-user-shield"></i>
+                                <div class="detail-feat-item">
+                                    <div class="dfi-icon"><i class="fas fa-user-shield" aria-hidden="true"></i></div>
                                     <div>
-                                        <h4>Expert Training</h4>
-                                        <p>Instruct and upskill workforce in NKP compliance and protocols</p>
+                                        <h5>Expert Training</h5>
+                                        <p>Instruct and upskill workforce in NKP compliance and protocols.</p>
                                     </div>
                                 </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-double"></i>
+                                <div class="detail-feat-item">
+                                    <div class="dfi-icon"><i class="fas fa-check-double" aria-hidden="true"></i></div>
                                     <div>
-                                        <h4>Quality Assurance</h4>
-                                        <p>Regular audits and compliance with national security protocols</p>
+                                        <h5>Quality Assurance</h5>
+                                        <p>Regular audits and compliance with national security protocols.</p>
                                     </div>
                                 </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-handshake"></i>
+                                <div class="detail-feat-item">
+                                    <div class="dfi-icon"><i class="fas fa-handshake" aria-hidden="true"></i></div>
                                     <div>
-                                        <h4>National Partnership</h4>
-                                        <p>Collaboration with government security agencies</p>
+                                        <h5>National Partnership</h5>
+                                        <p>Collaboration with government security agencies.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Petroleum Supply -->
-                <div class="capability-detail">
-                    <div class="detail-header">
-                        <div class="detail-icon">
-                            <i class="fas fa-gas-pump"></i>
-                        </div>
-                        <div class="detail-title">
+
+                <!-- Petroleum -->
+                <div class="cap-detail" id="petroleum-detail">
+                    <div class="cap-detail-header">
+                        <div class="cap-detail-icon"><i class="fas fa-gas-pump" aria-hidden="true"></i></div>
+                        <div>
                             <h3>Petroleum Supply Solutions</h3>
-                            <p class="detail-subtitle">Secure Fuel Distribution & Management</p>
+                            <p class="cap-detail-subtitle">Secure Fuel Distribution &amp; Management</p>
                         </div>
                     </div>
-                    
-                    <div class="detail-content">
-                        <div class="detail-text">
+                    <div class="cap-detail-body">
+                        <div class="cap-detail-text">
                             <p>Our diversified petroleum supply capabilities provide secure fuel distribution with integrated risk management expertise, offering clients a comprehensive solution for both security and operational needs.</p>
-                            
-                            <div class="feature-grid">
-                                <div class="feature-item">
-                                    <i class="fas fa-truck-loading"></i>
+                            <h4>Our Capabilities</h4>
+                            <div class="detail-feat-grid">
+                                <div class="detail-feat-item">
+                                    <div class="dfi-icon"><i class="fas fa-truck-loading" aria-hidden="true"></i></div>
                                     <div>
-                                        <h4>Bulk Fuel Supply</h4>
-                                        <p>Large-scale diesel and petrol distribution for enterprise clients</p>
+                                        <h5>Bulk Fuel Supply</h5>
+                                        <p>Large-scale diesel and petrol distribution for enterprise clients.</p>
                                     </div>
                                 </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-industry"></i>
+                                <div class="detail-feat-item">
+                                    <div class="dfi-icon"><i class="fas fa-industry" aria-hidden="true"></i></div>
                                     <div>
-                                        <h4>Industrial Operations</h4>
-                                        <p>Tailored solutions for mining, logistics, and industrial sectors</p>
+                                        <h5>Industrial Operations</h5>
+                                        <p>Tailored solutions for mining, logistics, and industrial sectors.</p>
                                     </div>
                                 </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-shield-alt"></i>
+                                <div class="detail-feat-item">
+                                    <div class="dfi-icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
                                     <div>
-                                        <h4>Secure Supply Chain</h4>
-                                        <p>Integrated risk management and security expertise</p>
+                                        <h5>Secure Supply Chain</h5>
+                                        <p>Integrated risk management and security expertise.</p>
                                     </div>
                                 </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-double"></i>
+                                <div class="detail-feat-item">
+                                    <div class="dfi-icon"><i class="fas fa-check-double" aria-hidden="true"></i></div>
                                     <div>
-                                        <h4>Quality Assurance</h4>
-                                        <p>Accredited compliance with petroleum industry standards</p>
+                                        <h5>Quality Assurance</h5>
+                                        <p>Accredited compliance with petroleum industry standards.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="detail-benefits">
+                        <div class="cap-detail-aside">
                             <h4>Client Benefits</h4>
-                            <div class="benefits-grid">
-                                <div class="benefit">
-                                    <i class="fas fa-handshake"></i>
+                            <div class="benefit-list">
+                                <div class="benefit-item">
+                                    <div class="bi-icon"><i class="fas fa-handshake" aria-hidden="true"></i></div>
                                     <span>Single Trusted Partner</span>
                                 </div>
-                                <div class="benefit">
-                                    <i class="fas fa-chart-line"></i>
+                                <div class="benefit-item">
+                                    <div class="bi-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
                                     <span>Reduced Operational Risk</span>
                                 </div>
-                                <div class="benefit">
-                                    <i class="fas fa-truck-moving"></i>
+                                <div class="benefit-item">
+                                    <div class="bi-icon"><i class="fas fa-truck-moving" aria-hidden="true"></i></div>
                                     <span>Secure Transportation</span>
                                 </div>
-                                <div class="benefit">
-                                    <i class="fas fa-clipboard-check"></i>
+                                <div class="benefit-item">
+                                    <div class="bi-icon"><i class="fas fa-clipboard-check" aria-hidden="true"></i></div>
                                     <span>Regulatory Compliance</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
-        <!-- Why Choose Us -->
-        <section class="section-padding why-section">
+
+        <!-- ── Why Choose Us ──────────────────────────────────── -->
+        <section class="section-padding bg-light why-section" aria-labelledby="why-heading">
             <div class="container">
                 <div class="section-header">
                     <span class="section-label">Our Advantage</span>
-                    <h2 class="section-title">Why Our Capabilities Set Us Apart</h2>
+                    <h2 id="why-heading" class="section-title">Why Our Capabilities Set Us Apart</h2>
                     <p class="section-subtitle">Industry-leading technology and expertise for unparalleled security</p>
                 </div>
-                
                 <div class="why-grid">
                     <div class="why-card">
-                        <div class="why-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <div class="why-content">
-                            <h4>Cutting-Edge Technology</h4>
-                            <p>Continuous investment in the latest security technology ensures you always have access to the most advanced protection available.</p>
-                        </div>
+                        <div class="why-icon"><i class="fas fa-rocket" aria-hidden="true"></i></div>
+                        <h4>Cutting-Edge Technology</h4>
+                        <p>Continuous investment in the latest security technology ensures you always have access to the most advanced protection available.</p>
                     </div>
-                    
                     <div class="why-card">
-                        <div class="why-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="why-content">
-                            <h4>Expert Personnel</h4>
-                            <p>Rigorous training and continuous development programs ensure our team operates advanced systems with unmatched expertise.</p>
-                        </div>
+                        <div class="why-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+                        <h4>Expert Personnel</h4>
+                        <p>Rigorous training and continuous development programs ensure our team operates advanced systems with unmatched expertise.</p>
                     </div>
-                    
                     <div class="why-card">
-                        <div class="why-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="why-content">
-                            <h4>Proven Track Record</h4>
-                            <p>Years of successful deployments and zero breaches for comprehensive security implementations demonstrate our capability.</p>
-                        </div>
+                        <div class="why-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+                        <h4>Proven Track Record</h4>
+                        <p>Years of successful deployments and zero breaches for comprehensive security implementations demonstrate our capability.</p>
                     </div>
-                    
                     <div class="why-card">
-                        <div class="why-icon">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <div class="why-content">
-                            <h4>24/7 Support</h4>
-                            <p>Round-the-clock monitoring, support, and response capabilities ensure continuous protection without interruption.</p>
-                        </div>
+                        <div class="why-icon"><i class="fas fa-headset" aria-hidden="true"></i></div>
+                        <h4>24/7 Support</h4>
+                        <p>Round-the-clock monitoring, support, and response capabilities ensure continuous protection without interruption.</p>
                     </div>
-                    
                     <div class="why-card">
-                        <div class="why-icon">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <div class="why-content">
-                            <h4>Accredited Excellence</h4>
-                            <p>NKP accreditation and full industry compliance demonstrate our commitment to the highest security standards.</p>
-                        </div>
+                        <div class="why-icon"><i class="fas fa-certificate" aria-hidden="true"></i></div>
+                        <h4>Accredited Excellence</h4>
+                        <p>NKP accreditation and full industry compliance demonstrate our commitment to the highest security standards.</p>
                     </div>
-                    
                     <div class="why-card">
-                        <div class="why-icon">
-                            <i class="fas fa-project-diagram"></i>
-                        </div>
-                        <div class="why-content">
-                            <h4>Integrated Approach</h4>
-                            <p>All capabilities work together seamlessly for comprehensive, coordinated security coverage across all fronts.</p>
-                        </div>
+                        <div class="why-icon"><i class="fas fa-diagram-project" aria-hidden="true"></i></div>
+                        <h4>Integrated Approach</h4>
+                        <p>All capabilities work together seamlessly for comprehensive, coordinated security coverage across all fronts.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="section-padding cta-section">
+        <!-- ── CTA ───────────────────────────────────────────── -->
+        <section class="section-padding cta-section" aria-labelledby="cta-heading">
             <div class="container">
                 <div class="cta-card">
                     <div class="cta-content">
-                        <h2>Experience Our Advanced Capabilities</h2>
+                        <h2 id="cta-heading">Experience Our Advanced Capabilities</h2>
                         <p>Let our team demonstrate how our cutting-edge technology and comprehensive capabilities can transform your security infrastructure.</p>
                         <div class="cta-features">
                             <div class="cta-feature">
-                                <i class="fas fa-desktop"></i>
+                                <i class="fas fa-desktop" aria-hidden="true"></i>
                                 <span>Live Control Room Demo</span>
                             </div>
                             <div class="cta-feature">
-                                <i class="fas fa-chart-bar"></i>
+                                <i class="fas fa-chart-bar" aria-hidden="true"></i>
                                 <span>Security Assessment Report</span>
                             </div>
                             <div class="cta-feature">
-                                <i class="fas fa-user-shield"></i>
+                                <i class="fas fa-user-shield" aria-hidden="true"></i>
                                 <span>Expert Consultation</span>
                             </div>
                         </div>
                     </div>
-                    <div class="cta-actions">
-                        <a href="contact.html" class="cta-button primary-btn">
+                    <div class="cta-action">
+                        <a href="contact.html" class="cta-button primary-btn large-btn">
                             <i class="fas fa-calendar-alt"></i> Schedule a Demo
                         </a>
-                        <a href="services.html" class="cta-button outline-btn">
+                        <a href="services.html" class="cta-button secondary-btn large-btn">
                             <i class="fas fa-list"></i> Explore Services
                         </a>
+                        <p class="cta-note">
+                            <i class="fas fa-lock"></i> PSIRA Registered — Reg. No. 4421383
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
                     <a href="index.html" class="logo">
-                        <img src="images/Logo.png" alt="Leano Security Logo" class="logo-img">
+                        <img src="images/Logo.png" alt="Leano Security Services Logo" class="logo-img" width="50" height="50">
+                        <span class="logo-text">LEANO <span class="logo-sub">SECURITY</span></span>
                     </a>
-                    <p class="footer-tagline">Zero Entry Tolerance - Your Security, Our Mission</p>
+                    <p class="footer-tagline">Zero Entry Tolerance — Your Security, Our Mission. PSIRA registered security provider serving South Africa since 2017.</p>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/share/17tydryq7K/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/leano_security?igsh=MTBxMTNjNmdxbDBvZg==" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/17tydryq7K/" aria-label="Follow us on Facebook" target="_blank" rel="noopener">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/leano_security?igsh=MTBxMTNjNmdxbDBvZg==" aria-label="Follow us on Instagram" target="_blank" rel="noopener">
+                            <i class="fab fa-instagram"></i>
+                        </a>
                     </div>
                 </div>
-                
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
+                    <h4>Company</h4>
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="capabilities.html">Capabilities</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="values.html">Our Values</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="Privacy Policy.pdf">Privacy Policy</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-services">
-                    <h4>Our Services</h4>
+                    <h4>Services</h4>
                     <ul>
-                        <li><a href="services.html#guarding">Armed Response</a></li>
-                        <li><a href="services.html#surveillance">Surveillance</a></li>
-                        <li><a href="services.html#vip">VIP Protection</a></li>
-                        <li><a href="services.html#fleet">Fleet Security</a></li>
-                        <li><a href="services.html#investigation">Investigation</a></li>
+                        <li><a href="services.html#armed-response">Armed Response</a></li>
+                        <li><a href="services.html#fleet-management">Fleet Management</a></li>
+                        <li><a href="services.html#vip-protection">VIP Protection</a></li>
+                        <li><a href="services.html#petroleum-supply">Petroleum Supply</a></li>
+                        <li><a href="contact.html">Investigation</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-contact">
-                    <h4>Contact Us</h4>
-                    <div class="contact-info">
-                        <p><i class="fas fa-phone-alt"></i> Emergency: 068 379 4897</p>
-                        <p><i class="fas fa-envelope"></i> Info@leanosecurity.co.za</p>
-                        <p><i class="fas fa-clock"></i> 24/7 Operations Center</p>
-                    </div>
+                    <h4>Contact</h4>
+                    <address class="contact-info">
+                        <p><i class="fas fa-phone-alt" aria-hidden="true"></i><a href="tel:+27683794897">068 379 4897</a></p>
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:Info@leanosecurity.co.za">Info@leanosecurity.co.za</a></p>
+                        <p><i class="fas fa-clock" aria-hidden="true"></i>Operations: 24/7</p>
+                        <p><i class="fas fa-id-badge" aria-hidden="true"></i>PSIRA: 4421383</p>
+                    </address>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2024 Leano Security Services. All rights reserved.</p>
-                <p>PSIRA Reg No: 4421383 | NKP Accredited Security Provider</p>
+                <p>&copy; 2026 Leano Security Services. All rights reserved.</p>
+                <p>PSIRA Registration No: 4421383 &nbsp;|&nbsp; NKP Accredited Security Provider</p>
+                <p>Serving Johannesburg, Pretoria, Cape Town, Durban &amp; nationwide</p>
             </div>
         </div>
     </footer>
 
-    <!-- Emergency Quick Contact -->
     <div class="emergency-float">
-        <a href="tel:+27683794897" class="emergency-btn">
+        <a href="tel:+27683794897" class="emergency-btn" aria-label="Emergency — Call 068 379 4897">
             <i class="fas fa-phone-alt"></i>
             <span>Emergency</span>
         </a>
