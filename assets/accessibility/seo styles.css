@@ -1,0 +1,72 @@
+/* SEO & Accessibility Improvements */
+.skip-to-main {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent-color);
+    color: white;
+    padding: 8px;
+    z-index: 10000;
+    text-decoration: none;
+}
+
+.skip-to-main:focus {
+    top: 0;
+}
+
+/* Schema.org rich snippet styling */
+.rating-stars {
+    color: #FFD700;
+    margin: 10px 0;
+}
+
+.business-hours {
+    background: rgba(42, 157, 143, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+/* Better heading hierarchy */
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+/* Schema breadcrumb styling */
+.breadcrumb {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.breadcrumb a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* Print styles for contact info */
+@media print {
+    .emergency-float,
+    .whatsapp-float {
+        display: none;
+    }
+    
+    .contact-info {
+        border: 1px solid #000;
+        padding: 15px;
+        margin: 20px 0;
+    }
+}
+
+/* Enhanced focus states for accessibility */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 2px;
+}

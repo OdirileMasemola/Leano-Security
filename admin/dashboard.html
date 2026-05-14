@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin Dashboard - Leano Security</title>
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-branding">
+                <h2>Leano Admin</h2>
+                <p>Dashboard</p>
+            </div>
+
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="/admin/dashboard.html" class="active">📊 Dashboard</a></li>
+                    <li><a href="/admin/leads.html">📋 Leads</a></li>
+                    <li><a href="/admin/login.html" data-action="logout">🚪 Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="admin-header">
+                <div>
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="admin-user">
+                    <div class="user-avatar">A</div>
+                    <div class="user-info">
+                        <div class="user-name">Admin User</div>
+                        <div class="user-role">Administrator</div>
+                    </div>
+                    <button class="logout-btn" data-action="logout">Logout</button>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card new">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">New Leads</div>
+                </div>
+                <div class="stat-card contacted">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">Contacted</div>
+                </div>
+                <div class="stat-card converted">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">Converted</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">0</div>
+                    <div class="stat-label">Total Leads</div>
+                </div>
+            </div>
+
+            <!-- Recent Leads Section -->
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <h2 style="margin: 0;">Recent Leads</h2>
+                    <button class="btn btn-primary btn-sm" data-action="refresh">🔄 Refresh</button>
+                </div>
+
+                <div class="table-container">
+                    <table class="leads-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Subject</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="5" style="text-align: center; padding: 2rem; color: #999;">
+                                    Loading leads...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- System Status -->
+            <div class="card">
+                <h2>System Status</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <div>
+                        <p style="margin: 0; color: #999; font-size: 0.9rem;">Database Connection</p>
+                        <p style="margin: 0.5rem 0 0 0; font-size: 1.1rem;">
+                            <span style="color: #28a745;">✓</span> Connected
+                        </p>
+                    </div>
+                    <div>
+                        <p style="margin: 0; color: #999; font-size: 0.9rem;">Last Sync</p>
+                        <p style="margin: 0.5rem 0 0 0; font-size: 1.1rem;">Just now</p>
+                    </div>
+                    <div>
+                        <p style="margin: 0; color: #999; font-size: 0.9rem;">Admin User</p>
+                        <p style="margin: 0.5rem 0 0 0; font-size: 1.1rem;">Active</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="../js/dashboard.js"></script>
+</body>
+</html>

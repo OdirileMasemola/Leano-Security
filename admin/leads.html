@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Leads Management - Leano Security</title>
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-branding">
+                <h2>Leano Admin</h2>
+                <p>Dashboard</p>
+            </div>
+
+            <nav>
+                <ul class="sidebar-nav">
+                    <li><a href="/admin/dashboard.html">📊 Dashboard</a></li>
+                    <li><a href="/admin/leads.html" class="active">📋 Leads</a></li>
+                    <li><a href="/admin/login.html" data-action="logout">🚪 Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="admin-header">
+                <div>
+                    <h1>Leads Management</h1>
+                </div>
+                <div class="admin-user">
+                    <div class="user-avatar">A</div>
+                    <div class="user-info">
+                        <div class="user-name">Admin User</div>
+                        <div class="user-role">Administrator</div>
+                    </div>
+                    <button class="logout-btn" data-action="logout">Logout</button>
+                </div>
+            </div>
+
+            <!-- Controls Section -->
+            <div class="card">
+                <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <input 
+                            type="text" 
+                            class="search-input" 
+                            placeholder="Search by name, email, phone, or company..."
+                        >
+                    </div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-status="all">All</button>
+                        <button class="filter-btn" data-status="new">New</button>
+                        <button class="filter-btn" data-status="contacted">Contacted</button>
+                        <button class="filter-btn" data-status="converted">Converted</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leads Table -->
+            <div class="card">
+                <div class="table-container">
+                    <table class="leads-table">
+                        <thead>
+                            <tr>
+                                <th data-sort="name">👤 Name</th>
+                                <th data-sort="email">✉️ Email</th>
+                                <th data-sort="phone">📱 Phone</th>
+                                <th data-sort="subject">Subject</th>
+                                <th data-sort="status">Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="6" style="text-align: center; padding: 2rem; color: #999;">
+                                    Loading leads...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Info Card -->
+            <div class="card" style="background: #f0f7ff; border-left: 4px solid #0066cc;">
+                <p style="margin: 0; color: #0066cc;">
+                    <strong>ℹ️ Info:</strong> This leads management system is currently a placeholder. 
+                    In production, it will connect to Supabase for real lead management with full CRUD operations.
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="../js/leads.js"></script>
+</body>
+</html>
