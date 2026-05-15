@@ -12,16 +12,28 @@
 <body>
     <div class="login-container">
         <div class="login-card">
+
+            <!-- Logo -->
+            <div class="login-logo-wrap">
+                <img
+                    src="./assets/images/Logo.png"
+                    alt="Leano Security Logo"
+                    class="login-logo"
+                    onerror="this.style.display='none'"
+                >
+            </div>
+
             <h1>Leano Admin</h1>
             <p>Access your dashboard</p>
 
             <form id="loginForm" class="login-form" novalidate>
+
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
                         placeholder="admin@leanosecurity.co.za"
                         autocomplete="username"
                         required
@@ -30,34 +42,35 @@
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        name="password" 
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
                         placeholder="••••••••"
                         autocomplete="current-password"
                         required
                     >
                 </div>
 
-                <div id="errorMessage" class="error-message" role="alert" aria-live="assertive" style="display: none; color: #d62839; margin-bottom: 1rem; padding: 0.75rem; border-radius: 8px; background: #ffe0e6;"></div>
+                <div
+                    id="errorMessage"
+                    class="error-message"
+                    role="alert"
+                    aria-live="assertive"
+                    style="display: none;"
+                ></div>
 
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                <button type="submit" class="btn btn-primary">
+                    <i class="material-icons">login</i>
                     Sign In
                 </button>
 
-                <p style="text-align: center; color: #999; font-size: 0.85rem;">
-                    This area is restricted to authorized personnel only
+                <p class="login-footer-text">
+                    Restricted to authorised personnel only
                 </p>
+
             </form>
         </div>
-    </div>
-
-    <!-- Jotform AI Agent Widget Container -->
-    <div id="jotform-ai-widget-container" class="jotform-ai-widget-container">
-        <script
-          src='https://cdn.jotfor.ms/agent/embedjs/019e2c33d3237eb0806c5651e0bcc8663d50/embed.js?autoOpenChatIn=0'>
-        </script>
     </div>
 
     <script type="module" src="./js/login.js"></script>

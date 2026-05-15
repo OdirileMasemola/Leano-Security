@@ -11,48 +11,85 @@
 </head>
 <body>
     <div class="admin-container">
-        <!-- Sidebar -->
+
+        <!-- ── Sidebar ──────────────────────────────────── -->
         <aside class="admin-sidebar">
+
             <div class="sidebar-branding">
-                <h2>Leano Admin</h2>
-                <p>Dashboard</p>
+                <img
+                    src="./assets/images/Logo.png"
+                    alt="Leano Security Logo"
+                    class="sidebar-logo"
+                    onerror="this.style.display='none'"
+                >
+                <div class="sidebar-brand-text">
+                    <h2>Leano Admin</h2>
+                    <p>Dashboard</p>
+                </div>
             </div>
 
             <nav>
                 <ul class="sidebar-nav">
-                    <li><a href="./dashboard.html"><i class="material-icons">dashboard</i><span>Dashboard</span></a></li>
-                    <li><a href="./leads.html" class="active"><i class="material-icons">list_alt</i><span>Leads</span></a></li>
-                    <li><a href="./login.html" data-action="logout"><i class="material-icons">logout</i><span>Logout</span></a></li>
+                    <li>
+                        <a href="./dashboard.html">
+                            <i class="material-icons">dashboard</i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./leads.html" class="active">
+                            <i class="material-icons">list_alt</i>
+                            <span>Leads</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./login.html" data-action="logout">
+                            <i class="material-icons">logout</i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
+
         </aside>
 
-        <!-- Main Content -->
+        <!-- ── Main ─────────────────────────────────────── -->
         <main class="admin-main">
+
+            <!-- Topbar -->
             <div class="admin-header">
                 <div>
                     <h1>Leads Management</h1>
+                    <p class="header-subtitle">Search, filter, and manage all incoming leads</p>
                 </div>
                 <div class="admin-user">
-                    <div class="user-avatar">A</div>
                     <div class="user-info">
                         <div class="user-name">Admin User</div>
                         <div class="user-role">Administrator</div>
                     </div>
-                    <button class="logout-btn" data-action="logout">Logout</button>
+                    <div class="user-avatar">A</div>
+                    <button class="logout-btn" data-action="logout">
+                        <i class="material-icons">logout</i>
+                        Logout
+                    </button>
                 </div>
             </div>
 
-            <!-- Controls Section -->
-            <div class="card">
-                <div class="section-toolbar">
+            <!-- Page content -->
+            <div class="page-content">
+
+                <!-- Search + Filters card -->
+                <div class="card">
+                    <!-- Search row -->
                     <div class="toolbar-search-wrap">
-                        <input 
-                            type="text" 
-                            class="search-input" 
-                            placeholder="Search by name, email, phone, company, or service..."
+                        <input
+                            type="text"
+                            class="search-input"
+                            placeholder="Search by name, email, phone, company, or service…"
                         >
                     </div>
+
+                    <!-- Filters row -->
                     <div class="toolbar-controls">
                         <div class="filter-buttons">
                             <button class="filter-btn active" data-status="all">All</button>
@@ -62,64 +99,65 @@
                             <button class="filter-btn" data-status="rejected">Rejected</button>
                             <button class="filter-btn" data-status="converted">Converted</button>
                         </div>
+
                         <select class="urgency-select" data-urgency-filter>
                             <option value="all">All urgency</option>
                             <option value="routine">Routine</option>
                             <option value="urgent">Urgent</option>
                             <option value="emergency">Emergency</option>
                         </select>
-                        <button class="btn btn-primary btn-sm" data-action="refresh">
-                            <i class="material-icons">refresh</i><span>Refresh</span>
+
+                        <button class="btn btn-sm btn-primary" data-action="refresh">
+                            <i class="material-icons">refresh</i>
+                            <span>Refresh</span>
                         </button>
                     </div>
                 </div>
-            </div>
 
-            <!-- Leads Table -->
-            <div class="card">
-                <div class="table-container">
-                    <table class="leads-table">
-                        <thead>
-                            <tr>
-                                <th>Lead</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Company</th>
-                                <th>Service</th>
-                                <th>Urgency</th>
-                                <th>Status</th>
-                                <th>Score</th>
-                                <th>Created</th>
-                            </tr>
-                        </thead>
-                        <tbody id="leadsTableBody">
-                            <tr>
-                                <td colspan="9" style="text-align: center; padding: 2rem; color: #999;">
-                                    Loading leads...
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Info Card -->
-            <div class="card info-card">
-                <div class="info-content">
-                    <i class="material-icons">info</i>
-                    <div>
-                        <strong>Info:</strong> Use the filters above to search by lead details, switch status quickly, and keep urgent leads visible.
+                <!-- Leads Table -->
+                <div class="card" style="padding: 0; overflow: hidden;">
+                    <div class="table-container" style="border: none; border-radius: var(--radius-lg);">
+                        <table class="leads-table">
+                            <thead>
+                                <tr>
+                                    <th>Lead</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Company</th>
+                                    <th>Service</th>
+                                    <th>Urgency</th>
+                                    <th>Status</th>
+                                    <th>Score</th>
+                                    <th>Created</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leadsTableBody">
+                                <tr>
+                                    <td colspan="9" class="table-empty">
+                                        <i class="material-icons">hourglass_empty</i>
+                                        <p>Loading leads…</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </div>
-        </main>
-    </div>
 
-    <!-- Jotform AI Agent Widget Container -->
-    <div id="jotform-ai-widget-container" class="jotform-ai-widget-container">
-        <script
-          src='https://cdn.jotfor.ms/agent/embedjs/019e2c33d3237eb0806c5651e0bcc8663d50/embed.js?autoOpenChatIn=0'>
-        </script>
+                <!-- Info banner -->
+                <div class="info-card">
+                    <div class="info-content">
+                        <i class="material-icons">info</i>
+                        <div>
+                            <strong>Tip:</strong> Use the filters above to narrow leads by status or urgency.
+                            Click any column header to sort. Status changes are saved automatically.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /page-content -->
+
+        </main>
     </div>
 
     <script type="module" src="./js/leads.js"></script>

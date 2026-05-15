@@ -21,8 +21,22 @@
 
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <!-- Google Search Console verification (paste meta below if provided) -->
+    <!-- Example: <meta name="google-site-verification" content="PASTE_VERIFICATION_CODE_HERE" /> -->
+
+    <!-- Google Tag Manager (head) - replace GTM-XXXXXXX with your container ID -->
+    <script>
+    /* Google Tag Manager placeholder. Replace 'GTM-XXXXXXX' in deployment or
+       edit scripts/integrations/google-tag-manager.js to set your GTM container. */
+    </script>
+
+    <!-- Google Analytics 4 (GA4) - Measurement ID placeholder (G-XXXXXXXXXX) -->
+    <!-- The real Measurement ID should be set in scripts/integrations/google-analytics.js -->
+
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) - paste container ID into GTM snippet during deploy -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <a href="#main-content" class="skip-to-main">Skip to main content</a>
 
@@ -52,9 +66,8 @@
 
     <!-- Jotform AI Agent Widget Container -->
     <div id="jotform-ai-widget-container" class="jotform-ai-widget-container">
-        <script
-          src='https://cdn.jotfor.ms/agent/embedjs/019e2c33d3237eb0806c5651e0bcc8663d50/embed.js?autoOpenChatIn=0'>
-        </script>
+        <!-- PASTE_JOTFORM_AI_EMBED_CODE_HERE -->
+        <!-- Example: <script src="https://cdn.jotfor.ms/agent/embedjs/EMBED_ID/embed.js?autoOpenChatIn=0"></script> -->
     </div>
 
     <main id="main-content" role="main">
@@ -553,6 +566,9 @@
         </a>
     </div>
 
+    <script src="scripts/integrations/google-tag-manager.js" defer></script>
+    <script src="scripts/integrations/google-analytics.js" defer></script>
+    <script src="scripts/integrations/jotform-ai.js" defer></script>
     <script src="scripts/pages/home.js" defer></script>
     <script src="scripts/pages/about.js" defer></script>
 </body>

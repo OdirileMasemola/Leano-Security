@@ -11,148 +11,245 @@
 </head>
 <body>
     <div class="admin-container">
-        <!-- Sidebar -->
+
+        <!-- ── Sidebar ──────────────────────────────────── -->
         <aside class="admin-sidebar">
+
             <div class="sidebar-branding">
-                <h2>Leano Admin</h2>
-                <p>Dashboard</p>
+                <img
+                    src="./assets/images/Logo.png"
+                    alt="Leano Security Logo"
+                    class="sidebar-logo"
+                    onerror="this.style.display='none'"
+                >
+                <div class="sidebar-brand-text">
+                    <h2>Leano Admin</h2>
+                    <p>Dashboard</p>
+                </div>
             </div>
 
             <nav>
                 <ul class="sidebar-nav">
-                    <li><a href="./dashboard.html" class="active"><i class="material-icons">dashboard</i><span>Dashboard</span></a></li>
-                    <li><a href="./leads.html"><i class="material-icons">list_alt</i><span>Leads</span></a></li>
-                    <li><a href="./login.html" data-action="logout"><i class="material-icons">logout</i><span>Logout</span></a></li>
+                    <li>
+                        <a href="./dashboard.html" class="active">
+                            <i class="material-icons">dashboard</i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./leads.html">
+                            <i class="material-icons">list_alt</i>
+                            <span>Leads</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./login.html" data-action="logout">
+                            <i class="material-icons">logout</i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
+
         </aside>
 
-        <!-- Main Content -->
+        <!-- ── Main ─────────────────────────────────────── -->
         <main class="admin-main">
+
+            <!-- Topbar -->
             <div class="admin-header">
                 <div>
                     <h1>Dashboard</h1>
+                    <p class="header-subtitle">Overview of all leads and activity</p>
                 </div>
                 <div class="admin-user">
-                    <div class="user-avatar">A</div>
                     <div class="user-info">
                         <div class="user-name">Admin User</div>
                         <div class="user-role">Administrator</div>
                     </div>
-                    <button class="logout-btn" data-action="logout">Logout</button>
+                    <div class="user-avatar">A</div>
+                    <button class="logout-btn" data-action="logout">
+                        <i class="material-icons">logout</i>
+                        Logout
+                    </button>
                 </div>
             </div>
 
-            <!-- Stats Grid -->
-            <div class="stats-grid">
-                <div class="stat-card" data-stat-key="totalLeads">
-                    <div class="stat-icon"><i class="material-icons">groups</i></div>
-                    <div class="stat-value">0</div>
-                    <div class="stat-label">Total Leads</div>
-                </div>
-                <div class="stat-card new" data-stat-key="newLeads">
-                    <div class="stat-icon"><i class="material-icons">inbox</i></div>
-                    <div class="stat-value">0</div>
-                    <div class="stat-label">New Leads</div>
-                </div>
-                <div class="stat-card contacted" data-stat-key="contactedLeads">
-                    <div class="stat-icon"><i class="material-icons">phone_in_talk</i></div>
-                    <div class="stat-value">0</div>
-                    <div class="stat-label">Contacted</div>
-                </div>
-                <div class="stat-card" data-stat-key="qualifiedLeads">
-                    <div class="stat-icon"><i class="material-icons">workspace_premium</i></div>
-                    <div class="stat-value">0</div>
-                    <div class="stat-label">Qualified</div>
-                </div>
-                <div class="stat-card" data-stat-key="rejectedLeads">
-                    <div class="stat-icon"><i class="material-icons">block</i></div>
-                    <div class="stat-value">0</div>
-                    <div class="stat-label">Rejected</div>
-                </div>
-                <div class="stat-card converted" data-stat-key="convertedLeads">
-                    <div class="stat-icon"><i class="material-icons">check_circle</i></div>
-                    <div class="stat-value">0</div>
-                    <div class="stat-label">Converted</div>
-                </div>
-            </div>
+            <!-- Page content -->
+            <div class="page-content">
 
-            <div class="dashboard-grid">
-                <!-- Recent Leads Section -->
-                <div class="card dashboard-panel">
-                    <div class="section-toolbar">
-                        <div>
-                            <h2 class="section-title">Recent Leads</h2>
-                            <p class="section-description">Latest activity from the contact form</p>
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+
+                    <div class="stat-card" data-stat-key="totalLeads">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="material-icons">groups</i>
+                            </div>
                         </div>
-                        <button class="btn btn-primary btn-sm" data-action="refresh"><i class="material-icons">refresh</i><span>Refresh</span></button>
-                    </div>
-
-                    <div class="table-container">
-                        <table class="leads-table dashboard-table">
-                            <thead>
-                                <tr>
-                                    <th>Lead</th>
-                                    <th>Email</th>
-                                    <th>Company</th>
-                                    <th>Service</th>
-                                    <th>Score</th>
-                                    <th>Status</th>
-                                    <th>Created</th>
-                                </tr>
-                            </thead>
-                            <tbody id="recentLeadsBody">
-                                <tr>
-                                    <td colspan="7" style="text-align: center; padding: 2rem; color: #999;">
-                                        Loading leads...
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- High Score Leads Section -->
-                <div class="card dashboard-panel">
-                    <div class="section-toolbar">
-                        <div>
-                            <h2 class="section-title">High Score Leads</h2>
-                            <p class="section-description">Strong leads with a score of 61 or more</p>
+                        <div class="stat-body">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Total Leads</div>
                         </div>
-                        <span class="section-description" data-dashboard-updated>Waiting for live data</span>
                     </div>
 
-                    <div class="table-container">
-                        <table class="leads-table dashboard-table">
-                            <thead>
-                                <tr>
-                                    <th>Lead</th>
-                                    <th>Email</th>
-                                    <th>Service</th>
-                                    <th>Score</th>
-                                    <th>Status</th>
-                                    <th>Created</th>
-                                </tr>
-                            </thead>
-                            <tbody id="highScoreLeadsBody">
-                                <tr>
-                                    <td colspan="6" style="text-align: center; padding: 2rem; color: #999;">
-                                        Loading leads...
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="stat-card" data-stat-key="newLeads">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="material-icons">inbox</i>
+                            </div>
+                        </div>
+                        <div class="stat-body">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">New Leads</div>
+                        </div>
                     </div>
+
+                    <div class="stat-card" data-stat-key="contactedLeads">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="material-icons">phone_in_talk</i>
+                            </div>
+                        </div>
+                        <div class="stat-body">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Contacted</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" data-stat-key="qualifiedLeads">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="material-icons">workspace_premium</i>
+                            </div>
+                        </div>
+                        <div class="stat-body">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Qualified</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" data-stat-key="rejectedLeads">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="material-icons">block</i>
+                            </div>
+                        </div>
+                        <div class="stat-body">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Rejected</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" data-stat-key="convertedLeads">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="material-icons">check_circle</i>
+                            </div>
+                        </div>
+                        <div class="stat-body">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">Converted</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" data-stat-key="highScoreLeads">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="material-icons">star</i>
+                            </div>
+                        </div>
+                        <div class="stat-body">
+                            <div class="stat-value">0</div>
+                            <div class="stat-label">High Score Leads</div>
+                        </div>
+                    </div>
+
                 </div>
+                <!-- /stats-grid -->
+
+                <!-- Dashboard panels -->
+                <div class="dashboard-grid">
+
+                    <!-- Recent Leads -->
+                    <div class="card dashboard-panel">
+                        <div class="section-toolbar">
+                            <div class="section-toolbar-left">
+                                <h2 class="section-title">Recent Leads</h2>
+                                <p class="section-description">Latest activity from the contact form</p>
+                            </div>
+                            <button class="btn btn-sm btn-primary" data-action="refresh">
+                                <i class="material-icons">refresh</i>
+                                <span>Refresh</span>
+                            </button>
+                        </div>
+
+                        <div class="table-container">
+                            <table class="leads-table dashboard-table">
+                                <thead>
+                                    <tr>
+                                        <th>Lead</th>
+                                        <th>Email</th>
+                                        <th>Company</th>
+                                        <th>Service</th>
+                                        <th>Score</th>
+                                        <th>Status</th>
+                                        <th>Created</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentLeadsBody">
+                                    <tr>
+                                        <td colspan="7" class="table-empty">
+                                            <i class="material-icons">hourglass_empty</i>
+                                            <p>Loading leads…</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- High Score Leads -->
+                    <div class="card dashboard-panel">
+                        <div class="section-toolbar">
+                            <div class="section-toolbar-left">
+                                <h2 class="section-title">High Score Leads</h2>
+                                <p class="section-description">Strong leads with a score of 61 or more</p>
+                            </div>
+                            <span class="section-description" data-dashboard-updated>Waiting for live data</span>
+                        </div>
+
+                        <div class="table-container">
+                            <table class="leads-table dashboard-table">
+                                <thead>
+                                    <tr>
+                                        <th>Lead</th>
+                                        <th>Email</th>
+                                        <th>Service</th>
+                                        <th>Score</th>
+                                        <th>Status</th>
+                                        <th>Created</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="highScoreLeadsBody">
+                                    <tr>
+                                        <td colspan="6" class="table-empty">
+                                            <i class="material-icons">hourglass_empty</i>
+                                            <p>Loading leads…</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /dashboard-grid -->
+
             </div>
+            <!-- /page-content -->
+
         </main>
-    </div>
-
-    <!-- Jotform AI Agent Widget Container -->
-    <div id="jotform-ai-widget-container" class="jotform-ai-widget-container">
-        <script
-          src='https://cdn.jotfor.ms/agent/embedjs/019e2c33d3237eb0806c5651e0bcc8663d50/embed.js?autoOpenChatIn=0'>
-        </script>
     </div>
 
     <script type="module" src="./js/dashboard.js"></script>
