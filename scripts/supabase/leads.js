@@ -16,7 +16,7 @@
  *   - source: text ('website_form', 'whatsapp', etc)
  */
 
-import supabase from './client.js';
+import { getSupabaseClient } from './client.js';
 
 /**
  * Submit a new lead to Supabase
@@ -42,35 +42,48 @@ export async function submitLead(leadData) {
             }
         }
         
-        // Prepare lead object
+        // Prepare lead object with expected fields for the 'leads' table
+        const services = leadData.services || '';
         const lead = {
-            name: leadData.name.trim(),
-            email: leadData.email.trim().toLowerCase(),
-            phone: leadData.phone.trim(),
-            company: leadData.company?.trim() || null,
-            subject: leadData.subject.trim(),
-            message: leadData.message.trim(),
+            full_name: leadData.name?.trim() || null,
+            email: leadData.email?.trim().toLowerCase() || null,
+            phone: leadData.phone?.trim() || null,
+            company_name: leadData.company?.trim() || null,
+            service_type: services,
+            urgency: leadData.urgency || null,
+            message: leadData.message?.trim() || null,
             status: 'new',
-            source: leadData.source || 'website_form'
+            source: leadData.source || 'website',
+            newsletter: leadData.newsletter ? true : false
         };
-        
-        // In a real implementation with @supabase/supabase-js:
-        // const { data, error } = await supabase
-        //     .from('leads')
-        //     .insert([lead])
-        //     .select();
-        
-        // For now, log the lead locally and send to Formspree
-        console.log('📨 Lead submitted:', lead);
-        
-        // Send to Formspree endpoint as fallback
-        await sendViaFormspree(lead);
-        
-        return {
-            success: true,
-            data: lead,
-            message: 'Lead submitted successfully'
-        };
+
+        // Compute a simple lead score
+        let lead_score = 0;
+        if (lead.email) lead_score += 10;
+        if (lead.phone) lead_score += 10;
+        if (lead.company_name) lead_score += 15;
+        if (lead.urgency && lead.urgency.toLowerCase().includes('urgent')) lead_score += 20;
+        if (services && services.split(',').length > 1) lead_score += 15;
+        if (lead.message && /emergency|immediate|now/i.test(lead.message)) lead_score += 30;
+        lead.lead_score = lead_score;
+
+        // Attempt to insert into Supabase
+        const supabase = await getSupabaseClient();
+        try {
+            const { data, error } = await supabase.from('leads').insert([lead]).select();
+            if (error) {
+                console.warn('Supabase insert error, falling back to Formspree:', error);
+                await sendViaFormspree(lead);
+                return { success: true, data: lead, fallback: true };
+            }
+
+            console.log('✓ Lead inserted into Supabase', data);
+            return { success: true, data };
+        } catch (dbErr) {
+            console.error('Supabase operation failed, fallback to Formspree', dbErr);
+            await sendViaFormspree(lead);
+            return { success: true, data: lead, fallback: true };
+        }
     } catch (error) {
         console.error('✗ Error submitting lead:', error);
         return {

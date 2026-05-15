@@ -1,5 +1,7 @@
 // Contact Page Specific JavaScript
 
+import { submitLead } from '../supabase/leads.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     initContactPage();
 });
@@ -63,22 +65,35 @@ function initContactForm() {
         data.services = selectedServices.join(', ');
         
         try {
-            // Send email using Formspree
-            await sendEmailToLeano(data);
-            
+            // Submit lead to Supabase (falls back to Formspree internally)
+            const payload = {
+                name: data.name,
+                email: data.email,
+                phone: data.phone,
+                company: data.company || '',
+                services: data.services || '',
+                urgency: data.urgency || '',
+                message: data.message || '',
+                newsletter: data.newsletter ? true : false,
+                source: 'website'
+            };
+
+            const result = await submitLead(payload);
+            if (!result || !result.success) throw new Error(result?.error || 'Submission failed');
+
             // Show success message
             successMessage.style.display = 'block';
             contactForm.reset();
-            
+
             // Scroll to success message
             successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
+
         } catch (error) {
-            console.error('Error sending email:', error);
-            
+            console.error('Error submitting lead:', error);
+
             // Show error message
             errorMessage.style.display = 'block';
-            
+
             // Scroll to error message
             errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } finally {
