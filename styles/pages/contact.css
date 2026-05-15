@@ -910,6 +910,7 @@ kbd {
     .rs-grid { grid-template-columns: repeat(4, 1fr); }
     .cta-card { padding: 2.75rem 1.75rem; }
     .emergency-float { bottom: 6.5rem; }
+    .jotform-ai-widget-container { right: 1.5rem; top: calc(var(--header-h) + 1rem); }
 }
 
 @media (max-width: 576px) {

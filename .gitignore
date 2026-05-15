@@ -10,7 +10,7 @@ out/
 .env.development.local
 .env.test.local
 .env.production.local
-
+jotformAI.txt
 # mac system files
 .DS_Store
 

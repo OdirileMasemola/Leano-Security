@@ -1,143 +1,189 @@
 /**
  * Admin Authentication Module
  * ================================================================
- * Handles admin user authentication (login, logout, session management)
- * 
- * This is a PLACEHOLDER for future implementation.
- * In production, connect to Supabase Auth or your auth provider.
+ * Uses Supabase Auth plus the admin_profiles table to protect the
+ * admin area with real login checks.
  */
 
-const adminAuth = {
-    currentUser: null,
-    isAuthenticated: false,
-    sessionToken: null,
+import { getSupabaseClient } from '../../scripts/supabase/client.js';
 
-    /**
-     * Initialize auth system
-     */
-    async init() {
-        console.log('🔐 Initializing admin authentication...');
-        // Load session from localStorage if exists
-        const savedSession = localStorage.getItem('admin_session');
-        if (savedSession) {
-            this.currentUser = JSON.parse(savedSession);
-            this.isAuthenticated = true;
+function normalizeEmail(email) {
+    return String(email || '').trim().toLowerCase();
+}
+
+function profileMatchesUser(profile, user) {
+    if (!profile || !user) return false;
+
+    const userEmail = normalizeEmail(user.email);
+    const profileEmail = normalizeEmail(
+        profile.email || profile.admin_email || profile.user_email || profile.login_email
+    );
+
+    const profileUserId = String(
+        profile.user_id ||
+        profile.auth_user_id ||
+        profile.auth_id ||
+        profile.supabase_user_id ||
+        ''
+    );
+
+    return profileEmail === userEmail || profileUserId === user.id;
+}
+
+const adminAuth = {
+    client: null,
+    currentUser: null,
+    currentProfile: null,
+
+    async getClient() {
+        if (!this.client) {
+            this.client = await getSupabaseClient();
         }
+        return this.client;
     },
 
-    /**
-     * Login user
-     * @param {string} email - Admin email
-     * @param {string} password - Admin password
-     * @returns {Promise<{success: boolean, user?: Object, error?: string}>}
-     */
+    async getSession() {
+        const client = await this.getClient();
+        const { data, error } = await client.auth.getSession();
+
+        if (error) {
+            throw error;
+        }
+
+        return data.session || null;
+    },
+
+    async getAdminProfile(user) {
+        const client = await this.getClient();
+        const { data, error } = await client
+            .from('admin_profiles')
+            .select('*');
+
+        if (error) {
+            throw error;
+        }
+
+        const profile = Array.isArray(data)
+            ? data.find((row) => profileMatchesUser(row, user))
+            : null;
+
+        return profile || null;
+    },
+
+    async refreshCurrentAdmin() {
+        const session = await this.getSession();
+
+        if (!session?.user) {
+            this.currentUser = null;
+            this.currentProfile = null;
+            return null;
+        }
+
+        const profile = await this.getAdminProfile(session.user);
+        if (!profile) {
+            this.currentUser = null;
+            this.currentProfile = null;
+            return null;
+        }
+
+        this.currentUser = session.user;
+        this.currentProfile = profile;
+        return { session, user: session.user, profile };
+    },
+
     async login(email, password) {
         try {
-            if (!email || !password) {
+            const cleanEmail = normalizeEmail(email);
+            if (!cleanEmail || !password) {
                 throw new Error('Email and password are required');
             }
 
-            // In production, call Supabase Auth:
-            // const { data, error } = await supabaseClient.auth.signInWithPassword({
-            //     email,
-            //     password
-            // });
+            const client = await this.getClient();
+            const { data, error } = await client.auth.signInWithPassword({
+                email: cleanEmail,
+                password
+            });
 
-            console.log('Logging in user:', email);
-            
-            // Placeholder: Simulate login
-            const user = {
-                id: 'admin_' + Date.now(),
-                email: email,
-                role: 'admin',
-                loginTime: new Date().toISOString()
+            if (error || !data?.user) {
+                throw new Error('Invalid email or password. Please try again.');
+            }
+
+            const profile = await this.getAdminProfile(data.user);
+            if (!profile) {
+                await client.auth.signOut();
+                this.currentUser = null;
+                this.currentProfile = null;
+                throw new Error('Access denied. This account is not registered as an admin.');
+            }
+
+            this.currentUser = data.user;
+            this.currentProfile = profile;
+
+            return {
+                success: true,
+                user: data.user,
+                profile
             };
-
-            this.currentUser = user;
-            this.isAuthenticated = true;
-            this.sessionToken = 'token_' + Math.random().toString(36).substr(2, 9);
-            
-            // Save to localStorage
-            localStorage.setItem('admin_session', JSON.stringify(user));
-            localStorage.setItem('admin_token', this.sessionToken);
-
-            return { success: true, user };
         } catch (error) {
-            console.error('❌ Login error:', error);
-            return { success: false, error: error.message };
+            console.error('Admin login failed:', error);
+            return {
+                success: false,
+                error: error.message || 'Login failed'
+            };
         }
     },
 
-    /**
-     * Logout user
-     */
     async logout() {
         try {
-            console.log('Logging out user:', this.currentUser?.email);
-            
+            const client = await this.getClient();
+            const { error } = await client.auth.signOut();
+
+            if (error) {
+                throw error;
+            }
+
             this.currentUser = null;
-            this.isAuthenticated = false;
-            this.sessionToken = null;
-            
-            localStorage.removeItem('admin_session');
-            localStorage.removeItem('admin_token');
-            
-            // In production, call Supabase Auth:
-            // await supabaseClient.auth.signOut();
-            
+            this.currentProfile = null;
+
             return { success: true };
         } catch (error) {
-            console.error('❌ Logout error:', error);
-            return { success: false, error: error.message };
+            console.error('Admin logout failed:', error);
+            return {
+                success: false,
+                error: error.message || 'Logout failed'
+            };
         }
     },
 
-    /**
-     * Check if user is authenticated
-     */
-    checkAuth() {
-        return this.isAuthenticated && this.currentUser !== null;
+    async requireAdminAccess() {
+        try {
+            const adminState = await this.refreshCurrentAdmin();
+            if (!adminState) {
+                await this.logout().catch(() => {});
+                window.location.href = './login.html';
+                return false;
+            }
+
+            return true;
+        } catch (error) {
+            console.error('Admin access check failed:', error);
+            await this.logout().catch(() => {});
+            window.location.href = './login.html';
+            return false;
+        }
     },
 
-    /**
-     * Get current user
-     */
+    checkAuth() {
+        return Boolean(this.currentUser && this.currentProfile);
+    },
+
     getCurrentUser() {
         return this.currentUser;
     },
 
-    /**
-     * Verify token is valid
-     */
-    verifyToken(token) {
-        return token === this.sessionToken;
-    },
-
-    /**
-     * Change password
-     */
-    async changePassword(oldPassword, newPassword) {
-        try {
-            if (!this.isAuthenticated) {
-                throw new Error('User not authenticated');
-            }
-
-            console.log('Changing password for:', this.currentUser.email);
-            
-            // In production, call Supabase Auth:
-            // const { error } = await supabaseClient.auth.updateUser({
-            //     password: newPassword
-            // });
-
-            return { success: true, message: 'Password changed successfully' };
-        } catch (error) {
-            console.error('❌ Password change error:', error);
-            return { success: false, error: error.message };
-        }
+    getCurrentProfile() {
+        return this.currentProfile;
     }
 };
-
-// Initialize on module load
-adminAuth.init();
 
 export default adminAuth;

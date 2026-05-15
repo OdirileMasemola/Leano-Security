@@ -1,209 +1,231 @@
 /**
  * Admin Dashboard Module
  * ================================================================
- * Handles dashboard initialization and data display
- * 
- * This is a PLACEHOLDER for future implementation.
+ * Loads live Supabase lead data, calculates summary stats, and lets
+ * the admin update lead status directly from the dashboard.
  */
 
 import adminAuth from './admin-auth.js';
+import {
+    fetchLeadSummary,
+    getLeadQualityLabel,
+    updateLeadStatus
+} from '../../scripts/supabase/leads.js';
+
+const STATUS_OPTIONS = ['new', 'contacted', 'qualified', 'rejected', 'converted'];
 
 const dashboard = {
     stats: {
         totalLeads: 0,
         newLeads: 0,
-        contacted: 0,
-        converted: 0
+        contactedLeads: 0,
+        qualifiedLeads: 0,
+        rejectedLeads: 0,
+        convertedLeads: 0
     },
+    recentLeads: [],
+    highScoreLeads: [],
 
-    /**
-     * Initialize dashboard
-     */
     async init() {
-        console.log('📊 Initializing admin dashboard...');
-        
-        // Check authentication
-        if (!adminAuth.checkAuth()) {
-            console.warn('⚠️ User not authenticated, redirecting to login...');
-            window.location.href = '/admin/login.html';
+        if (!(await adminAuth.requireAdminAccess())) {
             return;
         }
 
-        // Load dashboard data
-        await this.loadStats();
-        await this.loadRecentLeads();
-        
-        // Set up event listeners
+        await this.loadDashboardData();
         this.setupEventListeners();
-        
-        console.log('✓ Dashboard loaded successfully');
     },
 
-    /**
-     * Load dashboard statistics
-     */
-    async loadStats() {
-        try {
-            console.log('Loading dashboard statistics...');
-            
-            // In production, fetch from Supabase:
-            // const { data: leads } = await supabase
-            //     .from('leads')
-            //     .select('status');
-            
-            // Placeholder data
-            this.stats = {
-                totalLeads: 24,
-                newLeads: 8,
-                contacted: 12,
-                converted: 4
-            };
+    async loadDashboardData() {
+        const refreshButton = document.querySelector('[data-action="refresh"]');
+        if (refreshButton) {
+            refreshButton.disabled = true;
+        }
 
-            this.updateStatsDisplay();
+        try {
+            const result = await fetchLeadSummary({ limit: 1000 });
+            if (!result.success) {
+                throw new Error(result.error || 'Failed to load dashboard data');
+            }
+
+            const { stats, recentLeads, highScoreLeads } = result.data;
+            this.stats = stats;
+            this.recentLeads = recentLeads;
+            this.highScoreLeads = highScoreLeads;
+
+            this.renderStats();
+            this.renderLeadTable('recentLeadsBody', this.recentLeads, true);
+            this.renderLeadTable('highScoreLeadsBody', this.highScoreLeads, false);
+            this.renderMetaInfo();
         } catch (error) {
-            console.error('❌ Error loading stats:', error);
+            console.error('Dashboard load failed:', error);
+            this.renderLoadError(error.message || 'Unable to load dashboard data');
+        } finally {
+            if (refreshButton) {
+                refreshButton.disabled = false;
+            }
         }
     },
 
-    /**
-     * Update stats in UI
-     */
-    updateStatsDisplay() {
-        const statCards = document.querySelectorAll('.stat-card');
-        if (statCards.length === 0) return;
+    renderStats() {
+        const statsMap = {
+            totalLeads: this.stats.totalLeads,
+            newLeads: this.stats.newLeads,
+            contactedLeads: this.stats.contactedLeads,
+            qualifiedLeads: this.stats.qualifiedLeads,
+            rejectedLeads: this.stats.rejectedLeads,
+            convertedLeads: this.stats.convertedLeads
+        };
 
-        const stats = [
-            { label: 'Total Leads', value: this.stats.totalLeads },
-            { label: 'New Leads', value: this.stats.newLeads },
-            { label: 'Contacted', value: this.stats.contacted },
-            { label: 'Converted', value: this.stats.converted }
-        ];
-
-        statCards.forEach((card, index) => {
-            if (stats[index]) {
-                const valueEl = card.querySelector('.stat-value');
-                const labelEl = card.querySelector('.stat-label');
-                if (valueEl) valueEl.textContent = stats[index].value;
-                if (labelEl) labelEl.textContent = stats[index].label;
+        document.querySelectorAll('[data-stat-key]').forEach((card) => {
+            const key = card.dataset.statKey;
+            const valueElement = card.querySelector('.stat-value');
+            if (valueElement && Object.prototype.hasOwnProperty.call(statsMap, key)) {
+                valueElement.textContent = String(statsMap[key]);
             }
         });
     },
 
-    /**
-     * Load recent leads
-     */
-    async loadRecentLeads() {
-        try {
-            console.log('Loading recent leads...');
-            
-            // In production, fetch from Supabase:
-            // const { data: leads } = await supabase
-            //     .from('leads')
-            //     .select('*')
-            //     .order('created_at', { ascending: false })
-            //     .limit(10);
-
-            // Placeholder data
-            const leads = [
-                {
-                    id: 1,
-                    name: 'John Doe',
-                    email: 'john@example.com',
-                    subject: 'Security Consultation',
-                    status: 'new',
-                    created_at: new Date().toISOString()
-                },
-                {
-                    id: 2,
-                    name: 'Jane Smith',
-                    email: 'jane@example.com',
-                    subject: 'Penetration Testing',
-                    status: 'contacted',
-                    created_at: new Date().toISOString()
-                }
-            ];
-
-            this.displayLeads(leads);
-        } catch (error) {
-            console.error('❌ Error loading leads:', error);
-        }
-    },
-
-    /**
-     * Display leads in table
-     */
-    displayLeads(leads) {
-        const tbody = document.querySelector('.leads-table tbody');
+    renderLeadTable(tbodyId, leads, includeCompany) {
+        const tbody = document.getElementById(tbodyId);
         if (!tbody) return;
 
-        tbody.innerHTML = '';
-        leads.forEach(lead => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${lead.name}</td>
-                <td>${lead.email}</td>
-                <td>${lead.subject}</td>
-                <td>
-                    <span class="badge badge-${lead.status}">
-                        ${lead.status}
-                    </span>
-                </td>
-                <td>
-                    <button class="btn-sm" onclick="dashboard.editLead(${lead.id})">Edit</button>
-                    <button class="btn-sm btn-danger" onclick="dashboard.deleteLead(${lead.id})">Delete</button>
-                </td>
+        const columnCount = includeCompany ? 7 : 6;
+
+        if (!leads.length) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="${columnCount}" style="text-align:center;padding:2rem;color:#9aa2af;">No leads found</td>
+                </tr>
             `;
-            tbody.appendChild(row);
+            return;
+        }
+
+        tbody.innerHTML = leads.map((lead) => {
+            const scoreLabel = getLeadQualityLabel(lead.lead_score);
+            const companyCell = includeCompany
+                ? `<td>${this.escapeHtml(lead.company_name || 'N/A')}</td>`
+                : '';
+
+            return `
+                <tr>
+                    <td>
+                        <div class="cell-name">${this.escapeHtml(lead.full_name || 'Unknown Lead')}</div>
+                        <div class="cell-email">${this.escapeHtml(lead.source || 'website')}</div>
+                    </td>
+                    <td>${this.escapeHtml(lead.email || '')}</td>
+                    ${companyCell}
+                    <td>${this.escapeHtml(lead.service_type || '')}</td>
+                    <td>
+                        <span class="lead-score quality-${scoreLabel}">${lead.lead_score}</span>
+                    </td>
+                    <td>
+                        <select class="status-select" data-lead-id="${lead.id}" data-current-status="${this.escapeHtml(lead.status)}">
+                            ${STATUS_OPTIONS.map((status) => `<option value="${status}" ${lead.status === status ? 'selected' : ''}>${this.formatStatusLabel(status)}</option>`).join('')}
+                        </select>
+                    </td>
+                    <td>${this.formatDate(lead.created_at)}</td>
+                </tr>
+            `;
+        }).join('');
+
+        tbody.querySelectorAll('.status-select').forEach((select) => {
+            select.addEventListener('change', async (event) => {
+                const leadId = event.target.dataset.leadId;
+                const previousStatus = event.target.dataset.currentStatus;
+                const newStatus = event.target.value;
+
+                event.target.disabled = true;
+                const result = await updateLeadStatus(leadId, newStatus, {
+                    adminUserId: adminAuth.getCurrentUser()?.id,
+                    previousStatus
+                });
+
+                if (!result.success) {
+                    event.target.value = previousStatus;
+                    console.error(result.error || 'Unable to update lead status');
+                } else {
+                    event.target.dataset.currentStatus = newStatus;
+                    await this.loadDashboardData();
+                }
+
+                event.target.disabled = false;
+            });
         });
     },
 
-    /**
-     * Edit lead (placeholder)
-     */
-    editLead(leadId) {
-        console.log('Editing lead:', leadId);
-        // In production, open edit modal or navigate to edit page
-    },
-
-    /**
-     * Delete lead (placeholder)
-     */
-    deleteLead(leadId) {
-        if (confirm('Are you sure you want to delete this lead?')) {
-            console.log('Deleting lead:', leadId);
-            // In production, call deleteLead from leads.js
+    renderMetaInfo() {
+        const recentUpdated = document.querySelector('[data-dashboard-updated]');
+        if (recentUpdated) {
+            recentUpdated.textContent = `Updated ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
         }
     },
 
-    /**
-     * Set up event listeners
-     */
+    renderLoadError(message) {
+        const recentBody = document.getElementById('recentLeadsBody');
+        const highScoreBody = document.getElementById('highScoreLeadsBody');
+        const recentErrorHtml = `
+            <tr>
+                <td colspan="7" style="text-align:center;padding:2rem;color:#d62839;">${this.escapeHtml(message)}</td>
+            </tr>
+        `;
+        const highScoreErrorHtml = `
+            <tr>
+                <td colspan="6" style="text-align:center;padding:2rem;color:#d62839;">${this.escapeHtml(message)}</td>
+            </tr>
+        `;
+
+        if (recentBody) recentBody.innerHTML = recentErrorHtml;
+        if (highScoreBody) highScoreBody.innerHTML = highScoreErrorHtml;
+    },
+
     setupEventListeners() {
-        // Logout button
-        const logoutBtn = document.querySelector('[data-action="logout"]');
-        if (logoutBtn) {
-            logoutBtn.addEventListener('click', () => this.logout());
+        const logoutButton = document.querySelector('[data-action="logout"]');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', async () => {
+                await this.logout();
+            });
         }
 
-        // Refresh button
-        const refreshBtn = document.querySelector('[data-action="refresh"]');
-        if (refreshBtn) {
-            refreshBtn.addEventListener('click', () => this.loadStats());
+        const refreshButton = document.querySelector('[data-action="refresh"]');
+        if (refreshButton) {
+            refreshButton.addEventListener('click', async () => {
+                await this.loadDashboardData();
+            });
         }
     },
 
-    /**
-     * Logout and redirect to login
-     */
     async logout() {
         const result = await adminAuth.logout();
         if (result.success) {
-            window.location.href = '/admin/login.html';
+            window.location.href = './login.html';
         }
+    },
+
+    formatDate(value) {
+        if (!value) return 'N/A';
+        return new Date(value).toLocaleDateString('en-ZA', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+    },
+
+    formatStatusLabel(status) {
+        return String(status)
+            .replace(/_/g, ' ')
+            .replace(/\b\w/g, (letter) => letter.toUpperCase());
+    },
+
+    escapeHtml(value) {
+        return String(value || '')
+            .replaceAll('&', '&amp;')
+            .replaceAll('<', '&lt;')
+            .replaceAll('>', '&gt;')
+            .replaceAll('"', '&quot;')
+            .replaceAll("'", '&#39;');
     }
 };
 
-// Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => dashboard.init());
 
 export default dashboard;

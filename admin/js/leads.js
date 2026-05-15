@@ -1,282 +1,241 @@
 /**
  * Admin Leads Management Module
  * ================================================================
- * Handles leads list, filtering, editing, and bulk operations
- * 
- * This is a PLACEHOLDER for future implementation.
+ * Fetches live Supabase lead data and supports search, filtering,
+ * urgency filtering, and status updates.
  */
 
 import adminAuth from './admin-auth.js';
+import {
+    fetchLeads,
+    getLeadQualityLabel,
+    updateLeadStatus
+} from '../../scripts/supabase/leads.js';
+
+const STATUS_OPTIONS = ['all', 'new', 'contacted', 'qualified', 'rejected', 'converted'];
+const URGENCY_OPTIONS = ['all', 'routine', 'urgent', 'emergency'];
 
 const leadsManager = {
     leads: [],
     filteredLeads: [],
     currentFilter: 'all',
-    sortBy: 'created_at',
-    sortOrder: 'desc',
+    currentUrgency: 'all',
+    searchQuery: '',
 
-    /**
-     * Initialize leads manager
-     */
     async init() {
-        console.log('📋 Initializing leads manager...');
-        
-        if (!adminAuth.checkAuth()) {
-            window.location.href = '/admin/login.html';
+        if (!(await adminAuth.requireAdminAccess())) {
             return;
         }
 
-        await this.loadLeads();
         this.setupEventListeners();
-        this.render();
+        await this.loadLeads();
     },
 
-    /**
-     * Load leads from Supabase
-     */
     async loadLeads() {
-        try {
-            console.log('Loading leads from Supabase...');
-            
-            // In production:
-            // const { data } = await supabase
-            //     .from('leads')
-            //     .select('*')
-            //     .order('created_at', { ascending: false });
-            
-            // Placeholder data
-            this.leads = [
-                {
-                    id: '1',
-                    name: 'John Doe',
-                    email: 'john@example.com',
-                    phone: '+27123456789',
-                    company: 'Tech Corp',
-                    subject: 'Security Consultation',
-                    message: 'Interested in your services',
-                    status: 'new',
-                    source: 'website_form',
-                    created_at: '2024-01-15T10:30:00Z'
-                },
-                {
-                    id: '2',
-                    name: 'Jane Smith',
-                    email: 'jane@example.com',
-                    phone: '+27987654321',
-                    company: 'Finance Inc',
-                    subject: 'Penetration Testing',
-                    message: 'Request for pentest quote',
-                    status: 'contacted',
-                    source: 'website_form',
-                    created_at: '2024-01-14T14:20:00Z'
-                },
-                {
-                    id: '3',
-                    name: 'Bob Wilson',
-                    email: 'bob@example.com',
-                    phone: '+27456789012',
-                    company: null,
-                    subject: 'General Inquiry',
-                    message: 'Want to learn more',
-                    status: 'new',
-                    source: 'website_form',
-                    created_at: '2024-01-13T09:15:00Z'
-                }
-            ];
-
-            this.filteredLeads = [...this.leads];
-            console.log(`✓ Loaded ${this.leads.length} leads`);
-        } catch (error) {
-            console.error('❌ Error loading leads:', error);
-        }
-    },
-
-    /**
-     * Filter leads by status
-     */
-    filterByStatus(status) {
-        this.currentFilter = status;
-        if (status === 'all') {
-            this.filteredLeads = [...this.leads];
-        } else {
-            this.filteredLeads = this.leads.filter(l => l.status === status);
-        }
-        this.render();
-    },
-
-    /**
-     * Search leads
-     */
-    search(query) {
-        const q = query.toLowerCase();
-        this.filteredLeads = this.leads.filter(l =>
-            l.name.toLowerCase().includes(q) ||
-            l.email.toLowerCase().includes(q) ||
-            l.phone.includes(q) ||
-            (l.company && l.company.toLowerCase().includes(q))
-        );
-        this.render();
-    },
-
-    /**
-     * Sort leads
-     */
-    sort(field) {
-        if (this.sortBy === field) {
-            this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
-        } else {
-            this.sortBy = field;
-            this.sortOrder = 'desc';
-        }
-
-        this.filteredLeads.sort((a, b) => {
-            let aVal = a[field];
-            let bVal = b[field];
-
-            if (typeof aVal === 'string') {
-                aVal = aVal.toLowerCase();
-                bVal = bVal.toLowerCase();
-            }
-
-            if (this.sortOrder === 'asc') {
-                return aVal > bVal ? 1 : -1;
-            } else {
-                return aVal < bVal ? 1 : -1;
-            }
-        });
-
-        this.render();
-    },
-
-    /**
-     * Update lead status
-     */
-    async updateStatus(leadId, newStatus) {
-        try {
-            const lead = this.leads.find(l => l.id === leadId);
-            if (!lead) throw new Error('Lead not found');
-
-            // In production:
-            // const { error } = await supabase
-            //     .from('leads')
-            //     .update({ status: newStatus })
-            //     .eq('id', leadId);
-
-            lead.status = newStatus;
-            this.filteredLeads = this.filteredLeads.map(l =>
-                l.id === leadId ? { ...l, status: newStatus } : l
-            );
-
-            this.render();
-            console.log(`✓ Lead ${leadId} status updated to ${newStatus}`);
-        } catch (error) {
-            console.error('❌ Error updating status:', error);
-        }
-    },
-
-    /**
-     * Delete lead
-     */
-    async deleteLead(leadId) {
-        if (!confirm('Are you sure you want to delete this lead?')) return;
-
-        try {
-            // In production:
-            // const { error } = await supabase
-            //     .from('leads')
-            //     .delete()
-            //     .eq('id', leadId);
-
-            this.leads = this.leads.filter(l => l.id !== leadId);
-            this.filteredLeads = this.filteredLeads.filter(l => l.id !== leadId);
-            this.render();
-            console.log(`✓ Lead ${leadId} deleted`);
-        } catch (error) {
-            console.error('❌ Error deleting lead:', error);
-        }
-    },
-
-    /**
-     * Render leads table
-     */
-    render() {
-        const tbody = document.querySelector('.leads-table tbody');
-        if (!tbody) return;
-
-        tbody.innerHTML = '';
-
-        if (this.filteredLeads.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:2rem;color:#999;">No leads found</td></tr>';
-            return;
-        }
-
-        this.filteredLeads.forEach(lead => {
-            const row = document.createElement('tr');
-            const dateStr = new Date(lead.created_at).toLocaleDateString();
-
-            row.innerHTML = `
-                <td><strong>${lead.name}</strong></td>
-                <td>${lead.email}</td>
-                <td>${lead.phone}</td>
-                <td>${lead.subject}</td>
-                <td>
-                    <select class="status-select" data-lead-id="${lead.id}">
-                        <option value="new" ${lead.status === 'new' ? 'selected' : ''}>New</option>
-                        <option value="contacted" ${lead.status === 'contacted' ? 'selected' : ''}>Contacted</option>
-                        <option value="converted" ${lead.status === 'converted' ? 'selected' : ''}>Converted</option>
-                    </select>
-                </td>
-                <td>
-                    <button class="btn-delete" data-lead-id="${lead.id}" title="Delete">🗑️</button>
-                </td>
-            `;
-
-            // Add event listeners
-            const statusSelect = row.querySelector('.status-select');
-            statusSelect.addEventListener('change', (e) => {
-                this.updateStatus(lead.id, e.target.value);
-            });
-
-            const deleteBtn = row.querySelector('.btn-delete');
-            deleteBtn.addEventListener('click', () => {
-                this.deleteLead(lead.id);
-            });
-
-            tbody.appendChild(row);
-        });
-    },
-
-    /**
-     * Set up event listeners
-     */
-    setupEventListeners() {
-        // Filter buttons
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                e.target.classList.add('active');
-                this.filterByStatus(e.target.dataset.status);
-            });
-        });
-
-        // Search input
         const searchInput = document.querySelector('.search-input');
         if (searchInput) {
-            searchInput.addEventListener('input', (e) => {
-                this.search(e.target.value);
+            searchInput.disabled = true;
+        }
+
+        try {
+            const result = await fetchLeads({ limit: 1000 });
+            if (!result.success) {
+                throw new Error(result.error || 'Failed to load leads');
+            }
+
+            this.leads = result.data;
+            this.applyFilters();
+        } catch (error) {
+            console.error('Lead load failed:', error);
+            this.renderError(error.message || 'Unable to load leads');
+        } finally {
+            if (searchInput) {
+                searchInput.disabled = false;
+            }
+        }
+    },
+
+    applyFilters() {
+        const query = this.searchQuery.toLowerCase();
+
+        this.filteredLeads = this.leads.filter((lead) => {
+            const statusMatches = this.currentFilter === 'all' || lead.status === this.currentFilter;
+            const urgencyMatches = this.currentUrgency === 'all' || String(lead.urgency || '').toLowerCase() === this.currentUrgency;
+            const searchMatches = !query || [
+                lead.full_name,
+                lead.email,
+                lead.phone,
+                lead.company_name,
+                lead.service_type
+            ].join(' ').toLowerCase().includes(query);
+
+            return statusMatches && urgencyMatches && searchMatches;
+        });
+
+        this.render();
+    },
+
+    async changeStatus(leadId, newStatus, previousStatus) {
+        const statusSelect = document.querySelector(`.status-select[data-lead-id="${leadId}"]`);
+        if (statusSelect) {
+            statusSelect.disabled = true;
+        }
+
+        try {
+            const result = await updateLeadStatus(leadId, newStatus, {
+                adminUserId: adminAuth.getCurrentUser()?.id,
+                previousStatus
+            });
+
+            if (!result.success) {
+                throw new Error(result.error || 'Failed to update status');
+            }
+
+            await this.loadLeads();
+        } catch (error) {
+            console.error('Status update failed:', error);
+            if (statusSelect) {
+                statusSelect.value = previousStatus;
+            }
+        } finally {
+            if (statusSelect) {
+                statusSelect.disabled = false;
+            }
+        }
+    },
+
+    render() {
+        const tbody = document.getElementById('leadsTableBody');
+        if (!tbody) return;
+
+        if (!this.filteredLeads.length) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="9" style="text-align:center;padding:2rem;color:#9aa2af;">No leads found</td>
+                </tr>
+            `;
+            return;
+        }
+
+        tbody.innerHTML = this.filteredLeads.map((lead) => {
+            const quality = getLeadQualityLabel(lead.lead_score);
+            return `
+                <tr>
+                    <td>
+                        <div class="cell-name">${this.escapeHtml(lead.full_name || 'Unknown Lead')}</div>
+                        <div class="cell-email">${this.escapeHtml(lead.source || 'website')}</div>
+                    </td>
+                    <td>${this.escapeHtml(lead.email || '')}</td>
+                    <td>${this.escapeHtml(lead.phone || '')}</td>
+                    <td>${this.escapeHtml(lead.company_name || 'N/A')}</td>
+                    <td>${this.escapeHtml(lead.service_type || 'N/A')}</td>
+                    <td>
+                        <span class="urgency-pill urgency-${this.escapeHtml(String(lead.urgency || 'routine').toLowerCase())}">${this.formatLabel(lead.urgency || 'routine')}</span>
+                    </td>
+                    <td>
+                        <select class="status-select" data-lead-id="${lead.id}" data-current-status="${this.escapeHtml(lead.status)}">
+                            ${['new', 'contacted', 'qualified', 'rejected', 'converted'].map((status) => `<option value="${status}" ${lead.status === status ? 'selected' : ''}>${this.formatLabel(status)}</option>`).join('')}
+                        </select>
+                    </td>
+                    <td>
+                        <span class="lead-score quality-${quality}">${lead.lead_score}</span>
+                    </td>
+                    <td>${this.formatDate(lead.created_at)}</td>
+                </tr>
+            `;
+        }).join('');
+
+        tbody.querySelectorAll('.status-select').forEach((select) => {
+            select.addEventListener('change', async (event) => {
+                const leadId = event.target.dataset.leadId;
+                const previousStatus = event.target.dataset.currentStatus;
+                const newStatus = event.target.value;
+                event.target.dataset.currentStatus = newStatus;
+                await this.changeStatus(leadId, newStatus, previousStatus);
+            });
+        });
+    },
+
+    renderError(message) {
+        const tbody = document.getElementById('leadsTableBody');
+        if (!tbody) return;
+
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="9" style="text-align:center;padding:2rem;color:#d62839;">${this.escapeHtml(message)}</td>
+            </tr>
+        `;
+    },
+
+    setupEventListeners() {
+        const searchInput = document.querySelector('.search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', (event) => {
+                this.searchQuery = event.target.value;
+                this.applyFilters();
             });
         }
 
-        // Sort headers
-        document.querySelectorAll('[data-sort]').forEach(header => {
-            header.addEventListener('click', () => {
-                this.sort(header.dataset.sort);
+        document.querySelectorAll('[data-status]').forEach((button) => {
+            button.addEventListener('click', (event) => {
+                document.querySelectorAll('[data-status]').forEach((item) => item.classList.remove('active'));
+                event.currentTarget.classList.add('active');
+                this.currentFilter = event.currentTarget.dataset.status;
+                this.applyFilters();
             });
         });
+
+        const urgencyFilter = document.querySelector('[data-urgency-filter]');
+        if (urgencyFilter) {
+            urgencyFilter.addEventListener('change', (event) => {
+                this.currentUrgency = event.target.value;
+                this.applyFilters();
+            });
+        }
+
+        const refreshButton = document.querySelector('[data-action="refresh"]');
+        if (refreshButton) {
+            refreshButton.addEventListener('click', async () => {
+                await this.loadLeads();
+            });
+        }
+
+        const logoutButton = document.querySelector('[data-action="logout"]');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', async () => {
+                const result = await adminAuth.logout();
+                if (result.success) {
+                    window.location.href = './login.html';
+                }
+            });
+        }
+    },
+
+    formatDate(value) {
+        if (!value) return 'N/A';
+        return new Date(value).toLocaleDateString('en-ZA', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+    },
+
+    formatLabel(value) {
+        return String(value)
+            .replace(/_/g, ' ')
+            .replace(/\b\w/g, (letter) => letter.toUpperCase());
+    },
+
+    escapeHtml(value) {
+        return String(value || '')
+            .replaceAll('&', '&amp;')
+            .replaceAll('<', '&lt;')
+            .replaceAll('>', '&gt;')
+            .replaceAll('"', '&quot;')
+            .replaceAll("'", '&#39;');
     }
 };
 
-// Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => leadsManager.init());
 
 export default leadsManager;

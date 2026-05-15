@@ -7,7 +7,7 @@
     <title>Leads Management - Leano Security</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="./css/admin.css">
 </head>
 <body>
     <div class="admin-container">
@@ -20,9 +20,9 @@
 
             <nav>
                 <ul class="sidebar-nav">
-                    <li><a href="/admin/dashboard.html"><i class="material-icons">dashboard</i><span>Dashboard</span></a></li>
-                    <li><a href="/admin/leads.html" class="active"><i class="material-icons">list_alt</i><span>Leads</span></a></li>
-                    <li><a href="/admin/login.html" data-action="logout"><i class="material-icons">logout</i><span>Logout</span></a></li>
+                    <li><a href="./dashboard.html"><i class="material-icons">dashboard</i><span>Dashboard</span></a></li>
+                    <li><a href="./leads.html" class="active"><i class="material-icons">list_alt</i><span>Leads</span></a></li>
+                    <li><a href="./login.html" data-action="logout"><i class="material-icons">logout</i><span>Logout</span></a></li>
                 </ul>
             </nav>
         </aside>
@@ -45,19 +45,32 @@
 
             <!-- Controls Section -->
             <div class="card">
-                <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; justify-content: space-between; align-items: center;">
-                    <div style="flex: 1; min-width: 300px;">
+                <div class="section-toolbar">
+                    <div class="toolbar-search-wrap">
                         <input 
                             type="text" 
                             class="search-input" 
-                            placeholder="Search by name, email, phone, or company..."
+                            placeholder="Search by name, email, phone, company, or service..."
                         >
                     </div>
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" data-status="all">All</button>
-                        <button class="filter-btn" data-status="new">New</button>
-                        <button class="filter-btn" data-status="contacted">Contacted</button>
-                        <button class="filter-btn" data-status="converted">Converted</button>
+                    <div class="toolbar-controls">
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-status="all">All</button>
+                            <button class="filter-btn" data-status="new">New</button>
+                            <button class="filter-btn" data-status="contacted">Contacted</button>
+                            <button class="filter-btn" data-status="qualified">Qualified</button>
+                            <button class="filter-btn" data-status="rejected">Rejected</button>
+                            <button class="filter-btn" data-status="converted">Converted</button>
+                        </div>
+                        <select class="urgency-select" data-urgency-filter>
+                            <option value="all">All urgency</option>
+                            <option value="routine">Routine</option>
+                            <option value="urgent">Urgent</option>
+                            <option value="emergency">Emergency</option>
+                        </select>
+                        <button class="btn btn-primary btn-sm" data-action="refresh">
+                            <i class="material-icons">refresh</i><span>Refresh</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -68,17 +81,20 @@
                     <table class="leads-table">
                         <thead>
                             <tr>
-                                <th data-sort="name"><i class="material-icons">person</i>Name</th>
-                                <th data-sort="email"><i class="material-icons">email</i>Email</th>
-                                <th data-sort="phone"><i class="material-icons">phone</i>Phone</th>
-                                <th data-sort="subject"><i class="material-icons">subject</i>Subject</th>
-                                <th data-sort="status"><i class="material-icons">info</i>Status</th>
-                                <th><i class="material-icons">settings</i>Actions</th>
+                                <th>Lead</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Company</th>
+                                <th>Service</th>
+                                <th>Urgency</th>
+                                <th>Status</th>
+                                <th>Score</th>
+                                <th>Created</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="leadsTableBody">
                             <tr>
-                                <td colspan="6" style="text-align: center; padding: 2rem; color: #999;">
+                                <td colspan="9" style="text-align: center; padding: 2rem; color: #999;">
                                     Loading leads...
                                 </td>
                             </tr>
@@ -92,14 +108,20 @@
                 <div class="info-content">
                     <i class="material-icons">info</i>
                     <div>
-                        <strong>Info:</strong> This leads management system is currently a placeholder. 
-                        In production, it will connect to Supabase for real lead management with full CRUD operations.
+                        <strong>Info:</strong> Use the filters above to search by lead details, switch status quickly, and keep urgent leads visible.
                     </div>
                 </div>
             </div>
         </main>
     </div>
 
-    <script type="module" src="../js/leads.js"></script>
+    <!-- Jotform AI Agent Widget Container -->
+    <div id="jotform-ai-widget-container" class="jotform-ai-widget-container">
+        <script
+          src='https://cdn.jotfor.ms/agent/embedjs/019e2c33d3237eb0806c5651e0bcc8663d50/embed.js?autoOpenChatIn=0'>
+        </script>
+    </div>
+
+    <script type="module" src="./js/leads.js"></script>
 </body>
 </html>
