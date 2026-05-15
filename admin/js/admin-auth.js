@@ -1,33 +1,14 @@
 /**
  * Admin Authentication Module
  * ================================================================
- * Uses Supabase Auth plus the admin_profiles table to protect the
- * admin area with real login checks.
+ * Uses Supabase Auth and admin_profiles table to protect admin pages.
  */
 
 import { getSupabaseClient } from '../../scripts/supabase/client.js';
 
+// clean email before login
 function normalizeEmail(email) {
     return String(email || '').trim().toLowerCase();
-}
-
-function profileMatchesUser(profile, user) {
-    if (!profile || !user) return false;
-
-    const userEmail = normalizeEmail(user.email);
-    const profileEmail = normalizeEmail(
-        profile.email || profile.admin_email || profile.user_email || profile.login_email
-    );
-
-    const profileUserId = String(
-        profile.user_id ||
-        profile.auth_user_id ||
-        profile.auth_id ||
-        profile.supabase_user_id ||
-        ''
-    );
-
-    return profileEmail === userEmail || profileUserId === user.id;
 }
 
 const adminAuth = {
@@ -39,11 +20,13 @@ const adminAuth = {
         if (!this.client) {
             this.client = await getSupabaseClient();
         }
+
         return this.client;
     },
 
     async getSession() {
         const client = await this.getClient();
+
         const { data, error } = await client.auth.getSession();
 
         if (error) {
@@ -55,19 +38,25 @@ const adminAuth = {
 
     async getAdminProfile(user) {
         const client = await this.getClient();
-        const { data, error } = await client
-            .from('admin_profiles')
-            .select('*');
 
-        if (error) {
-            throw error;
+        if (!user?.id) {
+            return null;
         }
 
-        const profile = Array.isArray(data)
-            ? data.find((row) => profileMatchesUser(row, user))
-            : null;
+        // important:
+        // admin_profiles.id must match auth.users.id
+        const { data, error } = await client
+            .from('admin_profiles')
+            .select('*')
+            .eq('id', user.id)
+            .single();
 
-        return profile || null;
+        if (error) {
+            console.error('Admin profile lookup failed:', error);
+            return null;
+        }
+
+        return data || null;
     },
 
     async refreshCurrentAdmin() {
@@ -80,6 +69,7 @@ const adminAuth = {
         }
 
         const profile = await this.getAdminProfile(session.user);
+
         if (!profile) {
             this.currentUser = null;
             this.currentProfile = null;
@@ -88,20 +78,27 @@ const adminAuth = {
 
         this.currentUser = session.user;
         this.currentProfile = profile;
-        return { session, user: session.user, profile };
+
+        return {
+            session,
+            user: session.user,
+            profile
+        };
     },
 
     async login(email, password) {
         try {
             const cleanEmail = normalizeEmail(email);
+
             if (!cleanEmail || !password) {
-                throw new Error('Email and password are required');
+                throw new Error('Email and password are required.');
             }
 
             const client = await this.getClient();
+
             const { data, error } = await client.auth.signInWithPassword({
                 email: cleanEmail,
-                password
+                password: password
             });
 
             if (error || !data?.user) {
@@ -109,10 +106,13 @@ const adminAuth = {
             }
 
             const profile = await this.getAdminProfile(data.user);
+
             if (!profile) {
                 await client.auth.signOut();
+
                 this.currentUser = null;
                 this.currentProfile = null;
+
                 throw new Error('Access denied. This account is not registered as an admin.');
             }
 
@@ -122,13 +122,14 @@ const adminAuth = {
             return {
                 success: true,
                 user: data.user,
-                profile
+                profile: profile
             };
         } catch (error) {
             console.error('Admin login failed:', error);
+
             return {
                 success: false,
-                error: error.message || 'Login failed'
+                error: error.message || 'Login failed.'
             };
         }
     },
@@ -136,6 +137,7 @@ const adminAuth = {
     async logout() {
         try {
             const client = await this.getClient();
+
             const { error } = await client.auth.signOut();
 
             if (error) {
@@ -145,12 +147,15 @@ const adminAuth = {
             this.currentUser = null;
             this.currentProfile = null;
 
-            return { success: true };
+            return {
+                success: true
+            };
         } catch (error) {
             console.error('Admin logout failed:', error);
+
             return {
                 success: false,
-                error: error.message || 'Logout failed'
+                error: error.message || 'Logout failed.'
             };
         }
     },
@@ -158,8 +163,10 @@ const adminAuth = {
     async requireAdminAccess() {
         try {
             const adminState = await this.refreshCurrentAdmin();
+
             if (!adminState) {
                 await this.logout().catch(() => {});
+
                 window.location.href = './login.html';
                 return false;
             }
@@ -167,7 +174,9 @@ const adminAuth = {
             return true;
         } catch (error) {
             console.error('Admin access check failed:', error);
+
             await this.logout().catch(() => {});
+
             window.location.href = './login.html';
             return false;
         }
