@@ -2,7 +2,11 @@
  * Supabase Lead Data Helpers
  * ================================================================
  * Shared helpers for inserting, querying, scoring, and updating leads.
- * This file is used by the public contact form and the admin dashboard.
+ * 
+ * Important:
+ * - Public contact form only inserts leads.
+ * - Public contact form must NOT select leads after insert.
+ * - Admin dashboard fetches/selects leads after admin login.
  */
 
 import { getSupabaseClient } from './client.js';
@@ -44,6 +48,7 @@ function calculateLeadScore(lead) {
     if (lead.service_type) score += 15;
 
     const urgency = normalizeText(lead.urgency).toLowerCase();
+
     if (urgency === 'urgent') score += 20;
     if (urgency === 'emergency') score += 30;
 
@@ -52,7 +57,11 @@ function calculateLeadScore(lead) {
     }
 
     const message = normalizeText(lead.message).toLowerCase();
-    if (message.includes('quote') || message.includes('consult')) score += 5;
+
+    if (message.includes('quote') || message.includes('consult')) {
+        score += 5;
+    }
+
     if (message.includes('now') || message.includes('asap') || message.includes('immediate')) {
         score += 10;
     }
@@ -69,7 +78,7 @@ function normalizeLeadRow(row) {
     const status = normalizeText(row.status || 'new').toLowerCase();
 
     return {
-        id: row.id,
+        id: row.id || null,
         full_name: fullName,
         email: normalizeEmail(row.email),
         phone: normalizeText(row.phone),
@@ -81,13 +90,14 @@ function normalizeLeadRow(row) {
         lead_quality: getLeadQuality(leadScore),
         source: normalizeText(row.source || 'website'),
         message: normalizeText(row.message),
-        created_at: row.created_at,
+        created_at: row.created_at || null,
         updated_at: row.updated_at || null
     };
 }
 
 function matchesSearch(lead, query) {
     const searchTerm = normalizeText(query).toLowerCase();
+
     if (!searchTerm) return true;
 
     const searchableValue = [
@@ -104,7 +114,12 @@ function matchesSearch(lead, query) {
 }
 
 function applyLeadFilters(leads, options = {}) {
-    const { search = '', status = 'all', urgency = 'all', highScoreOnly = false } = options;
+    const {
+        search = '',
+        status = 'all',
+        urgency = 'all',
+        highScoreOnly = false
+    } = options;
 
     return leads.filter((lead) => {
         const statusMatches = status === 'all' || lead.status === status;
@@ -120,6 +135,7 @@ function sortLeadsNewestFirst(leads) {
     return [...leads].sort((left, right) => {
         const leftTime = new Date(left.created_at || 0).getTime();
         const rightTime = new Date(right.created_at || 0).getTime();
+
         return rightTime - leftTime;
     });
 }
@@ -189,10 +205,16 @@ export async function submitLead(leadData) {
         };
 
         const supabase = await getSupabaseClient();
-        const { data, error } = await supabase
+
+        /**
+         * Public form insert:
+         * Do NOT use .select() here.
+         * Public visitors are only allowed to insert leads.
+         * Selecting after insert can fail because public users cannot read leads.
+         */
+        const { error } = await supabase
             .from('leads')
-            .insert([lead])
-            .select(LEAD_SELECT_COLUMNS);
+            .insert([lead]);
 
         if (error) {
             throw error;
@@ -200,10 +222,11 @@ export async function submitLead(leadData) {
 
         return {
             success: true,
-            data: Array.isArray(data) && data.length > 0 ? normalizeLeadRow(data[0]) : normalizeLeadRow(lead)
+            data: normalizeLeadRow(lead)
         };
     } catch (error) {
         console.error('Lead submission failed:', error);
+
         return {
             success: false,
             error: error.message || 'Failed to submit lead',
@@ -216,6 +239,7 @@ export async function fetchLeads(options = {}) {
     try {
         const supabase = await getSupabaseClient();
         const limit = Number.isFinite(options.limit) ? options.limit : 1000;
+
         const { data, error } = await supabase
             .from('leads')
             .select(LEAD_SELECT_COLUMNS)
@@ -235,6 +259,7 @@ export async function fetchLeads(options = {}) {
         };
     } catch (error) {
         console.error('Fetch leads failed:', error);
+
         return {
             success: false,
             error: error.message || 'Failed to fetch leads',
@@ -244,14 +269,20 @@ export async function fetchLeads(options = {}) {
 }
 
 export async function fetchLeadSummary(options = {}) {
-    const result = await fetchLeads({ ...options, limit: options.limit || 1000 });
+    const result = await fetchLeads({
+        ...options,
+        limit: options.limit || 1000
+    });
+
     if (!result.success) {
         return result;
     }
 
     const leads = result.data;
     const stats = computeLeadStats(leads);
-    const highScoreLeads = leads.filter((lead) => lead.lead_score >= 61).slice(0, 5);
+    const highScoreLeads = leads
+        .filter((lead) => lead.lead_score >= 61)
+        .slice(0, 5);
 
     return {
         success: true,
@@ -267,11 +298,13 @@ export async function fetchLeadSummary(options = {}) {
 export async function updateLeadStatus(leadId, status, options = {}) {
     try {
         const normalizedStatus = normalizeText(status).toLowerCase();
+
         if (!LEAD_STATUSES.includes(normalizedStatus)) {
             throw new Error(`Invalid status: ${status}`);
         }
 
         const supabase = await getSupabaseClient();
+
         const { data, error } = await supabase
             .from('leads')
             .update({
@@ -285,20 +318,18 @@ export async function updateLeadStatus(leadId, status, options = {}) {
             throw error;
         }
 
-        const updatedLead = Array.isArray(data) && data.length > 0 ? normalizeLeadRow(data[0]) : null;
+        const updatedLead = Array.isArray(data) && data.length > 0
+            ? normalizeLeadRow(data[0])
+            : null;
 
         if (options.adminUserId) {
             try {
                 await supabase.from('lead_activities').insert([
                     {
                         lead_id: leadId,
-                        admin_user_id: options.adminUserId,
+                        admin_id: options.adminUserId,
                         activity_type: 'status_changed',
-                        description: `Status changed to ${normalizedStatus}`,
-                        metadata: {
-                            previous_status: options.previousStatus || null,
-                            new_status: normalizedStatus
-                        }
+                        description: `Status changed to ${normalizedStatus}`
                     }
                 ]);
             } catch (activityError) {
@@ -312,6 +343,7 @@ export async function updateLeadStatus(leadId, status, options = {}) {
         };
     } catch (error) {
         console.error('Update lead status failed:', error);
+
         return {
             success: false,
             error: error.message || 'Failed to update lead status',
