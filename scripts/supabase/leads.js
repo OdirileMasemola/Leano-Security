@@ -3,10 +3,42 @@
  * ================================================================
  * Shared helpers for inserting, querying, scoring, and updating leads.
  * 
- * Important:
+ * IMPORTANT SECURITY SETUP:
+ * ================================================================
+ * 
+ * Row-Level Security (RLS) Configuration for Leads Table:
+ * 
+ * 1. Enable RLS on `leads` table:
+ *    ALTER TABLE leads ENABLE ROW LEVEL SECURITY;
+ * 
+ * 2. Public users can INSERT leads (contact form submission):
+ *    CREATE POLICY "Public users can insert leads"
+ *    ON leads
+ *    FOR INSERT
+ *    WITH CHECK (true);
+ * 
+ * 3. Only authenticated admins can SELECT/UPDATE/DELETE leads:
+ *    CREATE POLICY "Only authenticated users can manage leads"
+ *    ON leads
+ *    FOR SELECT
+ *    USING (auth.role() = 'authenticated');
+ * 
+ *    CREATE POLICY "Only authenticated users can update leads"
+ *    ON leads
+ *    FOR UPDATE
+ *    USING (auth.role() = 'authenticated');
+ * 
+ *    CREATE POLICY "Only authenticated users can delete leads"
+ *    ON leads
+ *    FOR DELETE
+ *    USING (auth.role() = 'authenticated');
+ * 
+ * Important Notes:
  * - Public contact form only inserts leads.
  * - Public contact form must NOT select leads after insert.
- * - Admin dashboard fetches/selects leads after admin login.
+ * - Admin dashboard fetches/selects leads only after admin login.
+ * - Never use service_role key in frontend code.
+ * - All queries use ANON key with RLS protection.
  */
 
 import { getSupabaseClient } from './client.js';

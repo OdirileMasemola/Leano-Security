@@ -209,6 +209,50 @@ const leadsManager = {
                 }
             });
         }
+
+        // Hamburger menu toggle
+        const hamburgerBtn = document.querySelector('[data-action="toggle-sidebar"]');
+        if (hamburgerBtn) {
+            hamburgerBtn.addEventListener('click', () => {
+                this.toggleSidebar();
+            });
+        }
+
+        // Close sidebar when clicking on a nav link
+        document.querySelectorAll('.sidebar-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                this.closeSidebar();
+            });
+        });
+
+        // Close sidebar when clicking outside (on mobile)
+        document.addEventListener('click', (e) => {
+            const sidebar = document.querySelector('.admin-sidebar');
+            const hamburger = document.querySelector('[data-action="toggle-sidebar"]');
+            if (sidebar && hamburger && !sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+                if (sidebar.classList.contains('open')) {
+                    this.closeSidebar();
+                }
+            }
+        });
+    },
+
+    toggleSidebar() {
+        const sidebar = document.querySelector('.admin-sidebar');
+        const container = document.querySelector('.admin-container');
+        if (sidebar) {
+            sidebar.classList.toggle('open');
+            container?.classList.toggle('sidebar-open');
+        }
+    },
+
+    closeSidebar() {
+        const sidebar = document.querySelector('.admin-sidebar');
+        const container = document.querySelector('.admin-container');
+        if (sidebar) {
+            sidebar.classList.remove('open');
+            container?.classList.remove('sidebar-open');
+        }
     },
 
     formatDate(value) {

@@ -1,6 +1,4 @@
-/* ================================================================
-   Leano Security Services — Base Styles (global.css)
-   ================================================================ */
+/* Leano Security Services — Base Styles (global.css)*/
 
 :root {
     --primary:        #0a1f3c;
@@ -55,12 +53,12 @@
     --shadow-xl:      0 28px 72px rgba(0,0,0,.55);
 }
 
-/* ── Global: flip all phone icons to face right ──────────── */
+/*Global: flip all phone icons to face right*/
 .fa-phone,
 .fa-phone-alt,
 .fa-phone-volume { transform: scaleX(-1); }
 
-/* ── Reset ───────────────────────────────────────────────── */
+/*  Reset*/
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html  { scroll-behavior: smooth; }
 body  {
@@ -80,7 +78,7 @@ p     { margin-bottom:1rem; color: var(--gray-600); }
 strong { font-weight:600; color: var(--gray-800); }
 [data-theme="dark"] strong { color: var(--gray-600); }
 
-/* ── Skip link ───────────────────────────────────────────── */
+/* Skip link  */
 .skip-to-main {
     position:absolute; top:-100%; left:1rem; z-index:9999;
     background:var(--secondary); color:#fff;
@@ -91,7 +89,7 @@ strong { font-weight:600; color: var(--gray-800); }
 }
 .skip-to-main:focus { top:0; }
 
-/* ── Layout ──────────────────────────────────────────────── */
+/*Layout */
 .container { max-width:1200px; margin:0 auto; padding:0 1.5rem; }
 section    { padding: var(--section-py) 0; }
 .section-padding { padding: var(--section-py) 0; }
@@ -100,7 +98,7 @@ section    { padding: var(--section-py) 0; }
 [data-theme="dark"] .bg-light { background: var(--gray-100); }
 [data-theme="dark"] .bg-dark  { background: #03080f; }
 
-/* ── Typography ──────────────────────────────────────────── */
+/*  Typography */
 h1,h2,h3,h4,h5,h6 {
     font-family: var(--font-heading);
     font-weight:700; line-height:1.2;
@@ -116,7 +114,7 @@ h2 { font-size: clamp(1.75rem,4vw,2.6rem); }
 h3 { font-size: clamp(1.3rem,3vw,1.9rem); }
 h4 { font-size: 1.2rem; }
 
-/* ── Header ──────────────────────────────────────────────── */
+/*  Header  */
 header {
     position:fixed; inset:0 0 auto 0;
     height: var(--header-h);
@@ -135,7 +133,7 @@ header.scrolled { height:70px; box-shadow:var(--shadow-md); }
 
 nav { display:flex; justify-content:space-between; align-items:center; width:100%; }
 
-/* ── Logo ────────────────────────────────────────────────── */
+/*  Logo */
 .logo {
     display:flex; align-items:center; gap:.8rem;
     font-family: var(--font-heading);
@@ -153,7 +151,7 @@ nav { display:flex; justify-content:space-between; align-items:center; width:100
     text-transform:uppercase; margin-top:3px;
 }
 
-/* ── Nav links ───────────────────────────────────────────── */
+/*Nav links  */
 .nav-links { display:flex; align-items:center; gap:1.75rem; }
 .nav-links a {
     font-family:var(--font-heading);
@@ -214,7 +212,7 @@ nav { display:flex; justify-content:space-between; align-items:center; width:100
 [data-theme="dark"] .theme-toggle { border-color:rgba(255,255,255,.12); color:#8aa0b8; }
 .theme-toggle:hover { background:var(--primary); border-color:var(--primary); color:#fff; transform:rotate(20deg); }
 
-/* ── Hamburger ───────────────────────────────────────────── */
+/* Hamburger  */
 .mobile-menu {
     display:none; flex-direction:column;
     justify-content:space-between;
@@ -227,7 +225,7 @@ nav { display:flex; justify-content:space-between; align-items:center; width:100
 .mobile-menu.active span:nth-child(2) { opacity:0; transform:translateX(-8px); }
 .mobile-menu.active span:nth-child(3) { transform:translateY(-9px) rotate(-45deg); }
 
-/* ── Mobile nav ──────────────────────────────────────────── */
+/* Mobile nav */
 @media (max-width:1024px) {
     .nav-links {
         position:fixed;
@@ -261,7 +259,7 @@ nav { display:flex; justify-content:space-between; align-items:center; width:100
     .nav-actions { gap:.7rem; }
 }
 
-/* ── Shared button ───────────────────────────────────────── */
+/* Shared button */
 .cta-button {
     display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
     padding:.85rem 1.9rem;
@@ -279,7 +277,7 @@ nav { display:flex; justify-content:space-between; align-items:center; width:100
 .outline-btn:hover { background:var(--primary); color:#fff; transform:translateY(-3px); }
 .large-btn { padding:1.05rem 2.4rem; font-size:.9rem; }
 
-/* ── Loading screen ──────────────────────────────────────── */
+/* Loading screen  */
 .loading-screen {
     position:fixed; inset:0;
     background:var(--primary); z-index:9999;
@@ -302,7 +300,7 @@ nav { display:flex; justify-content:space-between; align-items:center; width:100
 @keyframes pulseRing { 0%{transform:scale(.8);opacity:1} 100%{transform:scale(1.7);opacity:0} }
 .loading-content p { color:rgba(255,255,255,.7); font-size:1rem; letter-spacing:2px; }
 
-/* ── Footer ──────────────────────────────────────────────── */
+/*  Footer*/
 footer {
     background:var(--dark); color:rgba(255,255,255,.85);
     padding:5.5rem 0 2.5rem;
@@ -371,7 +369,7 @@ footer {
 }
 .footer-bottom p { color:rgba(255,255,255,.25); font-size:.78rem; margin-bottom:.2rem; }
 
-/* ── Emergency float ─────────────────────────────────────── */
+/* Emergency float */
 .emergency-float { position:fixed; bottom:2rem; right:2rem; z-index:500; }
 .emergency-btn {
     display:flex; flex-direction:column;
@@ -391,7 +389,7 @@ footer {
 .emergency-btn i { font-size:1rem; }
 .emergency-btn span { font-size:.58rem; font-weight:800; letter-spacing:.5px; text-transform:uppercase; }
 
-/* ── Jotform AI Agent Widget ─────────────────────────────── */
+/* Jotform AI Agent Widget  */
 .jotform-ai-widget-container {
     position: fixed;
     top: var(--header-h);
@@ -437,7 +435,7 @@ footer {
     max-height: calc(100vh - var(--header-h) - 2rem) !important;
 }
 
-/* ── Responsive ──────────────────────────────────────────── */
+/* Responsive*/
 @media (max-width:992px) {
     .footer-content { grid-template-columns:repeat(2,1fr); gap:2.5rem; }
     .footer-brand { grid-column:span 2; }
