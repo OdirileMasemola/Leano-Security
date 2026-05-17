@@ -27,14 +27,31 @@ const leadsManager = {
             return;
         }
 
+        // Display admin name in header
+        this.displayAdminName();
+
         this.setupEventListeners();
         await this.loadLeads();
     },
 
+    displayAdminName() {
+        const userNameElement = document.querySelector('.user-name');
+        if (userNameElement && adminAuth.currentProfile) {
+            const displayName = adminAuth.currentProfile.full_name || adminAuth.currentUser?.email || 'Admin User';
+            userNameElement.textContent = displayName;
+        }
+    },
+
     async loadLeads() {
         const searchInput = document.querySelector('.search-input');
+        const refreshButton = document.querySelector('[data-action="refresh"]');
+        
         if (searchInput) {
             searchInput.disabled = true;
+        }
+        if (refreshButton) {
+            refreshButton.disabled = true;
+            refreshButton.classList.add('loading');
         }
 
         try {
@@ -51,6 +68,10 @@ const leadsManager = {
         } finally {
             if (searchInput) {
                 searchInput.disabled = false;
+            }
+            if (refreshButton) {
+                refreshButton.disabled = false;
+                refreshButton.classList.remove('loading');
             }
         }
     },
@@ -91,6 +112,13 @@ const leadsManager = {
                 throw new Error(result.error || 'Failed to update status');
             }
 
+            // Update succeeded - keep the new value and update the dataset
+            if (statusSelect) {
+                statusSelect.value = newStatus;
+                statusSelect.dataset.currentStatus = newStatus;
+            }
+
+            // Reload leads to get fresh data
             await this.loadLeads();
         } catch (error) {
             console.error('Status update failed:', error);
@@ -150,7 +178,10 @@ const leadsManager = {
                 const leadId = event.target.dataset.leadId;
                 const previousStatus = event.target.dataset.currentStatus;
                 const newStatus = event.target.value;
-                event.target.dataset.currentStatus = newStatus;
+                
+                // Revert dropdown while update is in progress
+                event.target.value = previousStatus;
+                
                 await this.changeStatus(leadId, newStatus, previousStatus);
             });
         });

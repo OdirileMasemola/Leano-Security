@@ -312,6 +312,16 @@ export async function fetchLeadSummary(options = {}) {
 
     const leads = result.data;
     const stats = computeLeadStats(leads);
+    
+    // Filter recent leads: only leads created within last 7 days
+    const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+    const recentLeads = leads
+        .filter((lead) => {
+            const createdAt = new Date(lead.created_at);
+            return createdAt >= sevenDaysAgo;
+        })
+        .slice(0, 5);
+    
     const highScoreLeads = leads
         .filter((lead) => lead.lead_score >= 61)
         .slice(0, 5);
@@ -320,7 +330,7 @@ export async function fetchLeadSummary(options = {}) {
         success: true,
         data: {
             stats,
-            recentLeads: leads.slice(0, 5),
+            recentLeads,
             highScoreLeads,
             allLeads: leads
         }
@@ -328,6 +338,12 @@ export async function fetchLeadSummary(options = {}) {
 }
 
 export async function updateLeadStatus(leadId, status, options = {}) {
+    /**
+     * IMPORTANT: This function requires RLS policy to allow authenticated users to UPDATE leads
+     * RLS Policy on leads table:
+     *   - UPDATE: Allow if auth.role() = 'authenticated' and admin_profiles table has entry for user
+     * The admin must be logged in via Supabase Auth and have a record in admin_profiles table
+     */
     try {
         const normalizedStatus = normalizeText(status).toLowerCase();
 

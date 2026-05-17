@@ -35,14 +35,26 @@ const dashboard = {
             return;
         }
 
+        // Display admin name in header
+        this.displayAdminName();
+
         await this.loadDashboardData();
         this.setupEventListeners();
+    },
+
+    displayAdminName() {
+        const userNameElement = document.querySelector('.user-name');
+        if (userNameElement && adminAuth.currentProfile) {
+            const displayName = adminAuth.currentProfile.full_name || adminAuth.currentUser?.email || 'Admin User';
+            userNameElement.textContent = displayName;
+        }
     },
 
     async loadDashboardData() {
         const refreshButton = document.querySelector('[data-action="refresh"]');
         if (refreshButton) {
             refreshButton.disabled = true;
+            refreshButton.classList.add('loading');
         }
 
         try {
@@ -79,6 +91,7 @@ const dashboard = {
         } finally {
             if (refreshButton) {
                 refreshButton.disabled = false;
+                refreshButton.classList.remove('loading');
             }
         }
     },
@@ -196,21 +209,29 @@ const dashboard = {
                 const previousStatus = event.target.dataset.currentStatus;
                 const newStatus = event.target.value;
 
+                // Revert to previous status while update is in progress
+                event.target.value = previousStatus;
                 event.target.disabled = true;
-                const result = await updateLeadStatus(leadId, newStatus, {
-                    adminUserId: adminAuth.getCurrentUser()?.id,
-                    previousStatus
-                });
 
-                if (!result.success) {
-                    event.target.value = previousStatus;
-                    console.error(result.error || 'Unable to update lead status');
-                } else {
+                try {
+                    const result = await updateLeadStatus(leadId, newStatus, {
+                        adminUserId: adminAuth.getCurrentUser()?.id,
+                        previousStatus
+                    });
+
+                    if (!result.success) {
+                        throw new Error(result.error || 'Unable to update lead status');
+                    }
+
+                    // Update succeeded - update the dataset and reload dashboard
                     event.target.dataset.currentStatus = newStatus;
                     await this.loadDashboardData();
+                } catch (error) {
+                    console.error('Status update failed:', error);
+                    event.target.value = previousStatus;
+                } finally {
+                    event.target.disabled = false;
                 }
-
-                event.target.disabled = false;
             });
         });
     },
