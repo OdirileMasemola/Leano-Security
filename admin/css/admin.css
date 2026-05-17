@@ -110,16 +110,10 @@ strong { font-weight: 600; color: var(--gray-800); }
 
 /* ================================================================
    LAYOUT
-   ----------------------------------------------------------------
-   Pattern: fixed sidebar + margin-left on main.
-   The sidebar is position:fixed so it is removed from normal flow.
-   .admin-container is just a full-viewport shell.
-   .admin-main uses margin-left: var(--sidebar-w) so its width is
-   always (100vw - sidebar-width) — no grid tricks needed.
    ================================================================ */
 
 .admin-container {
-    display: block;          /* simple block — sidebar is fixed, not in flow */
+    display: block;
     min-height: 100vh;
 }
 
@@ -146,6 +140,38 @@ strong { font-weight: 600; color: var(--gray-800); }
 .admin-sidebar::-webkit-scrollbar { width: 3px; }
 .admin-sidebar::-webkit-scrollbar-track { background: transparent; }
 .admin-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+
+/* ── Sidebar: diagonal line overlay (mirrors .hero-overlay) ── */
+.sidebar-line-overlay {
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><path d="M0 60L60 0M-10 10L10-10M50 70L70 50" stroke="rgba(255,255,255,0.025)" stroke-width="1"/></svg>');
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ── Sidebar: particle canvas (mirrors .hero-particles) ── */
+.sidebar-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.sidebar-particles canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ── Sidebar: ensure all content sits above the bg layers ── */
+.sidebar-branding,
+.sidebar-nav,
+.sidebar-footer {
+    position: relative;
+    z-index: 2;
+}
 
 /* ── Sidebar Branding ──── */
 .sidebar-branding {
@@ -245,10 +271,6 @@ strong { font-weight: 600; color: var(--gray-800); }
 
 /* ================================================================
    MAIN CONTENT
-   ----------------------------------------------------------------
-   margin-left pushes the content clear of the fixed sidebar.
-   width: calc(100% - var(--sidebar-w)) makes it fill exactly the
-   remaining viewport without overflow.
    ================================================================ */
 
 .admin-main {
@@ -258,7 +280,6 @@ strong { font-weight: 600; color: var(--gray-800); }
     display: flex;
     flex-direction: column;
     background: var(--surface);
-    /* prevent any child from accidentally blowing out the width */
     overflow-x: hidden;
 }
 
@@ -272,12 +293,10 @@ strong { font-weight: 600; color: var(--gray-800); }
     height: var(--topbar-h);
     background: var(--white);
     border-bottom: 1px solid var(--gray-200);
-    /* sticky within .admin-main column */
     position: sticky;
     top: 0;
     z-index: 50;
     flex-shrink: 0;
-    /* must not exceed the main column width */
     width: 100%;
     box-sizing: border-box;
 }
@@ -337,7 +356,6 @@ strong { font-weight: 600; color: var(--gray-800); }
     background: var(--brand-teal);
 }
 
-/* Show hamburger on tablet and below */
 @media (max-width: 1024px) {
     .hamburger-menu { display: flex; }
 }
@@ -399,9 +417,6 @@ strong { font-weight: 600; color: var(--gray-800); }
 .page-content {
     padding: 32px 40px;
     flex: 1;
-    /* fill full available width — do NOT center with margin:auto here.
-       Centering inside a sidebar layout should come from the sidebar
-       accounting, not from max-width tricks that halve available space. */
     width: 100%;
     box-sizing: border-box;
 }
@@ -431,16 +446,10 @@ strong { font-weight: 600; color: var(--gray-800); }
 
 /* ================================================================
    STAT CARDS
-   ----------------------------------------------------------------
-   Desktop  → 4 per row  (≥ 1024px content area)
-   Tablet   → 2 per row  (≤ 768px)
-   Mobile   → 2 per row  (≤ 480px, smaller cards)
-   1 per row only on very small phones (≤ 360px)
    ================================================================ */
 
 .stats-grid {
     display: grid;
-    /* 4 equal columns on desktop; breakpoints below override */
     grid-template-columns: repeat(4, 1fr);
     gap: 14px;
     margin-bottom: 20px;
@@ -480,7 +489,6 @@ strong { font-weight: 600; color: var(--gray-800); }
     transform: translateY(-1px);
 }
 
-/* Accent bottom bars */
 .stat-card[data-stat-key="totalLeads"]::after     { background: var(--brand-teal); }
 .stat-card[data-stat-key="newLeads"]::after        { background: var(--brand-red); }
 .stat-card[data-stat-key="contactedLeads"]::after  { background: #e59b00; }
@@ -517,8 +525,6 @@ strong { font-weight: 600; color: var(--gray-800); }
 .stat-card[data-stat-key="highScoreLeads"] .stat-icon  { background: rgba(245,158,11,.10); color: #f59e0b; }
 .stat-card[data-stat-key="totalSiteVisits"] .stat-icon { background: rgba(139,92,246,.10); color: #8b5cf6; }
 .stat-card[data-stat-key="uniqueVisitors"] .stat-icon  { background: rgba(59,130,246,.10); color: #3b82f6; }
-
-.stat-body {}
 
 .stat-value {
     font-size: 26px;
@@ -741,7 +747,6 @@ strong { font-weight: 600; color: var(--gray-800); }
     border-radius: var(--radius-sm);
 }
 
-/* ── Button loading state ──── */
 .btn.loading {
     opacity: 0.7;
     cursor: not-allowed;
@@ -813,11 +818,9 @@ strong { font-weight: 600; color: var(--gray-800); }
 
 .leads-table tbody tr:last-child td { border-bottom: none; }
 
-/* Cell helpers */
 .cell-name  { font-weight: 600; color: var(--gray-800); margin-bottom: 1px; }
 .cell-email { font-size: 11.5px; color: var(--gray-400); }
 
-/* Empty state */
 .table-empty {
     text-align: center;
     padding: 48px 24px;
@@ -858,7 +861,6 @@ strong { font-weight: 600; color: var(--gray-800); }
 .badge-converted  { background: rgba(26,140,60,.09);  color: #155e2e; }
 .badge-rejected   { background: rgba(110,120,140,.10);color: var(--gray-600); }
 
-/* Urgency pills */
 .urgency-pill {
     display: inline-flex;
     align-items: center;
@@ -876,7 +878,6 @@ strong { font-weight: 600; color: var(--gray-800); }
 .urgency-pill.urgency-urgent    { background: rgba(229,155,0,.14);   color: #8c6700; }
 .urgency-pill.urgency-emergency { background: rgba(214,40,57,.12);   color: var(--brand-red); }
 
-/* Lead score */
 .lead-score {
     display: inline-flex;
     align-items: center;
@@ -893,7 +894,6 @@ strong { font-weight: 600; color: var(--gray-800); }
 .lead-score.quality-medium { background: rgba(229,155,0,.10);  color: #7a5e00; }
 .lead-score.quality-low    { background: rgba(214,40,57,.09);  color: #a32533; }
 
-/* Status select in table */
 .status-select {
     min-width: 125px;
     padding: 6px 10px;
@@ -916,10 +916,6 @@ strong { font-weight: 600; color: var(--gray-800); }
 
 /* ================================================================
    DASHBOARD GRID
-   ----------------------------------------------------------------
-   Single column — Recent Leads on top, High Score below.
-   Both panels stretch to the full content width, matching the
-   Leads page table width.
    ================================================================ */
 
 .dashboard-grid {
@@ -931,7 +927,6 @@ strong { font-weight: 600; color: var(--gray-800); }
 
 .dashboard-panel { margin-bottom: 0; width: 100%; }
 
-/* dashboard tables — allow wrapping in the name column, rest stays on one line */
 .dashboard-table th { white-space: nowrap; }
 .dashboard-table td { white-space: nowrap; }
 .dashboard-table td:first-child { white-space: normal; }
@@ -1142,20 +1137,15 @@ strong { font-weight: 600; color: var(--gray-800); }
    RESPONSIVE
    ================================================================ */
 
-/* ── Large desktop: keep 4-col stat grid, 2-col dashboard ── */
 @media (max-width: 1400px) {
-    /* 9 stat cards — show 3 per row */
     .stats-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* ── Medium desktop / wide tablet in landscape ── */
 @media (max-width: 1100px) {
     .stats-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* ── Tablet: sidebar slides off-canvas ── */
 @media (max-width: 1024px) {
-    /* Sidebar becomes an overlay */
     .admin-sidebar {
         transform: translateX(-100%);
         transition: transform 0.22s ease;
@@ -1167,7 +1157,6 @@ strong { font-weight: 600; color: var(--gray-800); }
         box-shadow: 8px 0 32px rgba(0,0,0,.28);
     }
 
-    /* Backdrop overlay when sidebar is open */
     .admin-container::before {
         content: '';
         position: fixed;
@@ -1184,26 +1173,18 @@ strong { font-weight: 600; color: var(--gray-800); }
         pointer-events: auto;
     }
 
-    /* Main fills full viewport when sidebar is hidden */
     .admin-main {
         margin-left: 0;
         width: 100%;
     }
 
-    .admin-header {
-        padding: 0 20px;
-    }
+    .admin-header { padding: 0 20px; }
 
-    .page-content {
-        padding: 20px;
-    }
+    .page-content { padding: 20px; }
 
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ── Tablet portrait ── */
 @media (max-width: 768px) {
     .admin-header {
         height: auto;
@@ -1233,7 +1214,6 @@ strong { font-weight: 600; color: var(--gray-800); }
 
     .leads-table { min-width: auto; }
 
-    /* Toolbar stacks but controls stay on one line with wrapping */
     .toolbar-controls {
         width: 100%;
         flex-wrap: wrap;
@@ -1255,16 +1235,11 @@ strong { font-weight: 600; color: var(--gray-800); }
         align-items: flex-start;
     }
 
-    .section-toolbar-left {
-        width: 100%;
-    }
+    .section-toolbar-left { width: 100%; }
 
-    .btn-sm {
-        width: 100%;
-    }
+    .btn-sm { width: 100%; }
 }
 
-/* ── Mobile ── */
 @media (max-width: 560px) {
     .stats-grid {
         grid-template-columns: 1fr;
@@ -1279,9 +1254,7 @@ strong { font-weight: 600; color: var(--gray-800); }
         gap: 12px;
     }
 
-    .stat-header {
-        flex-shrink: 0;
-    }
+    .stat-header { flex-shrink: 0; }
 
     .stat-icon {
         width: 40px;
@@ -1289,33 +1262,23 @@ strong { font-weight: 600; color: var(--gray-800); }
         font-size: 1.2rem;
     }
 
-    .stat-body {
-        flex: 1;
-    }
+    .stat-body { flex: 1; }
 
     .stat-value {
         font-size: 20px;
         margin-bottom: 2px;
     }
 
-    .stat-label {
-        font-size: 9.5px;
-    }
+    .stat-label { font-size: 9.5px; }
 
     .filter-btn { padding: 5px 10px; font-size: 11.5px; }
     .urgency-select { min-width: 100px; font-size: 12px; }
 
-    .admin-header h1 {
-        font-size: 16px;
-    }
+    .admin-header h1 { font-size: 16px; }
 
-    .header-subtitle {
-        display: none;
-    }
+    .header-subtitle { display: none; }
 
-    .leads-table {
-        font-size: 12px;
-    }
+    .leads-table { font-size: 12px; }
 
     .leads-table th,
     .leads-table td {
@@ -1323,13 +1286,8 @@ strong { font-weight: 600; color: var(--gray-800); }
         font-size: 11px;
     }
 
-    .cell-name {
-        font-size: 12px;
-    }
-
-    .cell-email {
-        font-size: 10px;
-    }
+    .cell-name { font-size: 12px; }
+    .cell-email { font-size: 10px; }
 
     .status-select {
         font-size: 11px;
@@ -1350,7 +1308,6 @@ strong { font-weight: 600; color: var(--gray-800); }
     }
 }
 
-/*  Small phones */
 @media (max-width: 400px) {
     .stats-grid {
         grid-template-columns: 1fr;
@@ -1362,33 +1319,18 @@ strong { font-weight: 600; color: var(--gray-800); }
         padding: 10px 12px;
     }
 
-    .stat-value {
-        font-size: 18px;
-    }
-
-    .stat-label {
-        font-size: 9px;
-    }
+    .stat-value { font-size: 18px; }
+    .stat-label { font-size: 9px; }
 
     .login-card { padding: 28px 18px; margin: 12px; }
     .admin-header h1 { font-size: 15px; }
     .logout-btn { padding: 6px 10px; font-size: 11px; }
 
-    .page-content {
-        padding: 12px;
-    }
+    .page-content { padding: 12px; }
+    .card { padding: 12px; }
 
-    .card {
-        padding: 12px;
-    }
-
-    .section-title {
-        font-size: 13px;
-    }
-
-    .section-description {
-        font-size: 11px;
-    }
+    .section-title { font-size: 13px; }
+    .section-description { font-size: 11px; }
 
     .btn-sm {
         height: 28px;
@@ -1396,7 +1338,5 @@ strong { font-weight: 600; color: var(--gray-800); }
         padding: 0 10px;
     }
 
-    .btn-sm i {
-        font-size: 0.9rem;
-    }
+    .btn-sm i { font-size: 0.9rem; }
 }
