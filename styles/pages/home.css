@@ -17,7 +17,6 @@
         #0f3050 100%);
 }
 
-/* Geometric background pattern */
 .hero::before {
     content: '';
     position: absolute;
@@ -238,7 +237,6 @@
 }
 .trust-icon-wrap i { font-size: 1.4rem; color: var(--accent); }
 
-/* Fix: the original code puts <i> directly in .trust-item — keep support for that too */
 .trust-item > i {
     display: inline-flex;
     align-items: center;
@@ -292,6 +290,15 @@
     margin: 0;
 }
 [data-theme="dark"] .section-subtitle { color: var(--gray-400); }
+
+/* Section accent rule */
+.section-accent-rule {
+    width: 40px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    margin: 1.25rem auto 0;
+}
 
 /* ── About preview ───────────────────────────────────────── */
 .about-content {
@@ -496,10 +503,381 @@
 
 .section-footer { text-align: center; }
 
-/* ── Technology section ──────────────────────────────────── */
-.technology-section { background: var(--gray-100); }
+/* ================================================================
+   TECHNOLOGY SECTION — redesigned
+   ================================================================ */
+.technology-section {
+    background: var(--gray-100);
+}
+[data-theme="dark"] .technology-section { background: var(--gray-100); }
 
-/* Responsive design */
+.tech-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+
+.tech-feature {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    transition: box-shadow .2s ease, border-color .2s ease, transform .2s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+}
+[data-theme="dark"] .tech-feature { background: var(--gray-100); border-color: var(--gray-200); }
+
+.tech-feature::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity .2s ease;
+    border-radius: 3px 0 0 3px;
+}
+
+.tech-feature:hover,
+.tech-feature.active {
+    box-shadow: var(--shadow-md);
+    border-color: rgba(26,158,143,.3);
+    transform: translateY(-3px);
+}
+
+.tech-feature:hover::before,
+.tech-feature.active::before {
+    opacity: 1;
+}
+
+.feature-header {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+.feature-icon {
+    width: 52px; height: 52px;
+    background: var(--accent-light);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+
+.tech-feature .feature-header { margin-bottom: 0; }
+
+/* Restructure the inner layout so icon + text sit side-by-side */
+.tech-feature {
+    flex-direction: row;
+}
+
+.tech-feature .feature-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.tech-feature-body { flex: 1; }
+
+.tech-feature h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: .5rem;
+    line-height: 1.3;
+}
+[data-theme="dark"] .tech-feature h4 { color: #e0eaf5; }
+
+.tech-feature p {
+    font-size: .9rem;
+    line-height: 1.7;
+    color: var(--gray-600);
+    margin: 0;
+}
+[data-theme="dark"] .tech-feature p { color: var(--gray-400); }
+
+/* ================================================================
+   STATS SECTION — redesigned
+   ================================================================ */
+.stats-section {
+    background: linear-gradient(140deg, #070f20 0%, #0b1e3e 50%, #0d2a48 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 5rem 0;
+}
+
+/* Diagonal line overlay */
+.stats-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><path d="M0 60L60 0M-10 10L10-10M50 70L70 50" stroke="rgba(255,255,255,0.025)" stroke-width="1"/></svg>');
+    z-index: 0;
+}
+
+/* Radial glow overlays */
+.stats-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 80% 20%, rgba(26,158,143,.12) 0%, transparent 50%),
+        radial-gradient(circle at 15% 80%, rgba(214,40,57,.08) 0%, transparent 40%);
+    z-index: 0;
+}
+
+.stats-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Override the shared section-header for dark background */
+.stats-section .section-header {
+    margin-bottom: 3rem;
+}
+
+.stats-section .section-label {
+    background: rgba(26,158,143,.2);
+    border-color: rgba(78,205,196,.2);
+    color: #4ecdc4;
+}
+
+.stats-section .section-title {
+    color: #fff;
+}
+
+.stats-section .section-subtitle {
+    color: rgba(255,255,255,.5);
+}
+
+.stats-section .section-accent-rule {
+    background: rgba(78,205,196,.5);
+}
+
+/* Stats grid — unified bordered block */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,.07);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.07);
+}
+
+.stat-card {
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    background: rgba(255,255,255,.03);
+    position: relative;
+    transition: background .2s ease;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+.stat-card:hover {
+    background: rgba(26,158,143,.08);
+    transform: none;
+    box-shadow: none;
+}
+
+.stat-card .stat-icon {
+    width: 48px; height: 48px;
+    background: rgba(26,158,143,.15);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.1rem;
+    color: #4ecdc4;
+    font-size: 1.35rem;
+}
+
+.counter {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: .4rem;
+    font-family: var(--font-heading);
+    letter-spacing: -1px;
+}
+
+.stat-card .stat-label {
+    font-size: .8rem;
+    color: rgba(255,255,255,.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    line-height: 1.4;
+    display: block;
+    margin-top: .4rem;
+}
+
+/* Suffix styling for +/7 etc — handled in JS */
+.stat-suffix {
+    color: #4ecdc4;
+    font-size: 2rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+}
+
+/* ================================================================
+   CTA SECTION — redesigned
+   ================================================================ */
+.cta-section { background: var(--white); }
+[data-theme="dark"] .cta-section { background: var(--dark); }
+
+.cta-card {
+    background: linear-gradient(135deg, #0b1e3e 0%, #0d2a48 60%, #0f3050 100%);
+    border-radius: 20px;
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Diagonal line overlay */
+.cta-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60"><path d="M0 60L60 0M-10 10L10-10M50 70L70 50" stroke="rgba(255,255,255,0.025)" stroke-width="1"/></svg>');
+    z-index: 0;
+}
+
+/* Radial glow top-right */
+.cta-card::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(26,158,143,.18) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Reuse the existing .cta-section tag as an inline badge */
+.cta-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    background: rgba(26,158,143,.2);
+    color: #4ecdc4;
+    padding: .45rem 1.1rem;
+    border-radius: 50px;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(78,205,196,.2);
+}
+
+.cta-card h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: .875rem;
+    line-height: 1.2;
+    letter-spacing: -.3px;
+}
+
+.cta-card > .cta-content > p,
+.cta-card p:not(.cta-note) {
+    font-size: .95rem;
+    color: rgba(255,255,255,.6);
+    line-height: 1.75;
+    margin-bottom: 1.75rem;
+    max-width: 520px;
+}
+
+.cta-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem;
+}
+
+.cta-feature {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    background: rgba(255,255,255,.07);
+    color: rgba(255,255,255,.8);
+    padding: .5rem 1rem;
+    border-radius: 50px;
+    font-size: .82rem;
+    font-weight: 500;
+    border: 1px solid rgba(255,255,255,.1);
+}
+
+.cta-feature i { color: #4ecdc4; font-size: .85rem; }
+
+.cta-action {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    min-width: 230px;
+}
+
+/* Override existing .cta-button styles for the CTA action button */
+.cta-action .cta-button.primary-btn.large-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 1.75rem;
+    font-size: 1rem;
+    border-radius: var(--radius-md);
+    white-space: nowrap;
+    box-shadow: 0 4px 20px rgba(214,40,57,.35);
+}
+
+.cta-note {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    color: rgba(255,255,255,.4);
+    font-size: .78rem;
+    font-weight: 500;
+    letter-spacing: .3px;
+    text-align: center;
+    line-height: 1.5;
+    margin: 0;
+}
+.cta-note i { color: rgba(26,158,143,.7); font-size: .85rem; }
+
+/* ── Technology section ──────────────────────────────────── */
+/* (kept for backward compat — actual bg set above) */
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
 @media (max-width: 992px) {
     .hero-container {
         grid-template-columns: 1fr;
@@ -511,13 +889,65 @@
     }
 }
 
+@media (max-width: 900px) {
+    .tech-features {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cta-card {
+        grid-template-columns: 1fr;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .cta-card p:not(.cta-note) {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cta-features {
+        justify-content: center;
+    }
+
+    .cta-action {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .cta-action .cta-button.primary-btn.large-btn {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
 @media (max-width: 768px) {
     .hero { min-height: 85vh; }
     .services-grid { grid-template-columns: 1fr; }
     .trust-items { grid-template-columns: repeat(2, 1fr); }
+
+    .stats-section { padding: 3.5rem 0; }
+
+    .counter { font-size: 2.2rem; }
+
+    .cta-card { padding: 2rem 1.5rem; border-radius: var(--radius-lg); }
 }
 
 @media (max-width: 576px) {
     .hero-title { font-size: 2rem; }
     .trust-items { grid-template-columns: 1fr; }
+
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .stat-card { padding: 2rem 1rem; }
+
+    .counter { font-size: 2rem; }
+
+    .tech-feature { padding: 1.5rem; gap: 1rem; }
+
+    .feature-icon { width: 44px; height: 44px; font-size: 1.25rem; }
 }
