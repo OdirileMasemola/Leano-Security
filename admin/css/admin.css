@@ -1195,7 +1195,20 @@ strong { font-weight: 600; color: var(--gray-800); }
 
     .admin-user {
         width: 100%;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .user-info {
+        text-align: left;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--gray-100);
+    }
+
+    .logout-btn {
+        width: 100%;
+        justify-content: center;
     }
 
     .stats-grid {

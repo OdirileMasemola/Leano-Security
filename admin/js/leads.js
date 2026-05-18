@@ -231,12 +231,20 @@ const leadsManager = {
             });
         }
 
-        const logoutButton = document.querySelector('[data-action="logout"]');
+        const logoutButton = document.querySelector('.logout-btn[data-action="logout"]');
         if (logoutButton) {
-            logoutButton.addEventListener('click', async () => {
+            logoutButton.addEventListener('click', async (e) => {
+                e.preventDefault();
+                logoutButton.disabled = true;
+                logoutButton.classList.add('loading');
+                logoutButton.textContent = 'Logging out...';
                 const result = await adminAuth.logout();
                 if (result.success) {
                     window.location.href = './login.html';
+                } else {
+                    logoutButton.disabled = false;
+                    logoutButton.classList.remove('loading');
+                    logoutButton.innerHTML = '<i class="material-icons">logout</i>Logout';
                 }
             });
         }

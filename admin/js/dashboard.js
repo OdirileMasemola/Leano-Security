@@ -262,9 +262,13 @@ const dashboard = {
     },
 
     setupEventListeners() {
-        const logoutButton = document.querySelector('[data-action="logout"]');
+        const logoutButton = document.querySelector('.logout-btn[data-action="logout"]');
         if (logoutButton) {
-            logoutButton.addEventListener('click', async () => {
+            logoutButton.addEventListener('click', async (e) => {
+                e.preventDefault();
+                logoutButton.disabled = true;
+                logoutButton.classList.add('loading');
+                logoutButton.textContent = 'Logging out...';
                 await this.logout();
             });
         }
