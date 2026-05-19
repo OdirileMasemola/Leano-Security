@@ -88,6 +88,11 @@ function initContactForm() {
             // Scroll to success message
             successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
+            // Redirect to thank you page after 2 seconds
+            setTimeout(() => {
+                window.location.href = 'thank-you.html';
+            }, 2000);
+
         } catch (error) {
             console.error('Error submitting lead:', error);
 

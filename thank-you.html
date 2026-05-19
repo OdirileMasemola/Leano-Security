@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thank you for contacting Leano Security Services. Your submission has been received successfully.">
+    <meta name="robots" content="noindex, follow">
+    <title>Thank You — Leano Security Services</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="icon" type="image/png" href="assets/images/Logo.png">
+
+    <style>
+        /* ── Page shell ── */
+        .ty-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── Full-bleed dark hero, same pattern as site hero sections ── */
+        .ty-hero {
+            flex: 1;
+            background: var(--dark);
+            padding-top: calc(var(--header-h) + 6rem);
+            padding-bottom: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Same diagonal accent the site uses in hero sections */
+        .ty-hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -200px;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(214,40,57,.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ty-hero-layout {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            align-items: end;
+        }
+
+        /* Left: the message */
+        .ty-left {
+            padding-bottom: 6rem;
+        }
+
+        .ty-eyebrow {
+            font-family: var(--font-heading);
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+        }
+
+        .ty-eyebrow::before {
+            content: '';
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .ty-h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3.2rem, 7vw, 5.5rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: .95;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            margin-bottom: 1.8rem;
+        }
+
+        .ty-h1 em {
+            font-style: normal;
+            color: var(--secondary);
+        }
+
+        .ty-body {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: rgba(255,255,255,.5);
+            line-height: 1.75;
+            max-width: 440px;
+            margin-bottom: 2.5rem;
+        }
+
+        .ty-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Right: the card panel — sits flush with hero bottom edge */
+        .ty-panel {
+            background: #fff;
+            padding: 2.8rem 2.4rem;
+            position: relative;
+            /* No border-radius on top to bleed into the strip below */
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+        }
+
+        .ty-panel-tag {
+            font-family: var(--font-heading);
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 1.4rem;
+        }
+
+        .ty-steps {
+            counter-reset: steps;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .ty-step {
+            display: flex;
+            gap: 1.1rem;
+            padding: 1.1rem 0;
+            border-bottom: 1px solid #f0f2f5;
+            align-items: flex-start;
+        }
+
+        .ty-step:last-child {
+            border-bottom: none;
+        }
+
+        .ty-step-n {
+            font-family: var(--font-display);
+            font-size: .8rem;
+            font-weight: 800;
+            color: var(--secondary);
+            letter-spacing: 1px;
+            min-width: 28px;
+            padding-top: 2px;
+        }
+
+        .ty-step-body {
+            flex: 1;
+        }
+
+        .ty-step-label {
+            font-family: var(--font-heading);
+            font-size: .82rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .ty-step-desc {
+            font-size: .82rem;
+            color: #888;
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        .ty-step-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-sm);
+            background: rgba(10,31,60,.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .ty-step-icon i {
+            font-size: .85rem;
+            color: var(--primary);
+        }
+
+        /* ── Bottom strip ── */
+        .ty-strip {
+            background: var(--primary);
+        }
+
+        .ty-strip-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 0;
+        }
+
+        .ty-strip-contact {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            padding: 2rem 0 2rem;
+        }
+
+        .ty-strip-contact a,
+        .ty-strip-contact span {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            font-family: var(--font-heading);
+            font-size: .85rem;
+            font-weight: 600;
+            color: rgba(255,255,255,.55);
+            text-decoration: none;
+            transition: color .2s ease;
+        }
+
+        .ty-strip-contact a:hover {
+            color: #fff;
+        }
+
+        .ty-strip-contact i {
+            color: var(--accent);
+            font-size: .9rem;
+        }
+
+        /* Panel extension — continues the white into the strip row */
+        .ty-panel-ext {
+            background: #fff;
+            padding: 1.6rem 2.4rem;
+            border-top: 1px solid #f0f2f5;
+        }
+
+        .ty-panel-ext-label {
+            font-size: .72rem;
+            color: #aaa;
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: .7rem;
+        }
+
+        .ty-psira {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            font-family: var(--font-heading);
+            font-size: .82rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .ty-psira i {
+            color: var(--secondary);
+            font-size: .85rem;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .ty-hero-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .ty-left {
+                padding-bottom: 3rem;
+            }
+
+            .ty-panel {
+                border-radius: var(--radius-md);
+                margin-bottom: 0;
+            }
+
+            .ty-hero {
+                padding-bottom: 3rem;
+            }
+
+            .ty-strip-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .ty-strip-contact {
+                flex-wrap: wrap;
+                gap: 1.2rem;
+                padding: 1.5rem 0;
+            }
+
+            .ty-panel-ext {
+                border-radius: 0 0 var(--radius-md) var(--radius-md);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .ty-h1 {
+                font-size: clamp(2.6rem, 10vw, 3.5rem);
+            }
+
+            .ty-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .ty-actions .cta-button {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+    <header role="banner" id="siteHeader">
+        <nav class="container" aria-label="Main navigation">
+            <a href="index.html" class="logo">
+                <img src="assets/images/Logo.png" alt="Leano Security Services Logo" class="logo-img" width="50" height="50">
+                <span class="logo-text">LEANO <span class="logo-sub">SECURITY</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="values.html">Our Values</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="capabilities.html">Capabilities</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="mobile-menu" id="mobileMenu" role="button" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main" class="ty-page">
+
+        <section class="ty-hero" aria-labelledby="ty-heading">
+            <div class="ty-hero-layout">
+
+                <!-- Left copy -->
+                <div class="ty-left">
+                    <p class="ty-eyebrow">Submission Received</p>
+                    <h1 class="ty-h1" id="ty-heading">
+                        Thank<br>
+                        <em>You.</em>
+                    </h1>
+                    <p class="ty-body">
+                        We've received your enquiry. A member of our team will review it and reach out to you within 24 hours. For urgent matters, call us directly.
+                    </p>
+                    <div class="ty-actions">
+                        <a href="index.html" class="cta-button primary-btn">
+                            <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                            Back to Home
+                        </a>
+                        <a href="contact.html" class="cta-button secondary-btn">
+                            New Enquiry
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right panel -->
+                <div class="ty-panel" aria-label="What happens next">
+                    <p class="ty-panel-tag">What Happens Next</p>
+                    <div class="ty-steps" role="list">
+                        <div class="ty-step" role="listitem">
+                            <span class="ty-step-n">01</span>
+                            <div class="ty-step-body">
+                                <p class="ty-step-label">Submission logged</p>
+                                <p class="ty-step-desc">Your enquiry is securely recorded in our system.</p>
+                            </div>
+                            <div class="ty-step-icon" aria-hidden="true">
+                                <i class="fas fa-check"></i>
+                            </div>
+                        </div>
+                        <div class="ty-step" role="listitem">
+                            <span class="ty-step-n">02</span>
+                            <div class="ty-step-body">
+                                <p class="ty-step-label">Team review</p>
+                                <p class="ty-step-desc">A consultant assesses your specific security needs.</p>
+                            </div>
+                            <div class="ty-step-icon" aria-hidden="true">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                        </div>
+                        <div class="ty-step" role="listitem">
+                            <span class="ty-step-n">03</span>
+                            <div class="ty-step-body">
+                                <p class="ty-step-label">We contact you</p>
+                                <p class="ty-step-desc">Expect a response within 24 hours via your details.</p>
+                            </div>
+                            <div class="ty-step-icon" aria-hidden="true">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                        </div>
+                        <div class="ty-step" role="listitem">
+                            <span class="ty-step-n">04</span>
+                            <div class="ty-step-body">
+                                <p class="ty-step-label">Tailored consultation</p>
+                                <p class="ty-step-desc">We build a solution around your exact requirements.</p>
+                            </div>
+                            <div class="ty-step-icon" aria-hidden="true">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Strip row -->
+        <div class="ty-strip">
+            <div class="ty-strip-inner">
+                <div class="ty-strip-contact" aria-label="Contact details">
+                    <a href="tel:+27683794897">
+                        <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                        068 379 4897
+                    </a>
+                    <a href="mailto:Info@leanosecurity.co.za">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        Info@leanosecurity.co.za
+                    </a>
+                    <span>
+                        <i class="fas fa-circle" aria-hidden="true" style="font-size:.45rem; color: #27ae60;"></i>
+                        Operations 24/7
+                    </span>
+                </div>
+                <div class="ty-panel-ext">
+                    <p class="ty-panel-ext-label">Registered provider</p>
+                    <p class="ty-psira">
+                        <i class="fas fa-id-badge" aria-hidden="true"></i>
+                        PSIRA No. 4421383 &nbsp;&middot;&nbsp; NKP Accredited
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="assets/images/Logo.png" alt="Leano Security Services Logo" class="logo-img" width="50" height="50">
+                        <span class="logo-text">LEANO <span class="logo-sub">SECURITY</span></span>
+                    </a>
+                    <p class="footer-tagline">Zero Entry Tolerance — Your Security, Our Mission. PSIRA registered security provider serving South Africa since 2017.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/17tydryq7K/" aria-label="Follow us on Facebook" target="_blank" rel="noopener">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/leano_security?igsh=MTBxMTNjNmdxbDBvZg==" aria-label="Follow us on Instagram" target="_blank" rel="noopener">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="values.html">Our Values</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="Privacy Policy.pdf">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#armed-response">Armed Response</a></li>
+                        <li><a href="services.html#cctv">CCTV Installation</a></li>
+                        <li><a href="services.html#vip-protection">VIP Protection</a></li>
+                        <li><a href="services.html#fleet-security">Fleet Security</a></li>
+                        <li><a href="services.html#event-security">Event Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <address class="contact-info">
+                        <p>
+                            <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                            <a href="tel:+27683794897">068 379 4897</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <a href="mailto:Info@leanosecurity.co.za">Info@leanosecurity.co.za</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-clock" aria-hidden="true"></i>
+                            Operations: 24/7
+                        </p>
+                        <p>
+                            <i class="fas fa-id-badge" aria-hidden="true"></i>
+                            PSIRA: 4421383
+                        </p>
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Leano Security Services. All rights reserved.</p>
+                <p>PSIRA Registration No: 4421383 &nbsp;|&nbsp; NKP Accredited Security Provider</p>
+                <p>Serving Gauteng, North West, Northern Cape, Cape Town &amp; nationwide</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="emergency-float" aria-label="Emergency call">
+        <a href="tel:+27683794897" class="emergency-btn" aria-label="Call Leano Security emergency line">
+            <i class="fas fa-phone-alt" aria-hidden="true"></i>
+            <span>Emergency</span>
+        </a>
+    </div>
+
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks   = document.getElementById('navLinks');
+
+        if (mobileMenu) {
+            mobileMenu.addEventListener('click', () => {
+                const expanded = mobileMenu.getAttribute('aria-expanded') === 'true';
+                navLinks.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                mobileMenu.setAttribute('aria-expanded', String(!expanded));
+            });
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    mobileMenu.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 60);
+        }, { passive: true });
+    </script>
+</body>
+</html>
