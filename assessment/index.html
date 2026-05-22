@@ -4,24 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Security Assessment | Leano Security Services. Get a free AI-powered security assessment to identify vulnerabilities and protect your business or home.">
-    <meta name="keywords" content="security assessment, risk assessment, security audit, threat assessment, AI assessment, security consultation">
     <title>Security Assessment — Leano Security Services</title>
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Styles -->
     <link rel="stylesheet" href="../styles/global.css">
-    <link rel="stylesheet" href="../styles/pages/contact.css">
-
     <link rel="icon" type="image/png" href="../assets/images/Logo.png">
-    <link rel="shortcut icon" href="../assets/images/Logo.png">
-    <link rel="apple-touch-icon" href="../assets/images/Logo.png">
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -29,9 +19,7 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-P575KCDZ');</script>
-    <!-- End Google Tag Manager -->
 
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R3F1KQLMSH"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -40,108 +28,421 @@
     gtag('config', 'G-R3F1KQLMSH');
     </script>
 
-    <!-- Google tag (gtag.js) - Google Ads -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18174514939"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-18174514939');
-    </script>
-
     <style>
-        .assessment-hero {
-            background: linear-gradient(135deg, #0d2b3e 0%, #1a4d6d 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-            margin-bottom: 40px;
+
+        /* ══════════════════════════════
+           HERO
+        ══════════════════════════════ */
+        .as-hero {
+            background: var(--dark);
+            padding-top: calc(var(--header-h) + 5.5rem);
+            padding-bottom: 0;
+            position: relative;
+            overflow: hidden;
         }
 
-        .assessment-hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
+        .as-hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -180px;
+            width: 640px;
+            height: 640px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(214,40,57,.07) 0%, transparent 68%);
+            pointer-events: none;
         }
 
-        .assessment-hero p {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 30px;
-            opacity: 0.95;
-        }
-
-        .assessment-benefits {
+        .as-hero-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .benefit-card {
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .benefit-card i {
-            font-size: 2.5rem;
-            color: #0d2b3e;
-            margin-bottom: 15px;
-        }
-
-        .benefit-card h3 {
-            margin-bottom: 10px;
-            color: #0d2b3e;
-        }
-
-        .assessment-container {
+            grid-template-columns: 1fr 400px;
+            gap: 0;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 1.5rem;
+            align-items: end;
         }
 
-        #jotform-ai-widget-container {
-            margin: 40px 0;
+        /* ── Left copy ── */
+        .as-hero-left {
+            padding-bottom: 5.5rem;
         }
 
-        .assessment-fallback {
-            background: #f5f5f5;
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-            margin: 40px 0;
+        .as-eyebrow {
+            font-family: var(--font-heading);
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: .6rem;
         }
 
-        .assessment-fallback a {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 30px;
-            background: #0d2b3e;
-            color: white;
+        .as-eyebrow::before {
+            content: '';
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--secondary);
+            flex-shrink: 0;
+        }
+
+        .as-h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6.5vw, 5rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: .95;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            margin-bottom: 1.6rem;
+        }
+
+        .as-h1 em {
+            font-style: normal;
+            color: var(--secondary);
+        }
+
+        .as-hero-body {
+            font-family: var(--font-body);
+            font-size: .98rem;
+            color: rgba(255,255,255,.48);
+            line-height: 1.75;
+            max-width: 420px;
+            margin-bottom: 0;
+        }
+
+        /* ── Right panel ── */
+        .as-hero-panel {
+            background: #fff;
+            padding: 2.4rem 2.2rem 2rem;
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+        }
+
+        .as-panel-label {
+            font-family: var(--font-heading);
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 1.3rem;
+        }
+
+        .as-feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .as-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f0f2f5;
+        }
+
+        .as-feature:last-child { border-bottom: none; }
+
+        .as-feature-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: var(--radius-sm);
+            background: rgba(10,31,60,.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .as-feature-icon i {
+            font-size: .85rem;
+            color: var(--primary);
+        }
+
+        .as-feature-title {
+            font-family: var(--font-heading);
+            font-size: .82rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .as-feature-desc {
+            font-size: .8rem;
+            color: #888;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* ══════════════════════════════
+           STRIP — mirrors thank-you page
+        ══════════════════════════════ */
+        .as-strip {
+            background: var(--primary);
+        }
+
+        .as-strip-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 0;
+        }
+
+        .as-strip-left {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            padding: 1.6rem 0;
+            flex-wrap: wrap;
+        }
+
+        .as-strip-stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .as-strip-val {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .as-strip-lbl {
+            font-family: var(--font-heading);
+            font-size: .62rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.38);
+            margin-top: 3px;
+        }
+
+        .as-strip-divider {
+            width: 1px;
+            height: 32px;
+            background: rgba(255,255,255,.1);
+        }
+
+        .as-strip-panel-ext {
+            background: #fff;
+            padding: 1.4rem 2.2rem;
+            border-top: 1px solid #f0f2f5;
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+        }
+
+        .as-strip-panel-ext i {
+            color: var(--secondary);
+            font-size: .85rem;
+        }
+
+        .as-strip-panel-ext span {
+            font-family: var(--font-heading);
+            font-size: .78rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* ══════════════════════════════
+           ASSESSMENT SECTION
+        ══════════════════════════════ */
+        .as-body {
+            background: var(--light);
+            padding: 5rem 0 6rem;
+        }
+
+        .as-body-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        /* ── Sidebar ── */
+        .as-sidebar {
+            position: sticky;
+            top: calc(var(--header-h) + 2rem);
+        }
+
+        .as-sidebar-heading {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .as-sidebar-body {
+            font-size: .88rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 1.8rem;
+        }
+
+        .as-sidebar-contact {
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
+            padding-top: 1.4rem;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .as-sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: .65rem;
+            font-size: .83rem;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--gray-600);
             text-decoration: none;
-            border-radius: 4px;
-            transition: background 0.3s;
+            transition: color .2s ease;
         }
 
-        .assessment-fallback a:hover {
-            background: #1a4d6d;
+        .as-sidebar-link i {
+            color: var(--accent);
+            width: 14px;
+            font-size: .85rem;
+        }
+
+        .as-sidebar-link:hover { color: var(--primary); }
+
+        /* ── Main content ── */
+        .as-main {}
+
+        /* Widget frame */
+        .as-widget-frame {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            min-height: 520px;
+            display: flex;
+            align-items: stretch;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .as-widget-inner {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* The iframe slot — fills the frame */
+        .as-widget-slot {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .as-widget-slot iframe {
+            flex: 1;
+            width: 100%;
+            min-height: 600px;
+            border: none;
+            display: block;
+        }
+
+
+
+        /* Note row */
+        .as-note {
+            margin-top: 1.4rem;
+            display: flex;
+            align-items: flex-start;
+            gap: .75rem;
+            background: rgba(26,158,143,.06);
+            border: 1px solid rgba(26,158,143,.18);
+            border-radius: var(--radius-sm);
+            padding: .9rem 1.1rem;
+        }
+
+        .as-note i {
+            color: var(--accent);
+            font-size: .85rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .as-note p {
+            font-size: .8rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ══════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════ */
+        @media (max-width: 960px) {
+            .as-hero-layout,
+            .as-strip-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .as-hero-left { padding-bottom: 3rem; }
+
+            .as-hero-panel {
+                border-radius: var(--radius-md);
+                margin-bottom: 0;
+            }
+
+            .as-hero {
+                padding-bottom: 2.5rem;
+            }
+
+            .as-strip-left {
+                gap: 1.5rem;
+            }
+
+            .as-strip-panel-ext {
+                border-radius: 0 0 var(--radius-md) var(--radius-md);
+            }
+
+            .as-strip-divider { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .as-body-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .as-sidebar {
+                position: static;
+                padding-bottom: .5rem;
+                border-bottom: 1px solid var(--gray-200);
+                margin-bottom: .5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .as-h1 { font-size: clamp(2.5rem, 10vw, 3.5rem); }
+            .as-body { padding: 3.5rem 0 5rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P575KCDZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
     <a href="#main-content" class="skip-to-main">Skip to main content</a>
 
-    <header role="banner">
+    <!-- ── Header ── -->
+    <header role="banner" id="siteHeader">
         <nav class="container" aria-label="Main navigation">
             <a href="../index.html" class="logo">
                 <img src="../assets/images/Logo.png" alt="Leano Security Services Logo" class="logo-img" width="50" height="50">
@@ -156,68 +457,165 @@
                 <li><a href="../contact.html">Contact Us</a></li>
             </ul>
             <div class="nav-actions">
+                <a href="../index.html" class="assessment-btn" aria-label="Back to Home">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
                 <div class="mobile-menu" id="mobileMenu" role="button" aria-label="Toggle mobile menu" aria-expanded="false">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </div>
             </div>
         </nav>
     </header>
 
-    <!-- Jotform AI Agent Widget Container -->
-    <div id="jotform-ai-widget-container" class="jotform-ai-widget-container">
-        <script
-            src='https://cdn.jotfor.ms/agent/embedjs/019e3094c28973df89838de87057e858731e/embed.js?autoOpenChatIn=1'>
-        </script>
-    </div>
-
     <main id="main-content" role="main">
 
-        <section class="assessment-hero">
-            <div class="assessment-container">
-                <h1>Security Assessment</h1>
-                <p>Get a comprehensive AI-powered security assessment to identify vulnerabilities and protect your business or home. Start your free assessment now.</p>
+        <!-- ── Hero ── -->
+        <section class="as-hero" aria-labelledby="as-heading">
+            <div class="as-hero-layout">
+
+                <div class="as-hero-left">
+                    <p class="as-eyebrow">Free &amp; No Obligation</p>
+                    <h1 class="as-h1" id="as-heading">
+                        Security<br>
+                        <em>Assessment</em>
+                    </h1>
+                    <p class="as-hero-body">
+                        Answer a few questions and our AI assistant will identify vulnerabilities in your current setup and recommend the right protection for your property or business.
+                    </p>
+                </div>
+
+                <div class="as-hero-panel" aria-label="Assessment features">
+                    <p class="as-panel-label">What You Get</p>
+                    <div class="as-feature-list">
+                        <div class="as-feature">
+                            <div class="as-feature-icon" aria-hidden="true">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div>
+                                <p class="as-feature-title">AI-Powered Analysis</p>
+                                <p class="as-feature-desc">Intelligent threat identification tailored to your context.</p>
+                            </div>
+                        </div>
+                        <div class="as-feature">
+                            <div class="as-feature-icon" aria-hidden="true">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div>
+                                <p class="as-feature-title">Results in Minutes</p>
+                                <p class="as-feature-desc">No lengthy forms — just a quick, conversational assessment.</p>
+                            </div>
+                        </div>
+                        <div class="as-feature">
+                            <div class="as-feature-icon" aria-hidden="true">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div>
+                                <p class="as-feature-title">Personalised Report</p>
+                                <p class="as-feature-desc">A clear summary of risks with actionable next steps.</p>
+                            </div>
+                        </div>
+                        <div class="as-feature">
+                            <div class="as-feature-icon" aria-hidden="true">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <p class="as-feature-title">Completely Free</p>
+                                <p class="as-feature-desc">No hidden fees, no obligations — just expert insight.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <div class="assessment-container">
-            <section class="assessment-benefits">
-                <div class="benefit-card">
-                    <i class="fas fa-brain"></i>
-                    <h3>AI-Powered Analysis</h3>
-                    <p>Advanced AI technology analyzes your security needs and provides intelligent recommendations.</p>
+        <!-- ── Strip ── -->
+        <div class="as-strip">
+            <div class="as-strip-inner">
+                <div class="as-strip-left" aria-label="Key figures">
+                    <div class="as-strip-stat">
+                        <span class="as-strip-val">24/7</span>
+                        <span class="as-strip-lbl">Operations</span>
+                    </div>
+                    <div class="as-strip-divider" aria-hidden="true"></div>
+                    <div class="as-strip-stat">
+                        <span class="as-strip-val">2017</span>
+                        <span class="as-strip-lbl">Est. in SA</span>
+                    </div>
+                    <div class="as-strip-divider" aria-hidden="true"></div>
+                    <div class="as-strip-stat">
+                        <span class="as-strip-val">PSIRA</span>
+                        <span class="as-strip-lbl">Registered</span>
+                    </div>
+                    <div class="as-strip-divider" aria-hidden="true"></div>
+                    <div class="as-strip-stat">
+                        <span class="as-strip-val">NKP</span>
+                        <span class="as-strip-lbl">Accredited</span>
+                    </div>
                 </div>
-                <div class="benefit-card">
-                    <i class="fas fa-clock"></i>
-                    <h3>Quick & Easy</h3>
-                    <p>Complete your assessment in minutes with our interactive AI assistant.</p>
+                <div class="as-strip-panel-ext">
+                    <i class="fas fa-id-badge" aria-hidden="true"></i>
+                    <span>PSIRA Reg. No. 4421383</span>
                 </div>
-                <div class="benefit-card">
-                    <i class="fas fa-lock"></i>
-                    <h3>Completely Free</h3>
-                    <p>No obligations, no hidden fees. Get actionable security insights at no cost.</p>
-                </div>
-            </section>
-
-            <section id="security-assessment">
-                <h2 style="text-align: center; margin: 40px 0 30px;">Start Your Assessment</h2>
-                <p style="text-align: center; margin-bottom: 30px; color: #666;">Use our AI assistant to evaluate your security posture and get personalized recommendations.</p>
-
-                <div class="assessment-fallback">
-                    <h3>Manual Assessment Option</h3>
-                    <p>Prefer to speak with our security experts directly? Contact us for a detailed, personalized assessment.</p>
-                    <a href="../contact.html">Contact Our Security Team</a>
-                </div>
-
-                <p style="text-align: center; margin-top: 40px; color: #666;">
-                    <strong>Note:</strong> This assessment helps us understand your security needs so we can provide tailored solutions that protect what matters most to you.
-                </p>
-            </section>
+            </div>
         </div>
+
+        <!-- ── Assessment body ── -->
+        <section class="as-body" id="security-assessment" aria-labelledby="as-body-heading">
+            <div class="as-body-inner">
+
+                <!-- Sidebar -->
+                <aside class="as-sidebar" aria-label="About the assessment">
+                    <h2 class="as-sidebar-heading" id="as-body-heading">Start Your<br>Assessment</h2>
+                    <p class="as-sidebar-body">
+                        Our AI assistant will walk you through a series of questions about your property, current security setup, and areas of concern. Takes under 5 minutes.
+                    </p>
+                    <p class="as-sidebar-body">
+                        Prefer to speak to a person? Our team is available around the clock.
+                    </p>
+                    <div class="as-sidebar-contact" aria-label="Direct contact">
+                        <a href="tel:+27683794897" class="as-sidebar-link">
+                            <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                            068 379 4897
+                        </a>
+                        <a href="mailto:Info@leanosecurity.co.za" class="as-sidebar-link">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            Info@leanosecurity.co.za
+                        </a>
+                        <a href="../contact.html" class="as-sidebar-link">
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                            Contact form
+                        </a>
+                    </div>
+                </aside>
+
+                <!-- Widget area -->
+                <div class="as-main">
+                    <div class="as-widget-frame" aria-label="AI security assessment tool">
+                        <div class="as-widget-inner">
+                            <div class="as-widget-slot">
+                                <iframe
+                                    src="https://agent.jotform.com/019e3094c28973df89838de87057e858731e"
+                                    title="Leano Security AI Assessment Assistant"
+                                    allow="microphone; camera"
+                                    loading="lazy">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="as-note" role="note">
+                        <i class="fas fa-info-circle" aria-hidden="true"></i>
+                        <p>This assessment helps us understand your security needs so we can provide solutions tailored to your situation. Your information is handled securely and never shared with third parties.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
 
     </main>
 
+    <!-- ── Footer ── -->
     <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
@@ -236,13 +634,88 @@
                         </a>
                     </div>
                 </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../values.html">Our Values</a></li>
+                        <li><a href="../contact.html">Contact Us</a></li>
+                        <li><a href="../Privacy Policy.pdf">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="../services.html#armed-response">Armed Response</a></li>
+                        <li><a href="../services.html#cctv">CCTV Installation</a></li>
+                        <li><a href="../services.html#vip-protection">VIP Protection</a></li>
+                        <li><a href="../services.html#fleet-security">Fleet Security</a></li>
+                        <li><a href="../services.html#event-security">Event Security</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <address class="contact-info">
+                        <p>
+                            <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                            <a href="tel:+27683794897">068 379 4897</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <a href="mailto:Info@leanosecurity.co.za">Info@leanosecurity.co.za</a>
+                        </p>
+                        <p>
+                            <i class="fas fa-clock" aria-hidden="true"></i>
+                            Operations: 24/7
+                        </p>
+                        <p>
+                            <i class="fas fa-id-badge" aria-hidden="true"></i>
+                            PSIRA: 4421383
+                        </p>
+                    </address>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Leano Security Services. All rights reserved.</p>
+                <p>PSIRA Registration No: 4421383 &nbsp;|&nbsp; NKP Accredited Security Provider</p>
+                <p>Serving Gauteng, North West, Northern Cape, Cape Town &amp; nationwide</p>
             </div>
         </div>
     </footer>
 
-    <!-- Jotform AI integration -->
-    <script src="../scripts/integrations/jotform-ai.js" defer></script>
-    <!-- Smooth scroll script -->
-    <script src="../scripts/smooth-scroll.js" defer></script>
+    <div class="emergency-float" aria-label="Emergency call">
+        <a href="tel:+27683794897" class="emergency-btn" aria-label="Call Leano Security emergency line">
+            <i class="fas fa-phone-alt" aria-hidden="true"></i>
+            <span>Emergency</span>
+        </a>
+    </div>
+
+    <script>
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks   = document.getElementById('navLinks');
+
+        if (mobileMenu) {
+            mobileMenu.addEventListener('click', () => {
+                const expanded = mobileMenu.getAttribute('aria-expanded') === 'true';
+                navLinks.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                mobileMenu.setAttribute('aria-expanded', String(!expanded));
+            });
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    mobileMenu.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 60);
+        }, { passive: true });
+    </script>
+
+<script src="../scripts/smooth-scroll.js" defer></script>
 </body>
 </html>
