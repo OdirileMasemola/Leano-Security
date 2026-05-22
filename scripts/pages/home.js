@@ -187,7 +187,8 @@ function initCounters() {
 
             const tick = () => {
                 count = Math.min(count + step, target);
-                el.textContent = Math.ceil(count);
+                const suffix = target === 24 ? '' : '+';
+                el.textContent = Math.ceil(count) + suffix;
                 if (count < target) requestAnimationFrame(tick);
             };
             requestAnimationFrame(tick);
