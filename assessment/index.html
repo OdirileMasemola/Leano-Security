@@ -457,9 +457,9 @@
                 <li><a href="../contact.html">Contact Us</a></li>
             </ul>
             <div class="nav-actions">
-                <a href="../index.html" class="assessment-btn" aria-label="Back to Home">
-                    <i class="fas fa-home"></i>
-                    Home
+                <a href="../assessment/index.html" class="assessment-btn" aria-label="Back to Home">
+                    <i class="fas fa-clipboard-list"></i>
+                    ASSESSMENT
                 </a>
                 <div class="mobile-menu" id="mobileMenu" role="button" aria-label="Toggle mobile menu" aria-expanded="false">
                     <span></span><span></span><span></span>
@@ -714,6 +714,20 @@
         window.addEventListener('scroll', () => {
             document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 60);
         }, { passive: true });
+
+        // Protect assessment button from active state
+        const assessmentBtn = document.querySelector('.assessment-btn');
+        if (assessmentBtn) {
+            assessmentBtn.addEventListener('click', (e) => {
+                assessmentBtn.classList.remove('active');
+            });
+            const observer = new MutationObserver(() => {
+                if (assessmentBtn.classList.contains('active')) {
+                    assessmentBtn.classList.remove('active');
+                }
+            });
+            observer.observe(assessmentBtn, { attributes: true, attributeFilter: ['class'] });
+        }
     </script>
 
 <script src="../scripts/smooth-scroll.js" defer></script>

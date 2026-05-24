@@ -121,6 +121,22 @@ function initEventListeners() {
             if (window.innerWidth <= 1024) closeMenu();
         });
     });
+
+    // Protect assessment button from active state
+    const assessmentBtn = document.querySelector('.assessment-btn');
+    if (assessmentBtn) {
+        assessmentBtn.addEventListener('click', (e) => {
+            // Ensure assessment button never gets active class
+            assessmentBtn.classList.remove('active');
+        });
+        // Prevent any script from adding active class to assessment button
+        const observer = new MutationObserver(() => {
+            if (assessmentBtn.classList.contains('active')) {
+                assessmentBtn.classList.remove('active');
+            }
+        });
+        observer.observe(assessmentBtn, { attributes: true, attributeFilter: ['class'] });
+    }
 }
 
 // ── Hero Particles ────────────────────────────────────────────────
