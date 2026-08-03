@@ -181,6 +181,17 @@
 [data-theme="dark"] .form-header h3 { color: #d0dce8; }
 .form-header p { font-size: .88rem; color: var(--gray-600); margin: 0; }
 
+.jotform-form-embed {
+    margin-top: 1rem;
+}
+
+.jotform-form-embed iframe {
+    width: 100% !important;
+    min-height: 780px !important;
+    border: 0 !important;
+    display: block !important;
+}
+
 /* ── Form layout ─────────────────────────────────────────── */
 .form-row {
     display: grid;
