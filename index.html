@@ -147,7 +147,7 @@
     </script>
 
 </head>
-<body>
+<body class="home-page">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P575KCDZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
@@ -192,298 +192,229 @@
 
         <!-- ── Hero ─────────────────────────────────────────── -->
         <section id="home" class="hero" aria-labelledby="hero-heading">
-            <div class="hero-overlay"></div>
-            <div class="hero-particles" id="heroParticles"></div>
-            <div class="container hero-container">
+            <div class="container hero-grid">
                 <div class="hero-content">
-                    <div class="hero-badge">
-                        <i class="fas fa-certificate"></i>
-                        NKP Accredited Security Provider
-                    </div>
-                    <h1 id="hero-heading" class="hero-title">Professional Security Services in South Africa</h1>
-                    <p class="hero-subtitle">Zero Entry Tolerance Protection — 24/7 Tactical Response</p>
-                    <p class="hero-description">Leano Security Services provides advanced security solutions for homes and businesses across South Africa. PSIRA registered, NKP accredited — offering tactical response, CCTV surveillance, and VIP protection services.</p>
+                    <p class="hero-kicker">NKP Accredited &middot; PSIRA Registered Security Provider</p>
+                    <h1 id="hero-heading" class="hero-title">Professional Security Services in South&nbsp;Africa</h1>
+                    <p class="hero-subtitle">Zero Entry Tolerance Protection &mdash; 24/7 Tactical Response</p>
+                    <p class="hero-description">Leano Security Services provides advanced security solutions for homes and businesses across South Africa. PSIRA registered, NKP accredited &mdash; offering tactical response, CCTV surveillance, and VIP protection services.</p>
                     <div class="hero-actions">
-                        <a href="contact.html" class="cta-button primary-btn">
-                            <i class="fas fa-shield-alt"></i> Free Security Assessment
+                        <a href="contact.html" class="btn btn-solid">Free Security Assessment</a>
+                        <a href="tel:+27683794897" class="btn btn-line">
+                            <i class="fas fa-phone-alt" aria-hidden="true"></i> Emergency: 068 379 4897
                         </a>
-                        <a href="tel:+27683794897" class="cta-button secondary-btn">
-                            <i class="fas fa-phone-alt"></i> Emergency: 068 379 4897
-                        </a>
-                    </div>
-                    <div class="hero-features">
-                        <div class="feature-chip">
-                            <i class="fas fa-check-circle"></i>
-                            24/7 Tactical Response
-                        </div>
-                        <div class="feature-chip">
-                            <i class="fas fa-check-circle"></i>
-                            PSIRA Registered
-                        </div>
-                        <div class="feature-chip">
-                            <i class="fas fa-check-circle"></i>
-                            Nationwide Coverage
-                        </div>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <div class="image-frame">
-                        <img src="assets/images/Team.jpeg" alt="Professional Security Team — Leano Security Services" loading="lazy" width="600" height="400">
-                        <div class="image-badge">
-                            <i class="fas fa-award"></i>
-                            <span>Trusted Since 2017</span>
-                        </div>
-                    </div>
+                <div class="hero-media">
+                    <figure class="hero-figure">
+                        <img src="assets/images/CEO.jpeg" alt="Leano Security officer on active deployment during a joint operation" width="600" height="750" fetchpriority="high">
+                        <figcaption class="hero-caption">
+                            <span class="caption-label">Trusted Since 2017</span>
+                            <span class="caption-detail">Active Deployment</span>
+                        </figcaption>
+                    </figure>
                 </div>
             </div>
-            <div class="scroll-indicator" aria-hidden="true">
-                <span>Scroll to explore</span>
-                <div class="mouse"><div class="wheel"></div></div>
+            <div class="hero-strip" aria-label="Key service guarantees">
+                <div class="container hero-strip-grid">
+                    <p>24/7 Tactical Response</p>
+                    <p>PSIRA Registered</p>
+                    <p>Nationwide Coverage</p>
+                </div>
             </div>
         </section>
 
-        <!-- Trust bar  -->
+        <!-- ── Trust / credentials strip ─────────────────────── -->
         <section class="trust-bar" aria-label="Accreditations and trust indicators">
             <div class="container">
                 <div class="trust-items">
                     <div class="trust-item">
-                        <i class="fas fa-shield-halved" aria-hidden="true"></i>
-                        <div>
-                            <h3>PSIRA Registered</h3>
-                            <p>Licensed Security Provider</p>
-                        </div>
+                        <span class="trust-index" aria-hidden="true">01</span>
+                        <h3>PSIRA Registered</h3>
+                        <p>Licensed Security Provider</p>
                     </div>
                     <div class="trust-item">
-                        <i class="fas fa-clock" aria-hidden="true"></i>
-                        <div>
-                            <h3>24/7 Response</h3>
-                            <p>Emergency Services Available</p>
-                        </div>
+                        <span class="trust-index" aria-hidden="true">02</span>
+                        <h3>24/7 Response</h3>
+                        <p>Emergency Services Available</p>
                     </div>
                     <div class="trust-item">
-                        <i class="fas fa-user-tie" aria-hidden="true"></i>
-                        <div>
-                            <h3>NKP Accredited</h3>
-                            <p>National Key Point Security</p>
-                        </div>
+                        <span class="trust-index" aria-hidden="true">03</span>
+                        <h3>NKP Accredited</h3>
+                        <p>National Key Point Security</p>
                     </div>
                     <div class="trust-item">
-                        <i class="fas fa-map-location-dot" aria-hidden="true"></i>
-                        <div>
-                            <h3>Nationwide</h3>
-                            <p>South Africa Coverage</p>
-                        </div>
+                        <span class="trust-index" aria-hidden="true">04</span>
+                        <h3>Nationwide</h3>
+                        <p>South Africa Coverage</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ── About preview ─────────────────────────────────── -->
-        <section class="about-preview section-padding" aria-labelledby="about-heading">
+        <section class="about-preview" aria-labelledby="about-heading">
             <div class="container">
-                <div class="section-header">
+                <div class="section-head">
                     <span class="section-label">Who We Are</span>
                     <h2 id="about-heading" class="section-title">Professional Security Services Provider</h2>
-                    <p class="section-subtitle">Leading security solutions provider with nationwide coverage since 2017</p>
+                    <p class="section-sub">Leading security solutions provider with nationwide coverage since 2017</p>
                 </div>
-                <div class="about-content">
+                <div class="about-grid">
+                    <div class="about-media">
+                        <figure class="about-figure">
+                            <img src="assets/images/Team.jpeg" alt="Leano Security response officers in uniform" loading="lazy" width="800" height="620">
+                            <figcaption>Leano response officers on duty</figcaption>
+                        </figure>
+                    </div>
                     <div class="about-text">
-                        <div class="accent-line"></div>
                         <h3>Your Trusted Security Partner in South Africa</h3>
                         <p><strong>Leano Security Services</strong> is a fully registered security company providing comprehensive protection services across South Africa. Our team of <strong>PSIRA registered</strong> security officers delivers professional tactical response, CCTV surveillance, and security solutions for residential and commercial clients.</p>
-                        <div class="mission-statement">
-                            <i class="fas fa-quote-left" aria-hidden="true"></i>
+                        <blockquote class="about-mission">
                             <p>We provide professional security services with zero entry tolerance, ensuring complete protection for your home or business.</p>
-                        </div>
-                        <a href="about.html" class="cta-button outline-btn">
-                            About Our Company <i class="fas fa-arrow-right"></i>
+                        </blockquote>
+                        <a href="about.html" class="text-link">
+                            About Our Company <i class="fas fa-arrow-right" aria-hidden="true"></i>
                         </a>
-                    </div>
-                    <div class="about-image">
-                        <div class="image-stack">
-                            <div class="stack-item main">
-                                <img src="assets/images/CEO.jpeg" alt="Leano Security Services CEO" loading="lazy" width="400" height="500">
-                            </div>
-                            <div class="stack-item secondary">
-                                <img src="assets/images/protection.jpeg" alt="Security Operations Team" loading="lazy" width="300" height="200">
-                            </div>
-                            <div class="experience-badge">
-                                <span>Security Experts Since 2017</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Services preview  -->
-        <section class="services-preview section-padding bg-light" aria-labelledby="services-heading">
+        <!-- ── Services preview ──────────────────────────────── -->
+        <section class="services-preview" aria-labelledby="services-heading">
             <div class="container">
-                <div class="section-header">
+                <div class="section-head">
                     <span class="section-label">What We Do</span>
                     <h2 id="services-heading" class="section-title">Professional Security Solutions</h2>
-                    <p class="section-subtitle">A complete range of security services for homes and businesses across South Africa</p>
+                    <p class="section-sub">A complete range of security services for homes and businesses across South Africa</p>
                 </div>
                 <div class="services-grid">
                     <article class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
-                            <div class="icon-bg"></div>
+                        <div class="service-top">
+                            <span class="service-num" aria-hidden="true">01</span>
                         </div>
                         <h3>Tactical Response Services</h3>
                         <p>24/7 professional tactical response teams with rapid deployment across South Africa. PSIRA registered security officers on call at all times.</p>
                         <ul class="service-features">
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Immediate Emergency Dispatch</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Trained Security Officers</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Mobile Patrol Services</li>
+                            <li>Immediate Emergency Dispatch</li>
+                            <li>Trained Security Officers</li>
+                            <li>Mobile Patrol Services</li>
                         </ul>
                         <a href="services.html#tactical-response" class="service-link" aria-label="Learn more about Tactical Response">
-                            View Details <i class="fas fa-arrow-right"></i>
+                            View Details <span aria-hidden="true">&rarr;</span>
                         </a>
                     </article>
 
                     <article class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-video" aria-hidden="true"></i>
-                            <div class="icon-bg"></div>
+                        <div class="service-top">
+                            <span class="service-num" aria-hidden="true">02</span>
                         </div>
                         <h3>CCTV &amp; Surveillance Systems</h3>
                         <p>Professional CCTV installation and 24/7 monitoring services for homes and businesses across South Africa.</p>
                         <ul class="service-features">
-                            <li><i class="fas fa-check" aria-hidden="true"></i> HD Camera Installation</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> 24/7 Monitoring Centre</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Remote Viewing Access</li>
+                            <li>HD Camera Installation</li>
+                            <li>24/7 Monitoring Centre</li>
+                            <li>Remote Viewing Access</li>
                         </ul>
                         <a href="services.html#cctv-surveillance" class="service-link" aria-label="Learn more about CCTV">
-                            View Details <i class="fas fa-arrow-right"></i>
+                            View Details <span aria-hidden="true">&rarr;</span>
                         </a>
                     </article>
 
                     <article class="service-card featured">
-                        <div class="service-badge">Most Popular</div>
-                        <div class="service-icon">
-                            <i class="fas fa-user-shield" aria-hidden="true"></i>
-                            <div class="icon-bg"></div>
+                        <div class="service-top">
+                            <span class="service-num" aria-hidden="true">03</span>
+                            <span class="service-tag">Most Popular</span>
                         </div>
                         <h3>VIP &amp; Executive Protection</h3>
                         <p>Professional close protection services for executives, celebrities, and high-profile individuals throughout South Africa.</p>
                         <ul class="service-features">
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Personal Bodyguards</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Security Risk Assessment</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Travel Security Details</li>
+                            <li>Personal Bodyguards</li>
+                            <li>Security Risk Assessment</li>
+                            <li>Travel Security Details</li>
                         </ul>
                         <a href="services.html#vip-protection" class="service-link" aria-label="Learn more about VIP Protection">
-                            View Details <i class="fas fa-arrow-right"></i>
+                            View Details <span aria-hidden="true">&rarr;</span>
                         </a>
                     </article>
 
                     <article class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-truck" aria-hidden="true"></i>
-                            <div class="icon-bg"></div>
+                        <div class="service-top">
+                            <span class="service-num" aria-hidden="true">04</span>
                         </div>
                         <h3>Fleet &amp; Vehicle Security</h3>
                         <p>Advanced GPS tracking and security solutions for vehicle fleets, logistics, and transportation companies.</p>
                         <ul class="service-features">
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Real-time GPS Tracking</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Geo-fencing Alerts</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Driver Behaviour Monitoring</li>
+                            <li>Real-time GPS Tracking</li>
+                            <li>Geo-fencing Alerts</li>
+                            <li>Driver Behaviour Monitoring</li>
                         </ul>
                         <a href="services.html#fleet-security" class="service-link" aria-label="Learn more about Fleet Security">
-                            View Details <i class="fas fa-arrow-right"></i>
+                            View Details <span aria-hidden="true">&rarr;</span>
                         </a>
                     </article>
                 </div>
-                <div class="section-footer">
-                    <a href="services.html" class="cta-button primary-btn">
-                        <i class="fas fa-list" aria-hidden="true"></i> View All Services
-                    </a>
+                <div class="section-foot">
+                    <a href="services.html" class="btn btn-line">View All Services</a>
                 </div>
             </div>
         </section>
 
-        <!-- ── Technology ─────────────────────────────────────── -->
-        <!-- FIXED: Removed the extra </div> that was breaking layout -->
-        <section class="technology-section section-padding" aria-labelledby="technology-heading">
+        <!-- ── Technology / capabilities ─────────────────────── -->
+        <section class="technology-section" aria-labelledby="technology-heading">
             <div class="container">
-                <div class="section-header">
+                <div class="section-head">
                     <span class="section-label">Our Technology</span>
                     <h2 id="technology-heading" class="section-title">Advanced Security Systems</h2>
-                    <p class="section-subtitle">State-of-the-art technology for comprehensive, intelligent protection</p>
+                    <p class="section-sub">State-of-the-art technology for comprehensive, intelligent protection</p>
                 </div>
-                <div class="tech-features">
-                    <article class="tech-feature active">
-                        <div class="feature-header">
-                            <div class="feature-icon">
-                                <i class="fas fa-robot" aria-hidden="true"></i>
-                            </div>
-                            <h4>AI-Powered Surveillance</h4>
-                        </div>
+                <div class="tech-grid">
+                    <article class="tech-feature">
+                        <span class="tech-num" aria-hidden="true">01</span>
+                        <h4>AI-Powered Surveillance</h4>
                         <p>Intelligent CCTV systems with artificial intelligence for real-time threat detection and significantly reduced false alarms.</p>
                     </article>
 
                     <article class="tech-feature">
-                        <div class="feature-header">
-                            <div class="feature-icon">
-                                <i class="fas fa-fingerprint" aria-hidden="true"></i>
-                            </div>
-                            <h4>Access Control Systems</h4>
-                        </div>
+                        <span class="tech-num" aria-hidden="true">02</span>
+                        <h4>Access Control Systems</h4>
                         <p>Biometric and card-based access control for secure premises management at any facility across South Africa.</p>
                     </article>
 
                     <article class="tech-feature">
-                        <div class="feature-header">
-                            <div class="feature-icon">
-                                <i class="fas fa-satellite" aria-hidden="true"></i>
-                            </div>
-                            <h4>GPS Tracking Technology</h4>
-                        </div>
+                        <span class="tech-num" aria-hidden="true">03</span>
+                        <h4>GPS Tracking Technology</h4>
                         <p>Real-time vehicle and asset tracking with instant movement alerts, geo-fencing, and comprehensive reporting.</p>
                     </article>
 
                     <article class="tech-feature">
-                        <div class="feature-header">
-                            <div class="feature-icon">
-                                <i class="fas fa-database" aria-hidden="true"></i>
-                            </div>
-                            <h4>Secure Data Storage</h4>
-                        </div>
+                        <span class="tech-num" aria-hidden="true">04</span>
+                        <h4>Secure Data Storage</h4>
                         <p>Encrypted cloud storage for all surveillance footage with redundant backup systems and controlled access.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!--  Stats -->
-        <section class="stats-section section-padding" aria-label="Company Statistics">
+        <!-- ── Stats ─────────────────────────────────────────── -->
+        <section class="stats-section" aria-label="Company Statistics">
             <div class="container">
+                <p class="stats-statement">Zero Entry Tolerance &mdash; Your Security, Our&nbsp;Mission.</p>
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                        </div>
                         <div class="counter" data-target="7">0</div>
                         <span class="stat-label">Years of Experience</span>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-user-shield" aria-hidden="true"></i>
-                        </div>
                         <div class="counter" data-target="150">0</div>
                         <span class="stat-label">Security Professionals</span>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-building" aria-hidden="true"></i>
-                        </div>
                         <div class="counter" data-target="100">0</div>
                         <span class="stat-label">Protected Properties</span>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-clock" aria-hidden="true"></i>
-                        </div>
                         <div class="counter" data-target="24">0</div>
                         <span class="stat-label">Hour Emergency Response</span>
                     </div>
@@ -491,35 +422,24 @@
             </div>
         </section>
 
-        <!-- CTA-->
-        <section class="cta-section section-padding" aria-labelledby="cta-heading">
+        <!-- ── CTA ───────────────────────────────────────────── -->
+        <section class="cta-section" aria-labelledby="cta-heading">
             <div class="container">
-                <div class="cta-card">
+                <div class="cta-panel">
                     <div class="cta-content">
                         <h2 id="cta-heading">Need Professional Security Services?</h2>
                         <p>Contact Leano Security Services today for a free security assessment and customised protection plan for your home or business anywhere in South Africa.</p>
-                        <div class="cta-features">
-                            <div class="cta-feature">
-                                <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                <span>Free Security Assessment</span>
-                            </div>
-                            <div class="cta-feature">
-                                <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                <span>Custom Security Solutions</span>
-                            </div>
-                            <div class="cta-feature">
-                                <i class="fas fa-check-circle" aria-hidden="true"></i>
-                                <span>24/7 Emergency Support</span>
-                            </div>
-                        </div>
+                        <ul class="cta-list">
+                            <li>Free Security Assessment</li>
+                            <li>Custom Security Solutions</li>
+                            <li>24/7 Emergency Support</li>
+                        </ul>
                     </div>
                     <div class="cta-action">
-                        <a href="tel:+27683794897" class="cta-button primary-btn large-btn">
-                            <i class="fas fa-phone-alt"></i> Call Now: 068 379 4897
+                        <a href="tel:+27683794897" class="btn btn-solid btn-lg">
+                            <i class="fas fa-phone-alt" aria-hidden="true"></i> Call Now: 068 379 4897
                         </a>
-                        <p class="cta-note">
-                            <i class="fas fa-lock"></i> PSIRA Registered — Reg. No. 4421383
-                        </p>
+                        <p class="cta-note">PSIRA Registered &mdash; Reg. No. 4421383</p>
                     </div>
                 </div>
             </div>
@@ -535,7 +455,7 @@
                         <img src="assets/images/Logo.png" alt="Leano Security Services Logo" class="logo-img" width="50" height="50">
                         <span class="logo-text">LEANO <span class="logo-sub">SECURITY</span></span>
                     </a>
-                    <p class="footer-tagline">Zero Entry Tolerance — Your Security, Our Mission. PSIRA registered security provider serving South Africa since 2017.</p>
+                    <p class="footer-tagline">Zero Entry Tolerance &mdash; Your Security, Our Mission. PSIRA registered security provider serving South Africa since 2017.</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/share/17tydryq7K/" aria-label="Follow us on Facebook" target="_blank" rel="noopener">
                             <i class="fab fa-facebook-f"></i>
@@ -611,9 +531,3 @@
     <script src="scripts/smooth-scroll.js" defer></script>
 </body>
 </html>
-
-
-
-
-
-
