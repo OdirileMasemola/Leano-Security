@@ -92,6 +92,13 @@ body.home-page {
 .home-page .logo:hover .logo-img { transform: none; }
 .home-page .logo-sub { color: var(--red); }
 
+/* Logo.png is transparent with dark text — give it a white backing
+   so it stays legible on the dark header/footer */
+.home-page .logo-img {
+    background: #fff;
+    padding: 3px;
+}
+
 .home-page .nav-links a {
     color: #B8B8B8;
     font-size: .76rem;
@@ -172,11 +179,11 @@ body.home-page {
     align-items: center;
     justify-content: center;
     gap: .65rem;
-    padding: 1rem 2.1rem;
+    padding: .95rem 1.7rem;
     font-family: var(--ui);
     font-weight: 700;
-    font-size: .78rem;
-    letter-spacing: 1.6px;
+    font-size: .76rem;
+    letter-spacing: 1.4px;
     text-transform: uppercase;
     border: 1px solid transparent;
     cursor: pointer;
@@ -264,8 +271,8 @@ body.home-page {
     grid-template-columns: 1.15fr .85fr;
     gap: 5rem;
     align-items: center;
-    padding-top: 4.5rem;
-    padding-bottom: 4.5rem;
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
 }
 
 .home-page .hero-kicker {
@@ -291,12 +298,13 @@ body.home-page {
 .home-page .hero-title {
     font-family: var(--display);
     font-weight: 700;
-    font-size: clamp(3.2rem, 6.2vw, 5.4rem);
+    /* vh term keeps the hero within one screen on shorter desktops */
+    font-size: clamp(2.8rem, min(6.2vw, 10vh), 5.4rem);
     line-height: .95;
     letter-spacing: .5px;
     text-transform: uppercase;
     color: #fff;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
 }
 
 .home-page .hero-subtitle {
@@ -314,7 +322,7 @@ body.home-page {
     line-height: 1.8;
     color: var(--muted);
     max-width: 52ch;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .home-page .hero-actions {
@@ -330,9 +338,10 @@ body.home-page {
 }
 .home-page .hero-figure img {
     width: 100%;
-    aspect-ratio: 4 / 5;
+    /* Sized against the viewport so the hero fits one screen on desktop */
+    height: clamp(340px, calc(100vh - 340px), 600px);
     object-fit: cover;
-    object-position: 50% 20%;
+    object-position: 50% 30%;
     filter: grayscale(28%) contrast(1.04);
     display: block;
 }
@@ -454,6 +463,7 @@ body.home-page {
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
+    object-position: 50% 22%;
     filter: grayscale(20%) contrast(1.03);
     display: block;
 }
@@ -802,14 +812,39 @@ body.home-page {
 .home-page .cta-action .btn { width: 100%; }
 
 .home-page .cta-note {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
     font-family: var(--ui);
     font-size: .7rem;
     font-weight: 600;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     color: var(--muted);
-    text-align: center;
+    text-align: left;
     margin: 0;
+}
+
+/* PSIRA badge — white backing keeps the crest legible on dark surfaces */
+.home-page .psira-badge {
+    height: 44px;
+    width: auto;
+    background: #fff;
+    padding: 4px;
+    flex-shrink: 0;
+}
+.home-page .psira-badge-sm {
+    height: 22px;
+    width: auto;
+    background: #fff;
+    padding: 2px;
+    flex-shrink: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+.home-page .footer-bottom .psira-badge-sm {
+    height: 18px;
+    margin-right: .3rem;
 }
 
 /* ── 13. Footer overrides ────────────────────────────────── */
@@ -883,7 +918,7 @@ body.home-page {
         padding-top: 3.5rem;
         padding-bottom: 3.5rem;
     }
-    .home-page .hero-figure img { aspect-ratio: 16 / 10; }
+    .home-page .hero-figure img { height: auto; aspect-ratio: 16 / 10; }
 
     .home-page .about-grid { grid-template-columns: 1fr; gap: 3rem; }
 
@@ -947,7 +982,7 @@ body.home-page {
     .home-page .hero-description { margin-bottom: 2rem; }
     .home-page .hero-actions { flex-direction: column; align-items: stretch; }
     .home-page .hero-actions .btn { width: 100%; }
-    .home-page .hero-figure img { aspect-ratio: 4 / 3; }
+    .home-page .hero-figure img { height: auto; aspect-ratio: 4 / 3; }
 
     .home-page .trust-items { grid-template-columns: 1fr; }
     .home-page .trust-item,
