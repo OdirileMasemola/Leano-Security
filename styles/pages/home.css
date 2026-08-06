@@ -2,9 +2,10 @@
    Leano Security Services — Home Page (home.css)
 
    Visual system: Black / White / Deep Red.
-   Loaded only by index.html. Every rule is scoped to .home-page so
-   the shared global.css (used by all other pages) is overridden on
-   the homepage only — including its [data-theme="dark"] variants.
+   Loaded by index.html and about.html (which adds about.css on
+   top). Every rule is scoped to .home-page so the shared
+   global.css is overridden only on pages whose <body> carries the
+   home-page class — including its [data-theme="dark"] variants.
    ================================================================ */
 
 /* ── 1. Tokens ───────────────────────────────────────────── */
