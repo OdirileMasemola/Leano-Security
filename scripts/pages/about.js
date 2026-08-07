@@ -83,12 +83,13 @@ function initStatsCounters() {
             if (entry.isIntersecting) {
                 const counter = entry.target;
                 const originalText = counter.textContent.trim();
-                const hasPlusSign = originalText.includes('+');
-                const target = parseInt(originalText.replace('+', '').trim());
+                const target = parseInt(originalText);
+                // Keep whatever follows the number (e.g. "+", "hr")
+                const suffix = originalText.replace(/^\d+\s*/, '');
                 
                 // Only animate if we have a valid number
                 if (!isNaN(target)) {
-                    animateCounter(counter, target, hasPlusSign);
+                    animateCounter(counter, target, suffix);
                 }
                 observer.unobserve(counter);
             }
@@ -98,7 +99,7 @@ function initStatsCounters() {
     counters.forEach(counter => observer.observe(counter));
 }
 
-function animateCounter(counter, target, hasPlusSign) {
+function animateCounter(counter, target, suffix) {
     let count = 0;
     const increment = target / 50; // Animate over 50 steps
     const interval = 30; // 30ms per step
@@ -110,12 +111,7 @@ function animateCounter(counter, target, hasPlusSign) {
             clearInterval(timer);
         }
         
-        // Format the number with space and + if needed
-        if (hasPlusSign) {
-            counter.textContent = Math.floor(count) + ' +';
-        } else {
-            counter.textContent = Math.floor(count).toString();
-        }
+        counter.textContent = Math.floor(count) + suffix;
     }, interval);
 }
 
@@ -143,13 +139,6 @@ style.textContent = `
     
     .cert-card, .value-card, .team-card {
         transition: all 0.3s ease !important;
-    }
-    
-    .cert-card:hover .cert-icon,
-    .value-card:hover .value-icon,
-    .team-card:hover .team-icon {
-        transform: rotate(360deg);
-        transition: transform 0.6s ease;
     }
 `;
 document.head.appendChild(style);

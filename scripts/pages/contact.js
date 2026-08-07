@@ -1,34 +1,30 @@
 // Contact Page Specific JavaScript
 
-import { submitLead } from '../supabase/leads.js';
-
 document.addEventListener('DOMContentLoaded', () => {
     initContactPage();
 });
 
 function initContactPage() {
-    // Initialize form handling
-    initContactForm();
-    
-    // Initialize FAQ functionality
     initFAQ();
-    
-    // Initialize WhatsApp functionality
     initWhatsApp();
-    
-    // Initialize animations
     initAnimations();
-    
-    // Initialize emergency float button
     initEmergencyFloat();
+    initContactForm();
 }
 
-function initContactForm() {
+async function initContactForm() {
     const contactForm = document.getElementById('contactForm');
     const successMessage = document.getElementById('successMessage');
     const errorMessage = document.getElementById('errorMessage');
     
     if (!contactForm) return;
+
+    let submitLead;
+    try {
+        ({ submitLead } = await import('../supabase/leads.js'));
+    } catch (error) {
+        console.warn('Lead module unavailable; form will use Formspree fallback.', error);
+    }
     
     // Form validation
     contactForm.addEventListener('submit', async (e) => {
@@ -63,23 +59,27 @@ function initContactForm() {
         const serviceSelect = document.getElementById('service');
         const selectedServices = Array.from(serviceSelect.selectedOptions).map(option => option.text);
         data.services = selectedServices.join(', ');
+
+        const payload = {
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            company: data.company || '',
+            services: data.services || '',
+            urgency: data.urgency || '',
+            message: data.message || '',
+            newsletter: data.newsletter ? true : false,
+            source: 'website'
+        };
         
         try {
-            // Submit lead to Supabase (falls back to Formspree internally)
-            const payload = {
-                name: data.name,
-                email: data.email,
-                phone: data.phone,
-                company: data.company || '',
-                services: data.services || '',
-                urgency: data.urgency || '',
-                message: data.message || '',
-                newsletter: data.newsletter ? true : false,
-                source: 'website'
-            };
-
-            const result = await submitLead(payload);
-            if (!result || !result.success) throw new Error(result?.error || 'Submission failed');
+            let result = null;
+            if (submitLead) {
+                result = await submitLead(payload);
+            }
+            if (!result || !result.success) {
+                await sendEmailToLeano(data);
+            }
 
             // Show success message
             successMessage.style.display = 'block';
@@ -268,17 +268,30 @@ function initFAQ() {
     
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
-        
+        const answer = item.querySelector('.faq-answer');
+        if (!question || !answer) return;
+
+        question.setAttribute('aria-expanded', 'false');
+        answer.setAttribute('aria-hidden', 'true');
+        answer.id = answer.id || `faq-answer-${Math.random().toString(36).slice(2, 9)}`;
+        question.setAttribute('aria-controls', answer.id);
+
         question.addEventListener('click', () => {
-            // Toggle active class
-            item.classList.toggle('active');
-            
-            // Close other items
+            const isOpen = item.classList.contains('active');
+
             faqItems.forEach(otherItem => {
-                if (otherItem !== item && otherItem.classList.contains('active')) {
-                    otherItem.classList.remove('active');
-                }
+                otherItem.classList.remove('active');
+                const otherQuestion = otherItem.querySelector('.faq-question');
+                const otherAnswer = otherItem.querySelector('.faq-answer');
+                if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
+                if (otherAnswer) otherAnswer.setAttribute('aria-hidden', 'true');
             });
+
+            if (!isOpen) {
+                item.classList.add('active');
+                question.setAttribute('aria-expanded', 'true');
+                answer.setAttribute('aria-hidden', 'false');
+            }
         });
     });
 }
