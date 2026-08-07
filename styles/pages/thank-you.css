@@ -1,0 +1,207 @@
+/* ================================================================
+   Leano Security Services — Thank You Page (thank-you.css)
+   Scoped to .thank-you-page — loads after home.css
+   ================================================================ */
+
+.thank-you-page .ty-hero {
+    position: relative;
+    background: var(--hero-bg);
+    border-bottom: 1px solid var(--line-light);
+    padding: calc(var(--header-h) + 2rem) 0 5rem;
+    overflow: hidden;
+}
+
+.thank-you-page .ty-hero-layout {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.thank-you-page .breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: .8rem;
+    font-family: var(--ui);
+    font-weight: 600;
+    font-size: .72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted-light);
+    margin-bottom: 2rem;
+}
+.thank-you-page .breadcrumb::before {
+    content: '';
+    width: 26px;
+    height: 2px;
+    background: var(--red);
+    flex-shrink: 0;
+}
+.thank-you-page .breadcrumb i { font-size: .6rem; color: var(--gray-400); }
+.thank-you-page .breadcrumb span { color: var(--gray-600); }
+
+.thank-you-page .ty-h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.8rem, 6.2vw, 5rem);
+    line-height: .95;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+}
+.thank-you-page .ty-h1 em {
+    font-style: normal;
+    color: var(--red);
+}
+
+.thank-you-page .ty-body {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--gray-600);
+    max-width: 46ch;
+    margin-bottom: 2rem;
+}
+
+.thank-you-page .ty-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+.thank-you-page .ty-panel {
+    background: var(--paper);
+    border: 1px solid var(--line-light);
+    padding: 2.25rem 2rem;
+}
+
+.thank-you-page .ty-panel-label {
+    font-family: var(--ui);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.5rem;
+}
+
+.thank-you-page .ty-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.thank-you-page .ty-step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--line-light);
+}
+.thank-you-page .ty-step:last-child { border-bottom: none; padding-bottom: 0; }
+.thank-you-page .ty-step:first-child { padding-top: 0; }
+
+.thank-you-page .ty-step-n {
+    font-family: var(--display);
+    font-size: .85rem;
+    font-weight: 800;
+    color: var(--red);
+    min-width: 2rem;
+    letter-spacing: .5px;
+}
+
+.thank-you-page .ty-step-body { flex: 1; }
+
+.thank-you-page .ty-step-label {
+    font-family: var(--ui);
+    font-size: .88rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: .2rem;
+}
+
+.thank-you-page .ty-step-desc {
+    font-size: .86rem;
+    color: var(--gray-600);
+    line-height: 1.65;
+    margin: 0;
+}
+
+.thank-you-page .ty-step-icon {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.thank-you-page .ty-step-icon i {
+    font-size: 1rem;
+    color: var(--red);
+}
+
+.thank-you-page .ty-strip {
+    background: var(--paper);
+    border-top: 1px solid var(--line-light);
+    border-bottom: 1px solid var(--line-light);
+    padding: 2rem 0;
+}
+
+.thank-you-page .ty-strip-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem 2.5rem;
+}
+
+.thank-you-page .ty-strip-contact {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem 2rem;
+}
+
+.thank-you-page .ty-strip-contact a,
+.thank-you-page .ty-strip-contact span {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    font-family: var(--ui);
+    font-size: .86rem;
+    font-weight: 600;
+    color: var(--ink);
+    transition: color .18s ease;
+}
+.thank-you-page .ty-strip-contact a:hover { color: var(--red); }
+.thank-you-page .ty-strip-contact i { color: var(--red); font-size: .9rem; }
+
+.thank-you-page .ty-psira {
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    font-family: var(--ui);
+    font-size: .84rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+@media (max-width: 992px) {
+    .thank-you-page .ty-hero-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .thank-you-page .ty-strip-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 576px) {
+    .thank-you-page .ty-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .thank-you-page .ty-actions .btn { width: 100%; }
+}

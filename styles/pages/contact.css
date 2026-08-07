@@ -508,8 +508,12 @@
     padding: 0 1.5rem;
 }
 .contact-page .faq-item.active .faq-answer {
-    max-height: 400px;
+    max-height: 520px;
     padding: 0 1.5rem 1.25rem;
+}
+.contact-page .faq-answer p strong {
+    color: var(--ink);
+    font-weight: 600;
 }
 .contact-page .faq-answer p {
     font-size: .9rem;
