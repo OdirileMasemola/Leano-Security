@@ -1,0 +1,452 @@
+/* ================================================================
+   Leano Security Services — Assessment Page (assessment.css)
+
+   Visual system: Black / White / Deep Red — matches the homepage.
+   assessment/index.html loads home.css first; this file styles sections
+   unique to the Assessment page. All rules scoped to .assessment-page.
+   ================================================================ */
+
+/* ── 1. Shared section framing ───────────────────────────── */
+.assessment-page .section-padding { padding: 7rem 0; }
+
+.assessment-page .section-header {
+    max-width: 720px;
+    margin-bottom: 4rem;
+}
+
+.assessment-page .section-subtitle {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--gray-600);
+    max-width: 56ch;
+    margin: 0;
+}
+
+/* ── 2. Page hero ────────────────────────────────────────── */
+.assessment-page .as-hero {
+    position: relative;
+    background: var(--hero-bg);
+    border-bottom: 1px solid var(--line-light);
+    padding: calc(var(--header-h) + 2rem) 0 5rem;
+    overflow: hidden;
+}
+
+.assessment-page .as-hero-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.assessment-page .as-hero-left {
+    padding-bottom: 0;
+}
+
+.assessment-page .breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: .8rem;
+    font-family: var(--ui);
+    font-weight: 600;
+    font-size: .72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted-light);
+    margin-bottom: 2rem;
+}
+.assessment-page .breadcrumb::before {
+    content: '';
+    width: 26px;
+    height: 2px;
+    background: var(--red);
+    flex-shrink: 0;
+}
+.assessment-page .breadcrumb a { color: var(--muted-light); transition: color .18s ease; }
+.assessment-page .breadcrumb a:hover { color: var(--ink); }
+.assessment-page .breadcrumb i { font-size: .6rem; color: var(--gray-400); }
+.assessment-page .breadcrumb span { color: var(--gray-600); }
+
+.assessment-page .as-eyebrow { display: none; }
+
+.assessment-page .as-h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.8rem, 6.2vw, 5rem);
+    line-height: .95;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+}
+
+.assessment-page .as-h1 em {
+    font-style: normal;
+    color: var(--red);
+}
+
+.assessment-page .as-hero-body {
+    font-family: var(--copy);
+    font-size: .97rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    max-width: 52ch;
+    margin-bottom: 2.5rem;
+}
+
+.assessment-page .as-hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+}
+
+.assessment-page .as-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+    background: var(--paper);
+    border: 1px solid var(--line-light);
+    color: var(--text-light);
+    padding: .65rem 1.2rem;
+    border-radius: 0;
+    font-family: var(--ui);
+    font-weight: 700;
+    font-size: .68rem;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    transition: border-color .18s ease, color .18s ease;
+}
+.assessment-page .as-chip:hover {
+    border-color: var(--red);
+    color: var(--ink);
+}
+.assessment-page .as-chip i { font-size: .8rem; color: var(--red); }
+
+/* Hero feature panel */
+.assessment-page .as-hero-panel {
+    background: var(--paper);
+    border: 1px solid var(--line-light);
+    border-top: 2px solid var(--red);
+    border-radius: 0;
+    padding: 2.5rem 2.25rem;
+}
+
+.assessment-page .as-panel-label {
+    font-family: var(--ui);
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted-light);
+    margin-bottom: 1.5rem;
+}
+
+.assessment-page .as-feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.assessment-page .as-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line-light);
+}
+.assessment-page .as-feature:last-child { border-bottom: none; padding-bottom: 0; }
+.assessment-page .as-feature:first-child { padding-top: 0; }
+
+.assessment-page .as-feature-icon {
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.assessment-page .as-feature-icon i {
+    font-size: 1.1rem;
+    color: var(--red);
+}
+
+.assessment-page .as-feature-title {
+    font-family: var(--ui);
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: .3px;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: .25rem;
+}
+
+.assessment-page .as-feature-desc {
+    font-size: .86rem;
+    color: var(--gray-600);
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* ── 3. Stats strip ──────────────────────────────────────── */
+.assessment-page .as-strip {
+    background: var(--paper);
+    border-bottom: 1px solid var(--line-light);
+    padding: 2rem 0;
+}
+
+.assessment-page .as-strip-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+}
+
+.assessment-page .as-strip-left {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    padding: 0;
+    border: 1px solid var(--line-light);
+    background: var(--paper-soft);
+}
+
+.assessment-page .as-strip-stat {
+    padding: 1.5rem 1.25rem;
+    text-align: left;
+}
+.assessment-page .as-strip-stat + .as-strip-stat {
+    border-left: 1px solid var(--line-light);
+}
+
+.assessment-page .as-strip-val {
+    font-family: var(--display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+}
+
+.assessment-page .as-strip-lbl {
+    font-family: var(--ui);
+    font-size: .62rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted-light);
+    margin-top: .45rem;
+}
+
+.assessment-page .as-strip-divider { display: none; }
+
+.assessment-page .as-strip-panel-ext {
+    background: transparent;
+    padding: 0;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+    font-family: var(--ui);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--ink);
+    border: 1px solid var(--line-light);
+    padding: .75rem 1.25rem;
+    white-space: nowrap;
+}
+.assessment-page .as-strip-panel-ext i { color: var(--red); font-size: .85rem; }
+
+/* ── 4. Assessment body ──────────────────────────────────── */
+.assessment-page .as-body {
+    background: var(--paper);
+    padding: 7rem 0;
+}
+
+.assessment-page .as-body-inner {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3.5rem;
+    align-items: start;
+}
+
+.assessment-page .as-sidebar {
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+}
+
+.assessment-page .as-sidebar-heading {
+    font-family: var(--display);
+    font-size: clamp(1.75rem, 3vw, 2.4rem);
+    font-weight: 700;
+    color: var(--ink);
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: .5px;
+    margin-bottom: 1.25rem;
+}
+
+.assessment-page .as-sidebar-body {
+    font-size: .92rem;
+    color: var(--gray-600);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+}
+
+.assessment-page .as-sidebar-contact {
+    display: flex;
+    flex-direction: column;
+    gap: .65rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line-light);
+}
+
+.assessment-page .as-sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    font-family: var(--ui);
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: .2px;
+    color: var(--gray-600);
+    text-decoration: none;
+    transition: color .18s ease;
+}
+.assessment-page .as-sidebar-link i {
+    color: var(--red);
+    width: 14px;
+    font-size: .85rem;
+}
+.assessment-page .as-sidebar-link:hover { color: var(--ink); }
+
+.assessment-page .as-widget-frame {
+    background: var(--paper);
+    border: 1px solid var(--line-light);
+    border-top: 2px solid var(--red);
+    border-radius: 0;
+    overflow: hidden;
+    min-height: 520px;
+    display: flex;
+    align-items: stretch;
+    box-shadow: none;
+}
+
+.assessment-page .as-widget-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.assessment-page .as-widget-slot {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.assessment-page .as-widget-slot iframe {
+    flex: 1;
+    width: 100%;
+    min-height: 600px;
+    border: none;
+    display: block;
+}
+
+.assessment-page .as-note {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    background: var(--paper-soft);
+    border: 1px solid var(--line-light);
+    border-left: 2px solid var(--red);
+    border-radius: 0;
+    padding: 1.1rem 1.25rem;
+}
+
+.assessment-page .as-note i {
+    color: var(--red);
+    font-size: .85rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.assessment-page .as-note p {
+    font-size: .86rem;
+    color: var(--gray-600);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Assessment nav button highlight on this page */
+.assessment-page .assessment-btn {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+}
+.assessment-page .assessment-btn:hover {
+    background: var(--red-deep);
+    border-color: var(--red-deep);
+    color: #fff;
+}
+
+/* ── 5. Responsive ───────────────────────────────────────── */
+@media (max-width: 992px) {
+    .assessment-page .as-hero-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .assessment-page .as-strip-inner {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .assessment-page .as-body-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .assessment-page .as-sidebar {
+        position: static;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--line-light);
+    }
+}
+
+@media (max-width: 768px) {
+    .assessment-page .section-padding,
+    .assessment-page .as-body { padding: 4.5rem 0; }
+
+    .assessment-page .as-strip-left {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .assessment-page .as-strip-stat:nth-child(odd) { border-left: none; }
+    .assessment-page .as-strip-stat:nth-child(n+3) {
+        border-top: 1px solid var(--line-light);
+    }
+    .assessment-page .as-strip-stat + .as-strip-stat {
+        border-left: none;
+    }
+    .assessment-page .as-strip-stat:nth-child(even) {
+        border-left: 1px solid var(--line-light);
+    }
+}
+
+@media (max-width: 576px) {
+    .assessment-page .as-h1 { font-size: clamp(2.4rem, 10vw, 3.2rem); }
+    .assessment-page .as-hero-chips .as-chip span { display: none; }
+    .assessment-page .as-hero-chips .as-chip { padding: .55rem .85rem; }
+    .assessment-page .as-strip-left { grid-template-columns: 1fr; }
+    .assessment-page .as-strip-stat,
+    .assessment-page .as-strip-stat:nth-child(even) {
+        border-left: none;
+    }
+    .assessment-page .as-strip-stat + .as-strip-stat {
+        border-top: 1px solid var(--line-light);
+    }
+    .assessment-page .as-hero-panel { padding: 2rem 1.5rem; }
+}

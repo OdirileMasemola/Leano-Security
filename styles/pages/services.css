@@ -29,7 +29,8 @@
 /* ── 2. Page hero ────────────────────────────────────────── */
 .services-page .services-hero {
     position: relative;
-    background: var(--ink);
+    background: var(--hero-bg);
+    border-bottom: 1px solid var(--line-light);
     /* Fill one full screen, like the homepage hero */
     min-height: 100vh;
     min-height: 100svh;
@@ -59,7 +60,7 @@
     font-size: .72rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--muted-light);
     margin-bottom: 2rem;
 }
 .services-page .breadcrumb::before {
@@ -69,10 +70,10 @@
     background: var(--red);
     flex-shrink: 0;
 }
-.services-page .breadcrumb a { color: var(--muted); transition: color .18s ease; }
-.services-page .breadcrumb a:hover { color: #fff; }
-.services-page .breadcrumb i { font-size: .6rem; color: var(--gray-600); }
-.services-page .breadcrumb span { color: #CFCFCF; }
+.services-page .breadcrumb a { color: var(--muted-light); transition: color .18s ease; }
+.services-page .breadcrumb a:hover { color: var(--ink); }
+.services-page .breadcrumb i { font-size: .6rem; color: var(--gray-400); }
+.services-page .breadcrumb span { color: var(--gray-600); }
 
 .services-page .services-hero-title {
     font-family: var(--display);
@@ -81,7 +82,7 @@
     line-height: .95;
     letter-spacing: .5px;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--ink);
     margin-bottom: 1.25rem;
 }
 
@@ -91,7 +92,7 @@
     font-size: .88rem;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #CFCFCF;
+    color: var(--gray-600);
     margin-bottom: 3rem;
 }
 
@@ -108,9 +109,9 @@
     display: inline-flex;
     align-items: center;
     gap: .65rem;
-    background: transparent;
-    border: 1px solid var(--line-dark);
-    color: #CFCFCF;
+    background: var(--paper);
+    border: 1px solid var(--line-light);
+    color: var(--text-light);
     padding: .65rem 1.2rem;
     border-radius: 0;
     font-family: var(--ui);
@@ -122,7 +123,7 @@
 }
 .services-page .services-chip:hover {
     border-color: var(--red);
-    color: #fff;
+    color: var(--ink);
 }
 .services-page .services-chip i { font-size: .8rem; color: var(--red); }
 
@@ -138,7 +139,7 @@
     gap: .4rem;
     font-family: var(--ui);
     font-weight: 600;
-    color: var(--muted);
+    color: var(--muted-light);
     font-size: .62rem;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -271,110 +272,7 @@
 }
 
 /* ── 5. CTA ──────────────────────────────────────────────── */
-/* Section background/padding comes from home.css (.cta-section) */
-.services-page .cta-card {
-    background: transparent;
-    border: 1px solid var(--line-dark);
-    border-top: 2px solid var(--red);
-    border-radius: 0;
-    padding: 4rem;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 4rem;
-    align-items: center;
-    color: #fff;
-    box-shadow: none;
-    position: relative;
-    overflow: hidden;
-}
-.services-page .cta-card::before,
-.services-page .cta-card::after { content: none; }
-
-.services-page .cta-card h2 {
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
-    line-height: 1;
-    letter-spacing: .5px;
-    text-transform: uppercase;
-    color: #fff;
-    margin-bottom: 1.1rem;
-}
-.services-page .cta-card .cta-content > p {
-    font-size: .95rem;
-    line-height: 1.8;
-    color: var(--muted);
-    max-width: 54ch;
-    margin-bottom: 1.75rem;
-}
-
-.services-page .cta-features {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: .6rem 2rem;
-}
-.services-page .cta-feature {
-    display: flex;
-    align-items: center;
-    gap: .7rem;
-    font-family: var(--ui);
-    font-weight: 600;
-    font-size: .72rem;
-    letter-spacing: 1.6px;
-    text-transform: uppercase;
-    color: #B5B5B5;
-}
-.services-page .cta-feature i { color: #E05561; font-size: .8rem; flex-shrink: 0; }
-
-/* Buttons — restyled to match homepage .btn variants */
-.services-page .cta-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: .65rem;
-    padding: 1.2rem 2.6rem;
-    font-family: var(--ui);
-    font-weight: 700;
-    font-size: .84rem;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    border-radius: 0;
-    border: 1px solid transparent;
-    transition: background-color .18s ease, color .18s ease, border-color .18s ease;
-}
-.services-page .cta-button.primary-btn {
-    background: var(--red);
-    border-color: var(--red);
-    color: #fff;
-    width: 100%;
-}
-.services-page .cta-button.primary-btn:hover {
-    background: var(--red-deep);
-    border-color: var(--red-deep);
-    color: #fff;
-    transform: none;
-    box-shadow: none;
-}
-.services-page .cta-button.secondary-btn {
-    background: transparent;
-    border-color: rgba(255,255,255,.4);
-    color: #fff;
-    width: 100%;
-}
-.services-page .cta-button.secondary-btn:hover {
-    background: #fff;
-    border-color: #fff;
-    color: var(--ink);
-    transform: none;
-    box-shadow: none;
-}
-
-.services-page .cta-card .cta-note {
-    justify-content: flex-start;
-    margin-top: .25rem;
-}
-.services-page .cta-note i { color: var(--muted); font-size: .8rem; }
+/* Section, card, buttons — home.css (.cta-section) */
 
 /* ── 6. Responsive ───────────────────────────────────────── */
 @media (max-width: 992px) {
@@ -384,18 +282,6 @@
     .services-page .process-timeline {
         grid-template-columns: repeat(2, 1fr);
         gap: 2.25rem;
-    }
-
-    .services-page .cta-card {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-        padding: 3rem 2.5rem;
-    }
-    .services-page .cta-card .cta-action {
-        align-items: flex-start;
-        min-width: 0;
-        width: 100%;
-        max-width: 360px;
     }
 }
 
@@ -408,8 +294,6 @@
 
     .services-page .service-body { padding: 1.9rem 1.75rem 2.25rem; }
     .services-page .service-image img { height: 190px; }
-
-    .services-page .cta-card { padding: 2.75rem 1.75rem; }
 }
 
 @media (max-width: 576px) {
@@ -418,7 +302,4 @@
     .services-page .services-hero-chips .services-chip span { display: none; }
 
     .services-page .process-timeline { grid-template-columns: 1fr; }
-
-    .services-page .cta-card { padding: 2.5rem 1.5rem; }
-    .services-page .cta-card .cta-action { max-width: 100%; }
 }
