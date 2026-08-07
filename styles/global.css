@@ -477,3 +477,11 @@ footer {
     .logo { font-size:1.2rem; gap:.55rem; }
     .logo-img { width:38px; height:38px; }
 }
+
+/* ── Thin icons (Font Awesome Regular weight) ─────────────── */
+.fas,
+.fa-solid,
+.far,
+.fa-regular {
+    font-weight: 400;
+}
